@@ -10,7 +10,7 @@ try:
     # execute sql through the pyodbc cursor
     cursor = cnxn.cursor()
     cursor.execute('''BULK INSERT [dbo].[AD_Users2]
-FROM 'C:\\Users\wasw1\\Desktop\Python_Scripts\\AD_Users.txt' WITH (
+FROM 'C:\\Users\\wasw1\\Desktop\\Python_Scripts\\AD_Users.txt' WITH (
     FIRSTROW = 2,
     FIELDTERMINATOR='\\t',
     ROWTERMINATOR='\\n'
