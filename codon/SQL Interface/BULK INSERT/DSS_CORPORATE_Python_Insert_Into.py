@@ -23,3 +23,5 @@ except TypeError as error:
 cnxn.commit()
 
 print("Inserted Successfully")
+
+pyodbc.version

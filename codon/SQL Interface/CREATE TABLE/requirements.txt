@@ -1,1 +1,1 @@
-seaborn==0.9.0
+pyodbc==4.0.26

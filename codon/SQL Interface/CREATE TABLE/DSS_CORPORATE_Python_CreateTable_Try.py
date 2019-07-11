@@ -1,4 +1,3 @@
-
 import pyodbc
 
 # pyodbc connection
@@ -6,6 +5,7 @@ cnxn = pyodbc.connect('Driver={SQL Server};'
                       'Server=GLDMSRV009;'
                       'Database=DSS_CORPORATE;'
                       'Trusted_Connection=yes;')
+
 try:
     # Edit the SQL query to align to your table, schema and field constraints
     cursor = cnxn.cursor()
@@ -20,5 +20,6 @@ except TypeError as error:
 
 # Commit the transaction to 'save' the changes
 cnxn.commit()
+cnxn.close()
 
 

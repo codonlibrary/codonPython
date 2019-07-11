@@ -1,6 +1,6 @@
 # Title
 
- >Short description
+ >This uses pyodbc - please read the docs
 
 - __Description__ : Longer description
 - __Published__ : dd/mm/YYYY
