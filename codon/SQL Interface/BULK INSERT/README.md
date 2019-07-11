@@ -1,10 +1,10 @@
-# Title
+# Create SQL tables from python using pyodbc
 
- >Short description
+ >Create SQL tables from python using pyodbc
 
-- __Description__ : Longer description
-- __Published__ : dd/mm/YYYY
-- __Last modified__ : dd/mm/YYYY
+- __Description__ : Execute a CREATE TABLE script from python using pyodbc
+- __Published__ : 11/07/2019
+- __Last modified__ : 11/07/2019
 - __Author(s)__  : name@nhs.net
 - __Maintainer(s)__ : name@nhs.net
-- __Tags__ : single words separated by spaces
+- __Tags__ : python pyodbc sql 
