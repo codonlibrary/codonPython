@@ -1,0 +1,5 @@
+recursive-include codonPython *.py
+
+include LICENSE
+include README.md
+# instructions about what to include in the distribution build
