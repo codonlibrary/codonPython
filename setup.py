@@ -7,6 +7,10 @@ setup(
 	packages=['codonPython',],
 	install_required=[
 		'numpy',
+		're',
+		'pandas',
+		'random',
+		'sqlalchemy'
 	],
 	author='NHS Digital DIS Team',
 	author_email='paul.ellingham@nhs.net',
