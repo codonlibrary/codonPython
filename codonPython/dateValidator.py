@@ -27,9 +27,17 @@ def validDate(date_string: str)->bool:
     """
 
     # This regex string will validate dates of type `dd/mm/yyyy`, `dd-mm-yyyy` or `dd.mm.yyyy` 
-    # from years 1900 - 9999. Leap year support included. Regex string from 
+    # from years 1900 - 2049. Leap year support included. Original Regex string based on 
     # https://stackoverflow.com/questions/15491894/regex-to-validate-date-format-dd-mm-yyyy
-    if re.match(r"^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:19|[2-9]\d)?\d{2})$", date_string, flags=0):
+    # modified to confine the year dates.
+    if re.match(
+        r"^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1" +
+        r"|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2" +
+        r"))(?:(?:1[9]..|2[0][0-4].))$|^(?:29(\/|-|\.)0?2\3" +
+        r"(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]" +
+        r"|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4" +
+        r"(?:(?:1[9]..|2[0][0-4].))$",
+                            date_string, flags=0):
         return True
     else:
         return False
