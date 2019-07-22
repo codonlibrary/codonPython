@@ -32,7 +32,10 @@ def age_band_5_years(age: int)->str:
         return 'Age not known'
 
     if age > 89:
-        return '90 and over'
+        if age <  150:
+            return '90 and over'
+        else:
+            raise ValueError 
 
     lowerbound = 5 * int(math.floor(age / 5))
     upperbound = lowerbound + 4
@@ -70,7 +73,10 @@ def age_band_10_years(age: int)->str:
         return 'Age not known'
 
     if age > 89:
-        return '90 and over'
+        if age <  150:
+            return '90 and over'
+        else:
+            raise ValueError 
 
     lowerbound = 10 * int(math.floor(age / 10))
     upperbound = lowerbound + 9
