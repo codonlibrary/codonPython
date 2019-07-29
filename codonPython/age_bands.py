@@ -1,6 +1,5 @@
 import math
 
-
 def age_band_5_years(age: int)->str:
     """
     Place age into appropriate 5 year band
@@ -22,24 +21,26 @@ def age_band_5_years(age: int)->str:
     --------
     >>> age_band_5_years(3)
     '0-4'
-    >>> age_band_5_years(-1)
+    >>> age_band_5_years(None)
     'Age not known'
     >>> age_band_5_years(95)
     '90 and over'
     """
 
-    if age is None or age < 0:
+    if age is None:
         return 'Age not known'
 
-    if age > 89:
-        if age <  150:
-            return '90 and over'
+    if age >= 90:
+        if age >=  150:
+            raise ValueError("The age input: {} is too large.".format(age))
         else:
-            raise ValueError 
-
-    lowerbound = 5 * int(math.floor(age / 5))
-    upperbound = lowerbound + 4
-    return '{}-{}'.format(lowerbound, upperbound)
+            return '90 and over'
+    elif age < 0:
+        raise ValueError("The age input: {} is too low.".format(age))
+    else:
+        lowerbound = 5 * int(math.floor(age / 5))
+        upperbound = lowerbound + 4
+        return '{}-{}'.format(lowerbound, upperbound)
 
 
 def age_band_10_years(age: int)->str:
@@ -63,21 +64,23 @@ def age_band_10_years(age: int)->str:
     --------
     >>> age_band_10_years(3)
     '0-9'
-    >>> age_band_10_years(-1)
+    >>> age_band_10_years(None)
     'Age not known'
     >>> age_band_10_years(95)
     '90 and over'
     """
 
-    if age is None or age < 0:
+    if age is None:
         return 'Age not known'
 
-    if age > 89:
-        if age <  150:
-            return '90 and over'
+    if age >= 90:
+        if age >=  150:
+            raise ValueError("The age input: {} is too large.".format(age))
         else:
-            raise ValueError 
-
-    lowerbound = 10 * int(math.floor(age / 10))
-    upperbound = lowerbound + 9
-    return '{}-{}'.format(lowerbound, upperbound)
+            return '90 and over'
+    elif age < 0:
+        raise ValueError("The age input: {} is too low.".format(age))
+    else:
+        lowerbound = 10 * int(math.floor(age / 10))
+        upperbound = lowerbound + 9
+        return '{}-{}'.format(lowerbound, upperbound)

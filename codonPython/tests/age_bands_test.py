@@ -25,14 +25,16 @@ def test_age_band_5_years_typeErrors():
 
 @pytest.mark.parametrize("age", [
    np.nan, 
-   math.inf
+   math.inf,
+   -3,
+   343,
+   -0.1
 ])
 def test_age_band_5_years_valueErrors(age):
     with pytest.raises(ValueError): 
         age_bands.age_band_5_years(age)   
 
 @pytest.mark.parametrize("age, expected", [
-    (-1,   'Age not known'),
     (None, 'Age not known'), 
 ])
 def test_age_band_5_years_edgeCases(age, expected):
@@ -76,14 +78,16 @@ def test_age_band_10_years_typeErrors():
 
 @pytest.mark.parametrize("age", [
    np.nan, 
-   math.inf
+   math.inf,
+   -3,
+   343,
+   -0.1
 ])
 def test_age_band_10_years_valueErrors(age):
     with pytest.raises(ValueError): 
         age_bands.age_band_10_years(age)   
 
 @pytest.mark.parametrize("age, expected", [
-    (-1,   'Age not known'),
     (None, 'Age not known'), 
 ])
 def test_age_band_10_years_edgeCases(age, expected):
