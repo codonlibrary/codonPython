@@ -1,6 +1,5 @@
 import re
 
-
 def validDate(date_string: str)->bool:
     """
     Validates stringtype dates of type `dd/mm/yyyy`, `dd-mm-yyyy` or `dd.mm.yyyy` from 
@@ -8,13 +7,13 @@ def validDate(date_string: str)->bool:
     
     Parameters
     ----------
-        date_string : str
-            Date to be validated
+    date_string : str
+        Date to be validated
 
     Returns
     ----------
-        boolean
-            Whether the date is valid or not
+    boolean
+        Whether the date is valid or not
 
     Examples
     ---------
@@ -25,6 +24,8 @@ def validDate(date_string: str)->bool:
     >>> validDate("43/01/1996")
     False
     """
+    
+    # Let TypeError be.
 
     # This regex string will validate dates of type `dd/mm/yyyy`, `dd-mm-yyyy` or `dd.mm.yyyy` 
     # from years 1900 - 2049. Leap year support included. Original Regex string based on 
