@@ -1,7 +1,7 @@
 import random
 
 
-def nhsNumberGenerator(to_generate: int)->list:
+def nhsNumberGenerator(to_generate: int, random_state: int = None)->list:
     """
     Generates random NHS number(s) compliant with modulus 11 checks recorded 
     in the data dictonary.
@@ -11,6 +11,8 @@ def nhsNumberGenerator(to_generate: int)->list:
     ----------
     to_generate : int
         number of NHS numbers to generate
+    random_state : int, default : None
+        Optional seed for random number generation, for testing and reproducability.
 
     Returns
     ----------
@@ -19,11 +21,13 @@ def nhsNumberGenerator(to_generate: int)->list:
 
     Examples
     ---------
-    >>> random.seed(42)
-    >>> nhsNumberGenerator(2)
+    >>> nhsNumberGenerator(2, random_state=42)
     [7865793030, 1933498560]
     """
 
+    if random_state:
+        random.seed(random_state)
+        
     generated = []
     while len(generated) < to_generate:
         # Random 9 digit number starting with non-zero digit
