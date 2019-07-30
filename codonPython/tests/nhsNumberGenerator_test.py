@@ -10,3 +10,12 @@ import random
 ])
 def test_nhsNumberGenerator_BAU(to_generate, random_state, expected):
     assert expected == nhsNumberGenerator(to_generate, random_state=random_state) 
+
+@pytest.mark.parametrize("to_generate", [
+    4.2,
+    1000001,
+    -1
+])
+def test_nhsNumberGenerator_valueErrors(to_generate):  
+    with pytest.raises(ValueError): 
+        nhsNumberGenerator(to_generate)
