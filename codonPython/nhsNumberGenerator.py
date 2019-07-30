@@ -1,9 +1,9 @@
 import random
 
 
-def nhsNumberGenerator(to_generate: int)->list:
+def nhsNumberGenerator(to_generate: int, random_state: int = None)->list:
     """
-    Generates random NHS number(s) compliant with modulus 11 checks recorded 
+    Generates up to 1M random NHS number(s) compliant with modulus 11 checks recorded 
     in the data dictonary.
     https://www.datadictionary.nhs.uk/data_dictionary/attributes/n/nhs/nhs_number_de.asp?shownav=1
 
@@ -11,6 +11,8 @@ def nhsNumberGenerator(to_generate: int)->list:
     ----------
     to_generate : int
         number of NHS numbers to generate
+    random_state : int, default : None
+        Optional seed for random number generation, for testing and reproducibility.
 
     Returns
     ----------
@@ -19,10 +21,18 @@ def nhsNumberGenerator(to_generate: int)->list:
 
     Examples
     ---------
-    >>> random.seed(42)
-    >>> nhsNumberGenerator(2)
+    >>> nhsNumberGenerator(2, random_state=42)
     [7865793030, 1933498560]
     """
+
+    if random_state:
+        random.seed(random_state)
+    if not isinstance(to_generate, int):
+        raise ValueError("Please input a positive integer to generate numbers.")
+    if to_generate > 1000000:
+        raise ValueError("More than one million values requested")
+    if to_generate < 0:
+        raise ValueError("Please input a postitive integer to generate numbers.")
 
     generated = []
     while len(generated) < to_generate:
