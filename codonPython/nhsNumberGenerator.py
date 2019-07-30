@@ -27,9 +27,9 @@ def nhsNumberGenerator(to_generate: int, random_state: int = None)->list:
 
     if random_state:
         random.seed(random_state)
-    if not isinstance(to_generate, int) :
+    if not isinstance(to_generate, int):
         raise ValueError("Please input a positive integer to generate numbers.")
-    if to_generate > 1000000 :
+    if to_generate > 1000000:
         raise ValueError("More than one million values requested")
     if to_generate < 0:
         raise ValueError("Please input a postitive integer to generate numbers.")
@@ -47,7 +47,3 @@ def nhsNumberGenerator(to_generate: int, random_state: int = None)->list:
             number = int(str(number) + "0")
             generated.append(number)
     return generated
-
-    import numpy as np
-    nhsNumberGenerator(np.inf)
-    nhsNumberGenerator(4.2)
