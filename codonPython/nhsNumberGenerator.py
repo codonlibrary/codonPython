@@ -12,7 +12,7 @@ def nhsNumberGenerator(to_generate: int, random_state: int = None)->list:
     to_generate : int
         number of NHS numbers to generate
     random_state : int, default : None
-        Optional seed for random number generation, for testing and reproducability.
+        Optional seed for random number generation, for testing and reproducibility.
 
     Returns
     ----------
