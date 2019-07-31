@@ -1,21 +1,23 @@
-# from codonpython.suppression import suppression
-import pandas as pd
+from codonPython.suppression import suppress_value
 import pytest
 
 @pytest.mark.parametrize("to_suppress, expected", [
-    (
-        pd.DataFrame({"count":[0,2,4,6,8,10,101,1001]}), 
-        pd.DataFrame({"count":[0,"*","*","*",10,10,100,1000]})
-    )
+    (0, 0),
+    (2, "*"),
+    (5, "*"),
+    (8, 10),
+    (14, 15),
+    (57, 60),
+    (10023, 10025)
 ])
-def test_supression_BAU(to_generate, random_state, expected):
-    assert expected == suppression(to_generate, random_state=random_state) 
+def test_suppress_value_BAU(to_suppress, expected):
+    assert expected == suppress_value(to_suppress)
 
 @pytest.mark.parametrize("to_suppress", [
-    pd.DataFrame({"count":[0,-2,4,6,8,10,101,1001]}),
-    pd.DataFrame({"count":[0,2,4,6,8,10,101,100000000]}),
-    pd.DataFrame({"count":[0,2.2,4,6,8,10,101,1001]})
+    -1,
+    4.2,
+    100000001
 ])
-def test_supression_valueErrors(to_generate):  
+def test_suppress_value_valueErrors(to_suppress):  
     with pytest.raises(ValueError): 
-        suppression(to_generate)
+        suppress_value(to_suppress)
