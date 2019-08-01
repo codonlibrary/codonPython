@@ -1,4 +1,5 @@
 import random
+import numpy as np
 
 
 def nhsNumberGenerator(to_generate: int, random_state: int = None)->list:
@@ -40,9 +41,9 @@ def nhsNumberGenerator(to_generate: int, random_state: int = None)->list:
         number = random.randint(100000000, 999999999)
         digits = [int(digit) for digit in str(number)]
         # Apply weighting to digits
-        weighted_digits = [(10 - index) * digit for (index, digit) in enumerate(digits)]
+        weighted_digits = np.dot(np.array(digits), np.arange(10,1,-1))
         # Validity is based on the check digit, which can't be 10   
-        remainder = sum(weighted_digits) % 11
+        remainder = weighted_digits % 11
         check_digit = 11 - remainder
         if check_digit == 10:
             continue
