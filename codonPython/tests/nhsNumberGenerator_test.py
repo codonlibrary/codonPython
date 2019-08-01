@@ -5,8 +5,8 @@ import random
 
 
 @pytest.mark.parametrize("to_generate, random_state, expected", [
-    (3, 42, [7865793030, 1933498560, 7340365060]),
-    (2, 1, [1677604360, 9170772010])
+    (3, 42, [7865793030, 2195408316, 1268550922]),
+    (2, 1, [2442725096, 7111780027])
 ])
 def test_nhsNumberGenerator_BAU(to_generate, random_state, expected):
     assert expected == nhsNumberGenerator(to_generate, random_state=random_state) 

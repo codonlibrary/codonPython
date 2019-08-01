@@ -22,7 +22,7 @@ def nhsNumberGenerator(to_generate: int, random_state: int = None)->list:
     Examples
     ---------
     >>> nhsNumberGenerator(2, random_state=42)
-    [7865793030, 1933498560]
+    [7865793030, 2195408316]
     """
 
     if random_state:
@@ -41,9 +41,14 @@ def nhsNumberGenerator(to_generate: int, random_state: int = None)->list:
         digits = [int(digit) for digit in str(number)]
         # Apply weighting to digits
         weighted_digits = [(10 - index) * digit for (index, digit) in enumerate(digits)]
-        # Sum of all weighted digits must be a multiple of 11 to be valid.
-        if sum(weighted_digits) % 11 == 0:
-            # Add check digit to valid number
-            number = int(str(number) + "0")
-            generated.append(number)
+        # Validity is based on the check digit, which can't be 10   
+        remainder = sum(weighted_digits) % 11
+        check_digit = 11 - remainder
+        if check_digit == 10:
+            continue
+        if check_digit == 11: 
+            check_digit = 0
+        # Add check digit to valid number
+        number = int(str(number) + str(check_digit))
+        generated.append(number)
     return generated
