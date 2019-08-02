@@ -6,7 +6,7 @@ import pandas as pd
 def tableFromSql(server: str, database: str, table_name: str, user: str = "", password: str = "", schema: str = None, index_col: str = None, coerce_float: bool = True, parse_dates: list = None, columns: list = None, chunksize: int = None):
     '''
     Returns a SQL table in a DataFrame.
-    
+
     Convert a table stored in SQL Server 2016 into a pandas dataframe.
     Uses sqlalchemy and pandas.
 
@@ -43,7 +43,7 @@ def tableFromSql(server: str, database: str, table_name: str, user: str = "", pa
     chunksize : int, default : None
         If specified, returns an iterator where chunksize is the number of rows to include 
         in each chunk.
-        	
+
     Returns
     ----------
     pd.DataFrame
@@ -58,9 +58,9 @@ def tableFromSql(server: str, database: str, table_name: str, user: str = "", pa
     '''
 
     try:
-        uri = "mssql+pyodbc://{}:{}@{}/{}?driver=SQL Server Native Client 11.0".format(user, password, server, database)
+        uri = "mssql+pyodbc://{}:{}@{}/{}?driver=SQL Server Native Client 11.0".format(
+            user, password, server, database)
         engine = create_engine(uri)
         return pd.read_sql_table(table_name, engine, schema=schema, index_col=index_col, coerce_float=coerce_float, parse_dates=parse_dates, columns=columns, chunksize=chunksize)
     except Exception as error:
         raise error
-    
