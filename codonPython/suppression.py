@@ -27,10 +27,10 @@ def suppress_value(valuein: int, rc:str = '*')->str:
     '0'
     """
 
-    if valuein ==0:
+    if valuein == 0:
         valueout = str(valuein)
     if 1 <= valuein <= 7:
         valueout = rc
-    if valuein >7:
+    if valuein > 7:
         valueout = str(valuein)
     return valueout
