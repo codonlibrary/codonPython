@@ -1,3 +1,33 @@
+def round_value(valuein: int, base = 5)->int:
+    """
+    Round values to nearest 5
+
+    This function will round metric values to the nearest 5.
+    
+    Parameters
+    ----------
+    valuein : int
+        Metric value
+    base :
+        number which we are rounding to i.e. to the nearest 5
+    
+    Returns
+    ----------
+    out : int
+        Rounded value 
+    
+    Examples
+    ----------
+    >>> round_value(8)
+    '10'
+    >>> round_value(20)
+    '20'
+    >>> round_value(46)
+    '45'
+    """
+
+    return base * round(valuein/base)
+
 def suppress_value(valuein: int, rc:str = '*')->str:
     """
     Suppress values less than or equal to 7
@@ -34,3 +64,4 @@ def suppress_value(valuein: int, rc:str = '*')->str:
     if valuein > 7:
         valueout = str(valuein)
     return valueout
+  
