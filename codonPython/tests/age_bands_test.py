@@ -1,8 +1,9 @@
 from codonPython import age_bands
 import numpy as np
 import math
-import pytest 
- 
+import pytest
+
+
 @pytest.mark.parametrize("age, expected", [
     (0,  '0-4'),
     (1,  '0-4'),
@@ -17,29 +18,33 @@ import pytest
     (90, '90 and over'),
 ])
 def test_age_band_5_years_BAU(age, expected):
-    assert expected == age_bands.age_band_5_years(age) 
+    assert expected == age_bands.age_band_5_years(age)
+
 
 def test_age_band_5_years_typeErrors():
-    with pytest.raises(TypeError): 
-        age_bands.age_band_5_years("age")  
+    with pytest.raises(TypeError):
+        age_bands.age_band_5_years("age")
+
 
 @pytest.mark.parametrize("age", [
-   np.nan, 
-   math.inf,
-   -3,
-   343,
-   -0.1
+    np.nan,
+    math.inf,
+    -3,
+    343,
+    -0.1
 ])
 def test_age_band_5_years_valueErrors(age):
-    with pytest.raises(ValueError): 
-        age_bands.age_band_5_years(age)   
+    with pytest.raises(ValueError):
+        age_bands.age_band_5_years(age)
+
 
 @pytest.mark.parametrize("age, expected", [
-    (None, 'Age not known'), 
+    (None, 'Age not known'),
 ])
 def test_age_band_5_years_edgeCases(age, expected):
-    assert expected == age_bands.age_band_5_years(age) 
- 
+    assert expected == age_bands.age_band_5_years(age)
+
+
 @pytest.mark.parametrize("age, expected", [
     (0.1,  '0-4'),
     (1.2,  '0-4'),
@@ -54,7 +59,8 @@ def test_age_band_5_years_edgeCases(age, expected):
     (90.1, '90 and over'),
 ])
 def test_age_band_5_years_BAU_floats(age, expected):
-    assert expected == age_bands.age_band_5_years(age) 
+    assert expected == age_bands.age_band_5_years(age)
+
 
 @pytest.mark.parametrize("age, expected", [
     (0,  '0-9'),
@@ -70,29 +76,33 @@ def test_age_band_5_years_BAU_floats(age, expected):
     (90, '90 and over'),
 ])
 def test_age_band_10_years_BAU(age, expected):
-    assert expected == age_bands.age_band_10_years(age) 
+    assert expected == age_bands.age_band_10_years(age)
+
 
 def test_age_band_10_years_typeErrors():
-    with pytest.raises(TypeError): 
-        age_bands.age_band_10_years("age")  
+    with pytest.raises(TypeError):
+        age_bands.age_band_10_years("age")
+
 
 @pytest.mark.parametrize("age", [
-   np.nan, 
-   math.inf,
-   -3,
-   343,
-   -0.1
+    np.nan,
+    math.inf,
+    -3,
+    343,
+    -0.1
 ])
 def test_age_band_10_years_valueErrors(age):
-    with pytest.raises(ValueError): 
-        age_bands.age_band_10_years(age)   
+    with pytest.raises(ValueError):
+        age_bands.age_band_10_years(age)
+
 
 @pytest.mark.parametrize("age, expected", [
-    (None, 'Age not known'), 
+    (None, 'Age not known'),
 ])
 def test_age_band_10_years_edgeCases(age, expected):
-    assert expected == age_bands.age_band_10_years(age) 
- 
+    assert expected == age_bands.age_band_10_years(age)
+
+
 @pytest.mark.parametrize("age, expected", [
     (0.1,  '0-9'),
     (1.2,  '0-9'),
@@ -107,4 +117,4 @@ def test_age_band_10_years_edgeCases(age, expected):
     (90.1, '90 and over'),
 ])
 def test_age_band_10_years_BAU_floats(age, expected):
-    assert expected == age_bands.age_band_10_years(age) 
+    assert expected == age_bands.age_band_10_years(age)
