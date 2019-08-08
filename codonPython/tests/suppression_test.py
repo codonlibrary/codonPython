@@ -3,13 +3,13 @@ import pytest
 
 
 @pytest.mark.parametrize("to_suppress, expected", [
-    (0, 0),
+    (0, "0"),
     (2, "*"),
     (5, "*"),
-    (8, 10),
-    (16, 15),
-    (57, 60),
-    (10023, 10025)
+    (8, "10"),
+    (16, "15"),
+    (57, "55"),
+    (10023, "10025")
 ])
 def test_suppress_value_BAU(to_suppress, expected):
     assert expected == suppress_value(to_suppress)
