@@ -4,6 +4,10 @@ First off, thank you for taking the time to contribute!
 
 ## Basic idea
 
+* Fork codonPython on GitHub.
+* Make a new branch for your contribution on that fork.
+* Submit a pull request to codonPython.
+
 Source + Doc + Test = :heart_eyes:
 
 Please send a [GitHub Pull Request to codonPython](https://github.com/codonlibrary/codonPython/pull/new/master) with a
