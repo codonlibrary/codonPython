@@ -50,10 +50,9 @@ def check_consistent_measures(data, geography_col: str = "Org_Level", measure_co
         raise KeyError("Check column names correspond to the DataFrame.")
 
     # Every geography level should have the same set of measures as the global set.
-    global_set = measures_set if measures_set else set(
-        data[measure_col].unique())
+    global_set = measures_set if measures_set else set(data[measure_col].unique())
     subsets = data.groupby(geography_col) \
-        .agg({measure_col: "unique"})
+                    .agg({measure_col: "unique"})
     subset_agreements = [set(x) == global_set for x in subsets[measure_col]]
 
     if False in subset_agreements:

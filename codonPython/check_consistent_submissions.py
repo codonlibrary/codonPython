@@ -50,8 +50,7 @@ def check_consistent_submissions(data, national_geog_level: str = "National", ge
         not isinstance(geography_col, str) or
         not isinstance(national_geog_level, str)
     ):
-        raise ValueError(
-            "Please input strings for column names and national geography level.")
+        raise ValueError("Please input strings for column names and national geography level.")
     if (
         submissions_col not in data.columns or
         measure_col not in data.columns or
@@ -62,8 +61,8 @@ def check_consistent_submissions(data, national_geog_level: str = "National", ge
     # All non-national measures should have only one unique submission number for each
     # geography level.
     submissions_by_measure = data[data[geography_col] != national_geog_level] \
-        .groupby(measure_col) \
-        .agg({submissions_col: "nunique"})
+                                .groupby(measure_col) \
+                                    .agg({submissions_col: "nunique"})
     result = (submissions_by_measure[submissions_col] == 1).all()
 
     return result
