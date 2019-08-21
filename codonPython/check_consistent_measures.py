@@ -26,10 +26,13 @@ def check_consistent_measures(data, geography_col: str = "Org_Level", measure_co
     --------
     >>> check_consistent_measures(
     ...   pd.DataFrame({
-    ...     "Org_Level" : ["National" ,"National", "Region", "Region", "Local", "Local",],
-    ...     "Measure" : ["m1", "m2", "m1", "m2", "m1", "m2",],
+    ...     "Geog" : ["National" ,"National", "Region", "Region", "Local", "Local",],
+    ...     "measure" : ["m1", "m2", "m1", "m2", "m1", "m2",],
     ...     "Value_Unsuppressed" : [4, 2, 2, 1, 2, 1,],
-    ...   })
+    ...   }),
+    ...   geography_col = "Geog",
+    ...   measure_col = "measure",
+    ...   measures_set = set({"m1", "m2"}),
     ... )
     True
     >>> check_consistent_measures(

@@ -28,10 +28,14 @@ def check_consistent_submissions(data, national_geog_level: str = "National", ge
     --------
     >>> check_consistent_submissions(
     ...   pd.DataFrame({
-    ...     "Org_Level" : ["National" ,"National", "Region", "Region", "Local", "Local",],
-    ...     "Measure" : ["m1", "m2", "m1", "m2", "m1", "m2",],
-    ...     "Value_Unsuppressed" : [4, 2, 2, 1, 2, 1,],
-    ...   })
+    ...     "Geog" : ["N" ,"N", "Region", "Region", "Local", "Local",],
+    ...     "measure" : ["m1", "m2", "m1", "m2", "m1", "m2",],
+    ...     "submissions" : [4, 2, 2, 1, 2, 1,],
+    ...   }),
+    ...   national_geog_level = "N",
+    ...   geography_col = "Geog",
+    ...   submissions_col = "submissions",
+    ...   measure_col = "measure",
     ... )
     True
     >>> check_consistent_submissions(
