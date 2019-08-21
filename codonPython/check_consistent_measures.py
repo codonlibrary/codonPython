@@ -58,7 +58,4 @@ def check_consistent_measures(data, geography_col: str = "Org_Level", measure_co
                     .agg({measure_col: "unique"})
     subset_agreements = [set(x) == global_set for x in subsets[measure_col]]
 
-    if False in subset_agreements:
-        return False
-    else:
-        return True
+    return any(subset_agreements)
