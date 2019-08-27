@@ -19,7 +19,7 @@ def check_null(dataframe: pd.DataFrame) -> bool:
 
     Examples
     --------
-    >>> check_null(data = pd.DataFrame(data = {'col1': [1,2], 'col2': [3,4]}))
+    >>> check_null(data = pd.DataFrame({'col1': [1,2], 'col2': [3,4]}))
     False
     >>> check_null(data = pd.DataFrame({'col1': [1,numpy.nan], 'col2': [3,4]}))
     True
