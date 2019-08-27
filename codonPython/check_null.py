@@ -1,7 +1,7 @@
 import numpy
 import pandas as pd
 
-def count_null(dataframe: pd.DataFrame) -> bool:
+def check_null(dataframe: pd.DataFrame) -> bool:
     """
     Checks a pandas dataframe for null values
 
@@ -19,19 +19,11 @@ def count_null(dataframe: pd.DataFrame) -> bool:
 
     Examples
     --------
-    >>> count_null(data)
-    True
-    >>> count_null(data)
+    >>> check_null(data = pandas.DataFrame(data = {'col1': [1,2], 'col2': [3,4]}))
     False
+    >>> check_null(data = {'col1': [1,numpy.nan], 'col2': [3,4]})
+    True
     """
     null_count = dataframe.isnull().values.any()
-    col_names = dataframe.columns.tolist()
         
-    if null_count == True:
-        col_value = dataframe.isnull().any().tolist()
-        print(col_names)
-        print(col_value)
-        return True
-    else:
-        print("No null values found")
-        return False
+    return null_count
