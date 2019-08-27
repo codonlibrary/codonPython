@@ -8,7 +8,7 @@ First off, thank you for taking the time to contribute! If you have a functional
 
 2. Write your documented function and tests (:heart_eyes:) on a new branch, coding in line with our **coding conventions**.
 
-3. Submit a [GitHub Pull Request](https://github.com/codonlibrary/codonPython/pull/new/master) to codonPython with a clear description of what you have done.
+3. Submit a [pull request](https://help.github.com/en/articles/creating-a-pull-request) to codonPython with a clear description of what you have done.
 
 We suggest you make sure all of your commits are atomic (one feature per commit). Please make sure that non-obvious lines of code are commented, and variable names are as clear as possible. Please do not send us undocumented code as we will not accept it. Including tests to your pull request will bring tears of joy to our eyes, and will also probably result in a faster merge.
 
@@ -20,5 +20,5 @@ Start reading our code to get a feel for it:
 * We use docstrings and we try to (loosely) follow [`numpy`'s docstring standards](https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard).
 * This is open source software. Consider the people who will read your code, and make it look nice for them.
   
-Thank you,
-codonPeople
+:clinking_glasses: Thank you!
+Team codon
