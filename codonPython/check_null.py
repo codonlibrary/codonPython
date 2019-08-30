@@ -21,9 +21,9 @@ def check_null(dataframe: pd.DataFrame, columns_to_be_checked: list) -> bool:
 
     Examples
     --------
-    >>> check_null(dataframe = pd.DataFrame({'col1': [1,2], 'col2': [3,4]}), columns_to_check = ['col1'])
+    >>> check_null(dataframe = pd.DataFrame({'col1': [1,2], 'col2': [3,4]}), columns_to_be_checked = ['col1'])
     0
-    >>> check_null(dataframe = pd.DataFrame({'col1': [1,numpy.nan], 'col2': [3,4]}), columns_to_check = ['col1'])
+    >>> check_null(dataframe = pd.DataFrame({'col1': [1,numpy.nan], 'col2': [3,4]}), columns_to_be_checked = ['col1'])
     1
     """
 
