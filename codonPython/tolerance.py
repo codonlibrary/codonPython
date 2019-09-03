@@ -37,10 +37,10 @@ def check_tolerance(X, y, to_exclude: int = 1, poly_features: int = 2, alpha: fl
     Examples
     --------
     >>> check_tolerance(
-    ...     X = np.array([1001,1002,1003,1004,1005]),
-    ...     y = np.array([2,3,4,4.5,5])
+    ...     X = np.array([1001,1002,1003,1004,1005,1006]),
+    ...     y = np.array([2,3,4,4.5,5,5.1]),
     ... ).round(3).to_dict()
-    {'yhat_u': {0: 9.077}, 'yobs': {0: 5.0}, 'yhat': {0: 4.875}, 'yhat_l': {0: 0.673}}
+    {'yhat_u': {0: 6.061}, 'yobs': {0: 5.1}, 'yhat': {0: 5.2}, 'yhat_l': {0: 4.339}}
     """
 
     if not isinstance(poly_features, int) or 0 >= poly_features >= 4:
@@ -66,11 +66,11 @@ def check_tolerance(X, y, to_exclude: int = 1, poly_features: int = 2, alpha: fl
     )
 
     # Fit transforms to train data, apply them to all data
-    fitted_transforms = transforms.fit(X[:to_exclude].reshape(-1, 1))
+    fitted_transforms = transforms.fit(X[:-to_exclude].reshape(-1, 1))
     X = fitted_transforms.transform(X.reshape(-1, 1))
 
     X_train, y_train = X[:-to_exclude, :], y[:-to_exclude]
-    X_predict, y_predict = X[(N-to_exclude):, :], y[(N-to_exclude):]
+    X_predict, y_predict = X[-to_exclude:, :], y[-to_exclude:]
 
     # Fit ordinary least squares model to the training data, then predict for the 
     # prediction data.
