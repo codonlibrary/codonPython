@@ -6,27 +6,26 @@ import statsmodels.api as sm
 from statsmodels.sandbox.regression.predstd import wls_prediction_std
 
 
-def check_tolerance(t, y, to_exclude: int = 1, poly_features: list = [1, 2], alpha: float = 0.05, forecast: bool = False) -> pd.DataFrame:
+def check_tolerance(t, y, to_exclude: int = 1, poly_features: list = [1, 2], alpha: float = 0.05, predict_all: bool = False) -> pd.DataFrame:
     """
     Check that some future values are within a weighted least squares confidence interval.
 
     Parameters
     ----------
     t : np.array
-        N explanatory time bins of shape (N, 1).
+        N explanatory time points of shape (N, 1).
     y : np.array
         The corresponding response variable values to X, of shape (N, 1).
     to_exclude : int, default = 1
         How many of the last y values will have their tolerances checked.
     poly_features : list, default = [1, 2]
-        List of degrees of polynomial features to fit to the data. One model will be
+        List of degrees of polynomial basis to fit to the data. One model will be
         produced for each number in the list, eg. the default will fit a linear and
         a second degree polynomial to the data and return both sets of results.
     alpha : float, default = 0.05
         Alpha parameter for the weighted least squares confidence interval.
-    forecast : bool, default = False
-        When set to true, will return model projections for 20% of the data range beyond
-        the current distribution.
+    predict_all : bool, default = False
+        Set to true to show predictions for all points of the dataset.
 
 
     Returns
@@ -59,7 +58,7 @@ def check_tolerance(t, y, to_exclude: int = 1, poly_features: list = [1, 2], alp
     assert all(0 <= degree <= 4 for degree in poly_features), (
       "Please ensure all numbers in poly_features are from 0 to 4."  
     )
-    if not isinstance(alpha, float) or 0 >= alpha >= 1:
+    if not isinstance(alpha, float) or 0 > alpha >= 1:
         raise ValueError("Please input a float between 0 and 1 for alpha.")
     if not isinstance(to_exclude, int) or len(t) <= to_exclude < 1:
         raise ValueError("Please input an integer between 1 and your sample size for to_exclude.")
@@ -76,16 +75,6 @@ def check_tolerance(t, y, to_exclude: int = 1, poly_features: list = [1, 2], alp
     idx = np.argsort(t)
     t = t[idx]
     y = y[idx]
-    forecasts = 5
-
-    if forecast:
-        # 5 forecast values based on 20% of data range
-        t_range = t[-1] - t[0]
-        t_forecast = np.linspace(
-            (t[-1] + t_range*0.001),
-            (t[-1] + t_range*0.2),
-            forecasts,
-        )
     
     results = pd.DataFrame()
     for degree in poly_features:
@@ -99,24 +88,17 @@ def check_tolerance(t, y, to_exclude: int = 1, poly_features: list = [1, 2], alp
         _t = fitted_transforms.transform(t.reshape(-1, 1))
 
         t_train, y_train = _t[:-to_exclude, :], y[:-to_exclude]
-        t_predict, y_predict = _t[-to_exclude:, :], y[-to_exclude:]
-    
-        if forecast:
-            # Add forecasts to prediction array
-            t_predict = np.append(
-                t_predict,
-                fitted_transforms.transform(t_forecast.reshape(-1, 1)),
-                axis=0
-            )
-            # This will prevent the final dataframe complaining about array lengths.
-            y_predict = np.append(y_predict, np.full(forecasts, np.nan))
+        t_predict, y_predict = (
+            _t if predict_all else _t[-to_exclude:, :],
+            y if predict_all else y[-to_exclude:]
+        )
         
         # Fit ordinary least squares model to the training data, then predict for the
         # prediction data.
         model = sm.OLS(y_train, t_train).fit()
         yhat = model.predict(t_predict)
 
-        # Calculate confidence interval of fitted model.
+        # Calculate prediction intervals of fitted model.
         _, yhat_l, yhat_u = wls_prediction_std(model, t_predict, alpha=alpha)
 
         # Store model results in master frame
