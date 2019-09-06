@@ -60,7 +60,7 @@ def check_tolerance(t, y, to_exclude: int = 1, poly_features: list = [1, 2], alp
     )
     if not isinstance(alpha, float) or 0 > alpha >= 1:
         raise ValueError("Please input a float between 0 and 1 for alpha.")
-    if not isinstance(to_exclude, int) or len(t) <= to_exclude < 1:
+    if not isinstance(to_exclude, int):
         raise ValueError("Please input an integer between 1 and your sample size for to_exclude.")
     assert ((len(t) - to_exclude) >= 4), (
         """The sample size for your model is smaller than 4. This will not produce a good 
@@ -68,6 +68,9 @@ def check_tolerance(t, y, to_exclude: int = 1, poly_features: list = [1, 2], alp
     )
     assert np.isfinite(y).all(), (
         "Your sample contains missing or infinite values for y. Exclude these values to continue."
+    )
+    assert np.isfinite(t).all(), (
+        "Your sample contains missing or infinite values for x. Exclude these values to continue."
     )
 
 

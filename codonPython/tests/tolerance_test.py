@@ -5,10 +5,15 @@ import pandas as pd
 import pytest
 
 
+testdata = [
+    np.array([1234, 1235, 1236, 1237, 1238, 1239, 1240, 1241, 1242]),
+    np.array([1, 2, 3, 4, 5, 5.5, 6, 6.5, 7]),
+]
+
+
 @pytest.mark.parametrize("t, y, to_exclude, poly_features, alpha, expected", [
     (
-        np.array([1234,1235,1236,1237,1238,1239,1240,1241,1242]),
-        np.array([1,2,3,4,5,5.5,6,6.5,7]),
+        *testdata,
         2,
         [1, 2],
         0.05,
@@ -36,8 +41,7 @@ import pytest
         })
     ),
     (
-        np.array([1234,1235,1236,1237,1238,1239,1240,1241,1242]),
-        np.array([1,2,3,4,5,5.5,6,6.5,7]),
+        *testdata,
         2,
         [3],
         0.05,
@@ -70,4 +74,68 @@ def test_tolerance_checking_BAU(t, y, to_exclude, poly_features, alpha, expected
     assert expected.equals(obtained)
 
 
-#@pytest.mark.parametrize("t, y, to_exclude, poly_features, alpha, forecast", [])
+@pytest.mark.parametrize("t, y, to_exclude, poly_features, alpha", [
+    (
+        *testdata,
+        2,
+        "flamingo",  # This should be a list
+        0.05,
+    ),
+    (
+        *testdata,
+        2,
+        [2],
+        "flamingo",  # Needs to be int
+    ),
+    (
+        *testdata,
+        2,
+        [2],
+        42,  # Needs to be between 0 and 1
+    ),
+    (
+        *testdata,
+        "flamingo",  # Needs to be int
+        [2],
+        0.05,
+    ),
+])
+def test_ValueErrors(t, y, to_exclude, poly_features, alpha):
+    with pytest.raises(ValueError):
+        check_tolerance(t, y, to_exclude=to_exclude,
+                        poly_features=poly_features, alpha=alpha)
+
+
+@pytest.mark.parametrize("t, y, to_exclude, poly_features, alpha", [
+    (
+        *testdata,
+        2,
+        [42],  # Elements in the list should be between 0 and 4
+        0.05,
+    ),
+    (
+        *testdata,
+        42,  # Can't have to_exclude making your sample size smaller than 4
+        [2],
+        0.05,
+    ),
+    (
+        np.array([1234, 1235, 1236, 1237, 1238, 1239,
+                  1240, 1241, np.nan]),  # Missing t value
+        np.array([1, 2, 3, 4, 5, 5.5, 6, 6.5, 7]),
+        2,
+        [2],
+        0.05,
+    ),
+    (
+        np.array([1234, 1235, 1236, 1237, 1238, 1239, 1240, 1241, 1242]),
+        np.array([1, 2, 3, 4, 5, 5.5, 6, 6.5, np.nan]),  # Missing y value
+        2,
+        [2],
+        0.05,
+    )
+])
+def test_AssertionErrors(t, y, to_exclude, poly_features, alpha):
+    with pytest.raises(AssertionError):
+        check_tolerance(t, y, to_exclude=to_exclude,
+                        poly_features=poly_features, alpha=alpha)
