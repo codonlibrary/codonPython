@@ -31,7 +31,7 @@ def check_tolerance(t, y, to_exclude: int = 1, poly_features: list = [1, 2], alp
     Returns
     -------
     pd.DataFrame
-        DataFrame of shape (to_exclude, 4) containing:
+        DataFrame containing:
             "yhat_u"    : Upper condfidence interval for y
             "yobs"      : Observed value for y
             "yhat"      : Predicted value for y
@@ -67,10 +67,12 @@ def check_tolerance(t, y, to_exclude: int = 1, poly_features: list = [1, 2], alp
         model. Either reduce to_exclude or increase your sample size to continue."""
     )
     assert np.isfinite(y).all(), (
-        "Your sample contains missing or infinite values for y. Exclude these values to continue."
+        f"""Your sample contains missing or infinite values for y at locations
+        {list(map(tuple, np.where(np.isnan(y))))}. Exclude these values to continue."""
     )
     assert np.isfinite(t).all(), (
-        "Your sample contains missing or infinite values for x. Exclude these values to continue."
+        f"""Your sample contains missing or infinite values for t at locations
+        {list(map(tuple, np.where(np.isnan(t))))}. Exclude these values to continue."""
     )
 
 
