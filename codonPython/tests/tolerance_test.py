@@ -1,7 +1,7 @@
 from codonPython.tolerance import check_tolerance
 import numpy as np
 import pandas as pd
-# import pandas.util.testing as pdt
+import pandas.util.testing as pdt
 import pytest
 
 
@@ -71,7 +71,7 @@ def test_tolerance_checking_BAU(t, y, to_exclude, poly_features, alpha, expected
         poly_features=poly_features,
         alpha=alpha,
     )
-    assert expected.equals(obtained)
+    pdt.assert_frame_equal(expected, obtained)
 
 
 @pytest.mark.parametrize("t, y, to_exclude, poly_features, alpha", [
