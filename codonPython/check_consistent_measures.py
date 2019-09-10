@@ -45,6 +45,9 @@ def check_consistent_measures(data, geography_col: str = "Org_Level", measure_co
     False
     """
 
+    if any(data.isna()):
+        raise ValueError(
+    f"Missing values at locations {list(map(tuple, np.argwhere(data.isna().values)))}")
     if not isinstance(geography_col, str) or not isinstance(measure_col, str):
         raise ValueError("Please input strings for column indexes.")
     if not isinstance(measures_set, set):
