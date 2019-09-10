@@ -1,5 +1,6 @@
 from codonPython.check_consistent_measures import check_consistent_measures
 import pandas as pd
+import numpy as np
 import pytest
 
 @pytest.mark.parametrize("data, geography_col, measure_col, measures_set, expected", [
@@ -30,7 +31,18 @@ import pytest
 def test_each_org_levels_BAU(data, geography_col, measure_col, measures_set, expected):
     assert expected == check_consistent_measures(data, geography_col, measure_col, measures_set)
 
-@pytest.mark.parametrize("data, geography_col, measure_col, measures_set", [ 
+
+@pytest.mark.parametrize("data, geography_col, measure_col, measures_set", [
+    (
+        pd.DataFrame({
+            "Geog" : ["National" ,"National", "Region", "Region", "Local", "Local"],
+            "measure" : ["m1", "m2", "m1", np.nan, "m1", "m2"],
+            "Value_Unsuppressed" : [4, 2, 2, 1, 2, 1],
+        }),
+        "Geog",
+        "measure",
+        set({"m1", "m2"}),
+    ),
     (
         pd.DataFrame({
             "Geog" : ["National" ,"National", 1, "Region", "Local", "Local"],
@@ -41,23 +53,6 @@ def test_each_org_levels_BAU(data, geography_col, measure_col, measures_set, exp
         "measure",
         set({"m1", "m2"}),
     )   
-])
-
-def test_each_org_levels_valueErrors(data, geography_col, measure_col, measures_set):
-    with pytest.raises(ValueError):
-        check_consistent_measures(data, geography_col, measure_col, measures_set)
-
-@pytest.mark.parametrize("data, geography_col, measure_col, measures_set", [
-    (
-        pd.DataFrame({
-            "Geog" : ["National" ,"National", "Region", "Region", "Local", "Local"],
-            "measure" : ["m1", "m2", "m1", True, "m1", "m2"],
-            "Value_Unsuppressed" : [4, 2, 2, 1, 2, 1],
-        }),
-        "Geog",
-        "measure",
-        set({"m1", "m2"}),
-    )
 ])
 
 
