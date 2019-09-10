@@ -29,10 +29,14 @@ def check_null(dataframe: pd.DataFrame, columns_to_be_checked: list) -> bool:
 
     if not isinstance(columns_to_be_checked, list):
         raise ValueError("Please make sure that all your columns passed are strings")
-    
+    else:
+        pass
+
     for eachCol in columns_to_be_checked:
         if eachCol not in dataframe.columns:
             raise KeyError("Please check the column names correspond to values in the DataFrame.")
+        else:
+            pass
 
     null_count = 0
     for eachColumn in columns_to_be_checked:
