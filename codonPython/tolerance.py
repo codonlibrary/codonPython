@@ -1,20 +1,21 @@
 import numpy as np
 import pandas as pd
+from datetime import datetime
 from sklearn.preprocessing import StandardScaler, PolynomialFeatures
 from sklearn.pipeline import make_pipeline
 import statsmodels.api as sm
 from statsmodels.sandbox.regression.predstd import wls_prediction_std
 
 
-def check_tolerance(t, y, to_exclude: int = 1, poly_features: list = [1, 2], alpha: float = 0.05, predict_all: bool = False) -> pd.DataFrame:
+def check_tolerance(t, y, to_exclude: int = 1, poly_features: list = [1, 2], alpha: float = 0.05, parse_dates: bool = False, predict_all: bool = False) -> pd.DataFrame:
     """
     Check that some future values are within a weighted least squares confidence interval.
 
     Parameters
     ----------
-    t : np.array
+    t : pd.Series
         N explanatory time points of shape (N, 1).
-    y : np.array
+    y : pd.Series
         The corresponding response variable values to X, of shape (N, 1).
     to_exclude : int, default = 1
         How many of the last y values will have their tolerances checked.
@@ -24,6 +25,8 @@ def check_tolerance(t, y, to_exclude: int = 1, poly_features: list = [1, 2], alp
         a second degree polynomial to the data and return both sets of results.
     alpha : float, default = 0.05
         Alpha parameter for the weighted least squares confidence interval.
+    parse_dates : bool, default = True
+        Set to true to parse string dates in t
     predict_all : bool, default = False
         Set to true to show predictions for all points of the dataset.
 
@@ -32,6 +35,7 @@ def check_tolerance(t, y, to_exclude: int = 1, poly_features: list = [1, 2], alp
     -------
     pd.DataFrame
         DataFrame containing:
+            "t"         : Value for t
             "yhat_u"    : Upper condfidence interval for y
             "yobs"      : Observed value for y
             "yhat"      : Predicted value for y
@@ -42,15 +46,15 @@ def check_tolerance(t, y, to_exclude: int = 1, poly_features: list = [1, 2], alp
     Examples
     --------
     >>> check_tolerance(
-    ...     t = np.array([1001,1002,1003,1004,1005,1006]),
-    ...     y = np.array([2,3,4,4.5,5,5.1]),
+    ...     t = pd.Series([1001,1002,1003,1004,1005,1006]),
+    ...     y = pd.Series([2,3,4,4.5,5,5.1]),
     ...     to_exclude = 2,
     ... )
-          yhat_u  yobs   yhat    yhat_l  polynomial
-    0   6.817413   5.0  5.500  4.182587           1
-    1   7.952702   5.1  6.350  4.747298           1
-    2   9.077182   5.0  4.875  0.672818           2
-    3  13.252339   5.1  4.975 -3.302339           2
+          t     yhat_u  yobs   yhat    yhat_l  polynomial
+    0  1005   6.817413   5.0  5.500  4.182587           1
+    1  1006   7.952702   5.1  6.350  4.747298           1
+    2  1005   9.077182   5.0  4.875  0.672818           2
+    3  1006  13.252339   5.1  4.975 -3.302339           2
     """
 
     if not isinstance(poly_features, list):
@@ -66,21 +70,27 @@ def check_tolerance(t, y, to_exclude: int = 1, poly_features: list = [1, 2], alp
         """The sample size for your model is smaller than 4. This will not produce a good 
         model. Either reduce to_exclude or increase your sample size to continue."""
     )
-    assert np.isfinite(y).all(), (
+    assert y.notna().all(), (
         f"""Your sample contains missing or infinite values for y at locations
         {list(map(tuple, np.where(np.isnan(y))))}. Exclude these values to continue."""
     )
-    assert np.isfinite(t).all(), (
+    assert t.notna().all(), (
         f"""Your sample contains missing or infinite values for t at locations
         {list(map(tuple, np.where(np.isnan(t))))}. Exclude these values to continue."""
     )
 
+    # Convert date strings to numeric variables for the model
+    if parse_dates:
+        t_numeric = pd.to_datetime(t)
+        t_numeric = (t_numeric - datetime(1970, 1, 1)) \
+                            .apply(lambda x: x.days)
 
-    # Sort data by X increasing
-    idx = np.argsort(t)
+    # Sort data by t increasing. t_ is for internal use.
+    idx = np.argsort(t_numeric.values) if parse_dates else np.argsort(t.values)
+    t_ = t_numeric[idx] if parse_dates else t[idx]
     t = t[idx]
     y = y[idx]
-    
+
     results = pd.DataFrame()
     for degree in poly_features:
         transforms = make_pipeline(
@@ -89,13 +99,14 @@ def check_tolerance(t, y, to_exclude: int = 1, poly_features: list = [1, 2], alp
         )
 
         # Fit transforms to training data only, apply to all data.
-        fitted_transforms = transforms.fit(t[:-to_exclude].reshape(-1, 1))
-        _t = fitted_transforms.transform(t.reshape(-1, 1))
+        fitted_transforms = transforms.fit(t_[:-to_exclude].values.reshape(-1, 1))
+        t_scaled = fitted_transforms.transform(t_.values.reshape(-1, 1))
 
-        t_train, y_train = _t[:-to_exclude, :], y[:-to_exclude]
-        t_predict, y_predict = (
-            _t if predict_all else _t[-to_exclude:, :],
-            y if predict_all else y[-to_exclude:]
+        t_train, y_train = t_scaled[:-to_exclude, :], y[:-to_exclude]
+        t_predict, y_predict, t_orig = (
+            t_scaled if predict_all else t_scaled[-to_exclude:, :],
+            y if predict_all else y[-to_exclude:],
+            t if predict_all else t[-to_exclude:],
         )
         
         # Fit ordinary least squares model to the training data, then predict for the
@@ -109,6 +120,7 @@ def check_tolerance(t, y, to_exclude: int = 1, poly_features: list = [1, 2], alp
         # Store model results in master frame
         results = results.append(
             pd.DataFrame({
+              "t" : t_orig,
               "yhat_u" : yhat_u,
               "yobs" : y_predict,
               "yhat" : yhat,

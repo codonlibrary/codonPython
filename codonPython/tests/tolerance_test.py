@@ -4,20 +4,22 @@ import pandas as pd
 import pandas.util.testing as pdt
 import pytest
 
-
+## TODO migrate from numpy arrays to pandas series/dataframes
 testdata = [
-    np.array([1234, 1235, 1236, 1237, 1238, 1239, 1240, 1241, 1242]),
-    np.array([1, 2, 3, 4, 5, 5.5, 6, 6.5, 7]),
+    pd.Series([1234, 1235, 1236, 1237, 1238, 1239, 1240, 1241, 1242]),
+    pd.Series([1, 2, 3, 4, 5, 5.5, 6, 6.5, 7]),
 ]
 
 
-@pytest.mark.parametrize("t, y, to_exclude, poly_features, alpha, expected", [
+@pytest.mark.parametrize("t, y, to_exclude, poly_features, alpha, parse_dates, expected", [
     (
         *testdata,
         2,
         [1, 2],
         0.05,
+        False,
         pd.DataFrame({
+            "t" : [1241, 1242, 1241, 1242],
             'yhat_u': [
                 8.11380197739608,
                 9.051653693670929,
@@ -38,14 +40,16 @@ testdata = [
                 5.907230032835563,
             ],
             'polynomial': [1, 1, 2, 2]
-        })
+        }),
     ),
     (
         *testdata,
         2,
         [3],
         0.05,
+        False,
         pd.DataFrame({
+            "t" : [1241, 1242],
             'yhat_u': [
                 6.753927165005773,
                 7.214574732953706,
@@ -60,16 +64,52 @@ testdata = [
                 3.928282409903445,
             ],
             'polynomial': [3, 3]
-        })
+        }),
+    ),
+    (
+        pd.Series([ # Check dates
+            "2012-05-16",
+            "2012-05-17",
+            "2012-05-18",
+            "2012-05-19",
+            "2012-05-20",
+            "2012-05-21",
+            "2012-05-22",
+            "2012-05-23",
+            "2012-05-24",
+        ]),
+        pd.Series([1, 2, 3, 4, 5, 5.5, 6, 6.5, 7]),
+        2,
+        [3],
+        0.05,
+        True,
+        pd.DataFrame({
+            "t" : ["2012-05-23", "2012-05-24"],
+            'yhat_u': [
+                6.753927165005773,
+                7.214574732953706,
+            ],
+            'yobs': [6.5, 7.0],
+            'yhat': [
+                6.0000000000000036,
+                5.571428571428576,
+            ],
+            'yhat_l': [
+                5.2460728349942345,
+                3.928282409903445,
+            ],
+            'polynomial': [3, 3]
+        }),
     ),
 ])
-def test_tolerance_checking_BAU(t, y, to_exclude, poly_features, alpha, expected):
+def test_tolerance_checking_BAU(t, y, to_exclude, poly_features, alpha, parse_dates, expected):
     obtained = check_tolerance(
         t,
         y,
         to_exclude=to_exclude,
         poly_features=poly_features,
         alpha=alpha,
+        parse_dates=parse_dates,
     )
     pdt.assert_frame_equal(expected, obtained)
 
@@ -120,16 +160,16 @@ def test_ValueErrors(t, y, to_exclude, poly_features, alpha):
         0.05,
     ),
     (
-        np.array([1234, 1235, 1236, 1237, 1238, 1239,
+        pd.Series([1234, 1235, 1236, 1237, 1238, 1239,
                   1240, 1241, np.nan]),  # Missing t value
-        np.array([1, 2, 3, 4, 5, 5.5, 6, 6.5, 7]),
+        pd.Series([1, 2, 3, 4, 5, 5.5, 6, 6.5, 7]),
         2,
         [2],
         0.05,
     ),
     (
-        np.array([1234, 1235, 1236, 1237, 1238, 1239, 1240, 1241, 1242]),
-        np.array([1, 2, 3, 4, 5, 5.5, 6, 6.5, np.nan]),  # Missing y value
+        pd.Series([1234, 1235, 1236, 1237, 1238, 1239, 1240, 1241, 1242]),
+        pd.Series([1, 2, 3, 4, 5, 5.5, 6, 6.5, np.nan]),  # Missing y value
         2,
         [2],
         0.05,
