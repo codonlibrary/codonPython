@@ -85,5 +85,5 @@ def check_nat_val(df: pd.DataFrame, breakdown_col: str = "Breakdown",
     left = value_col + '_x'
     right = value_col + '_y'
     join['Check'] = join[right] <= join[left]
-    result = all(join['Check']
+    result = all(join['Check'])
     return result
