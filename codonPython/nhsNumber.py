@@ -47,7 +47,7 @@ def nhsNumberValidator(number: int)->bool:
 
 def nhsNumberGenerator(to_generate: int, random_state: int = None)->list:
     """
-    Generates up to 1M random NHS number(s) compliant with modulus 11 checks recorded 
+    Generates up to 1M random NHS numbers compliant with modulus 11 checks as recorded 
     in the data dictonary.
     https://www.datadictionary.nhs.uk/data_dictionary/attributes/n/nhs/nhs_number_de.asp?shownav=1
 
