@@ -43,16 +43,6 @@ def test_each_org_levels_BAU(data, geography_col, measure_col, measures_set, exp
         "measure",
         set({"m1", "m2"}),
     ),
-    (
-        pd.DataFrame({
-            "Geog" : ["National" ,"National", 1, "Region", "Local", "Local"],
-            "measure" : ["m1", "m2", "m1", "m2", "m1", "m2"],
-            "Value_Unsuppressed" : [4, 2, 2, 1, 2, 1],
-        }),
-        "Geog",
-        "measure",
-        set({"m1", "m2"}),
-    )   
 ])
 
 
