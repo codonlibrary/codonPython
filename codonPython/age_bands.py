@@ -1,6 +1,7 @@
 import math
 
-def age_band_5_years(age: int)->str:
+
+def age_band_5_years(age: int) -> str:
     """
     Place age into appropriate 5 year band
 
@@ -31,7 +32,7 @@ def age_band_5_years(age: int)->str:
         return 'Age not known'
 
     if age >= 90:
-        if age >=  150:
+        if age >= 150:
             raise ValueError("The age input: {} is too large.".format(age))
         else:
             return '90 and over'
@@ -43,7 +44,7 @@ def age_band_5_years(age: int)->str:
         return '{}-{}'.format(lowerbound, upperbound)
 
 
-def age_band_10_years(age: int)->str:
+def age_band_10_years(age: int) -> str:
     """
     Place age into appropriate 10 year band
 
@@ -74,7 +75,7 @@ def age_band_10_years(age: int)->str:
         return 'Age not known'
 
     if age >= 90:
-        if age >=  150:
+        if age >= 150:
             raise ValueError("The age input: {} is too large.".format(age))
         else:
             return '90 and over'

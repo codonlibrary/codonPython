@@ -12,6 +12,7 @@ First off, thank you for taking the time to contribute! If you have a functional
 
 We suggest you make sure all of your commits are atomic (one feature per commit). Please make sure that non-obvious lines of code are commented, and variable names are as clear as possible. Please do not send us undocumented code as we will not accept it. Including tests to your pull request will bring tears of joy to our eyes, and will also probably result in a faster merge.
 
+
 ## Coding conventions
 
 Start reading our code to get a feel for it:
