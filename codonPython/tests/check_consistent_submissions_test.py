@@ -1,6 +1,6 @@
 from codonPython.check_consistent_submissions import check_consistent_submissions
 import pandas as pd
-import numpy
+import numpy as np
 import pytest
 
 @pytest.mark.parametrize("data, national_geog_level, geography_col, submissions_col, measure_col, expected", [
@@ -22,16 +22,16 @@ import pytest
             "Measure" : ["m1", "m2", "m1", "m2", "m1", "m2",],
             "Value_Unsuppressed" : [4, 2, 3, 1, 2, 1,],
         }),
-        "N",
-        "Geog",
-        "submissions",
-        "measure",
+        "National",
+        "Org_Level",
+        "Value_Unsuppressed",
+        "Measure",
         False
     )
 ])
 
-def each_consistent_measure_BAU(data, national_geog_level, geography_col, submissions_col, measure_col, expected):
-    assert expected == check_consistent_submissions(data, geography_col, submissions_col, measure_col)
+def test_each_consistent_measure_BAU(data, national_geog_level, geography_col, submissions_col, measure_col, expected):
+    assert expected == check_consistent_submissions(data, national_geog_level, geography_col, submissions_col, measure_col)
 
 @pytest.mark.parametrize("data, national_geog_level, geography_col, submissions_col, measure_col",[
     (
