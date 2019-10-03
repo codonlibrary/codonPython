@@ -8,16 +8,16 @@
 ## Why `codonPython`?
 
 Transparency 
-  * Aline with government data principles and build public trust.
+  * To aline with government data principles and build public trust.
 
-Improve Code 
-  *	Innovate and improve the code we provide.
+Imp`rove Code 
+  *	To innovate and improve the code we use and provide.
 
 Usability 
-  *	Increase the accessibility of code throughout the organisation.
+  *	Increase the accessibility and uniformity of code throughout the organisation.
 
 Cost Effective
-  *	Reusable generalised code will increase efficient in creating higher level processes. 
+  *	Reusable 'generalised' code will increase efficient in creating higher level processes. 
 
 ## New to GitHub?
 
@@ -46,8 +46,10 @@ Command Line
 
 
 ## Installation  
-The package can be directly installed by typing in your terminal: `python -m pip install --user git+https://github.com/codonlibrary/codonPython.git`
-
+The package can be directly installed by typing in your terminal: 
+```r
+`python -m pip install --user git+https://github.com/codonlibrary/codonPython.git`
+```r
 Include info on what each text file / folder is:  
 .github/ISSUE_TEMPLATE	=  
 codonPython	=  
