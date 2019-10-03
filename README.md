@@ -19,7 +19,18 @@ Usability
 Cost Effective
   *	Reusable 'generalised' code will increase efficient in creating higher level processes. 
 
-## New to GitHub?
+## Usage 
+codonPython is open to submissions and developments from new and experience users, below is best practices for when using Github, submitting code that you have developed and useful information for new users. 
+
+### Best Practises 
+
+*best practise stuff 
+
+### Submitting to codonPython
+
+*how to submit properly with testing 
+
+### New to GitHub?
 
 GitHub is a hosting site that allows for development and version control of software using Git. It allows users to take a piece of code ( a branch) edit/develop it a submit it back to the owner to the original copy ( the master branch), whilst keeping track of all changes that have been made along the way. 
 
