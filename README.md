@@ -10,7 +10,7 @@
 Transparency 
   * To aline with government data principles and build public trust.
 
-Imp`rove Code 
+Improve Code 
   *	To innovate and improve the code we use and provide.
 
 Usability 
