@@ -48,9 +48,12 @@ Command Line
 ## Installation  
 The package can be directly installed by typing in your terminal: 
 ```r
-`python -m pip install --user git+https://github.com/codonlibrary/codonPython.git`
+python -m pip install --user git+https://github.com/codonlibrary/codonPython.git
+```
+or 
 ```r
-
+install.packages("codonPython")
+```
 
 Include info on what each text file / folder is:  
 .github/ISSUE_TEMPLATE	=  
