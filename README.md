@@ -9,10 +9,13 @@
 
 Transparency 
   * Aline with government data principles and build public trust.
+
 Improve Code 
   *	Innovate and improve the code we provide.
+
 Usability 
   *	Increase the accessibility of code throughout the organisation.
+
 Cost Effective
   *	Reusable generalised code will increase efficient in creating higher level processes. 
 
