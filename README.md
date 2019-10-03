@@ -50,6 +50,8 @@ The package can be directly installed by typing in your terminal:
 ```r
 `python -m pip install --user git+https://github.com/codonlibrary/codonPython.git`
 ```r
+
+
 Include info on what each text file / folder is:  
 .github/ISSUE_TEMPLATE	=  
 codonPython	=  
