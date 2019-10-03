@@ -32,7 +32,7 @@ codonPython is open to contributions and developments from new and experience us
 
 ### New to GitHub?
 
-GitHub is a hosting site that allows for development and version control of software using Git. It allows users to take a piece of code ( a branch) edit/develop it a submit it back to the owner to the original copy ( the master branch), whilst keeping track of all changes that have been made along the way. 
+GitHub is a hosting site that allows for development and version control of software using Git. It allows users to take a piece of code ( a branch) edit/develop it and submit it back to the owner to the original copy ( the master branch), whilst keeping track of all changes that have been made along the way. 
 
 [The Git and Github for Poets](https://www.youtube.com/playlist?list=PLRqwX-V7Uu6ZF9C0YMKuns9sLDzK6zoiV) is a useful series on Git and Github basics for beginner, that cover topics such as; 
 
