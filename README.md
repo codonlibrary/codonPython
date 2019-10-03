@@ -33,11 +33,11 @@ GitHub Basics
 
 1.3	[Forks and Pull Requests](https://www.youtube.com/watch?v=_NrSWLQsDL4)
 
-1.4	[Issues] (https://www.youtube.com/watch?v=WMykv2ZMyEQ)
+1.4	[Issues](https://www.youtube.com/watch?v=WMykv2ZMyEQ)
 
 Command Line
 
-1.5	[Intro to Command Line] (https://www.youtube.com/watch?v=oK8EvVeVltE)
+1.5	[Intro to Command Line](https://www.youtube.com/watch?v=oK8EvVeVltE)
 
 1.6	[Cloning Repo and Push/Pull](https://www.youtube.com/watch?v=yXT1ElMEkW8)
 
