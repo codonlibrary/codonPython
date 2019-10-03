@@ -20,15 +20,15 @@ Cost Effective
   *	Reusable 'generalised' code will increase efficient in creating higher level processes. 
 
 ## Usage 
-codonPython is open to submissions and developments from new and experience users. Below is information about; best practices for when using Github, submitting code that you have developed and useful information for new users. 
+codonPython is open to contributions and developments from new and experience users. Below is information about; best practices when using Github, contributing code and useful information for new users. 
 
 ### Best Practises 
 
 *best practise stuff 
 
-### Submitting to codonPython
+### Contributing to codonPython
 
-*how to submit properly with testing 
+*link to contributing wiki?
 
 ### New to GitHub?
 
