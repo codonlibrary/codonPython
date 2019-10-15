@@ -22,14 +22,6 @@ Cost Effective
 ## Usage 
 codonPython is open to contributions and developments from new and experience users. Below is information about; best practices when using Github, contributing code and useful information for new users. 
 
-### Best Practises 
-
-*best practise stuff 
-
-### Contributing to codonPython
-
-*link to contributing wiki?
-
 ### New to GitHub?
 
 GitHub is a hosting site that allows for development and version control of software using Git. It allows users to take a piece of code ( a branch) edit/develop it and submit it back to the owner to the original copy ( the master branch), whilst keeping track of all changes that have been made along the way. 
@@ -54,27 +46,13 @@ Command Line
 
 1.7	[Git Init and Git Add](https://www.youtube.com/watch?v=9p2d-CuVlgc)
 
+### Contributing to codonPython
 
+Click [here](https://github.com/codonlibrary/codonPython/blob/master/CONTRIBUTING.md) for contribution guidance.
 
 ## Installation  
 The package can be directly installed by typing in your terminal: 
 ```r
 python -m pip install --user git+https://github.com/codonlibrary/codonPython.git
-```
-or 
-```r
-install.packages("codonPython")
-```
 
-Include info on what each text file / folder is:  
-.github/ISSUE_TEMPLATE	=  
-codonPython	=  
-.gitignore	=  
-.travis.yml	=  
-CONTRIBUTING.md	=  
-LICENSE	=  
-MANIFEST.in	=  
-README.md	=  
-pytest.ini	=  
-requirements.txt	=  
-setup.py =  
+```
