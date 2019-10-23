@@ -35,8 +35,8 @@ Any improvements to documentaion, bug fixes or general code enhancments are also
 GitHub is a hosting site that allows for development and version control of software using Git. It allows users to edit and develop parts of code independently before submitting back to the master code, whilst using version control to track changes. Beginners introductionary videos to GitHub can be found [here.](https://confluence.digital.nhs.uk/display/CON/GitHub+for+beginners) Quick links to begginer guidance can be found below;
 
 * [**Cloning a repositor to our local machine using GitBash**](https://confluence.digital.nhs.uk/display/CON/Installing+codonPython)
-* [**Checking out a branch using GitBash]**(https://confluence.digital.nhs.uk/display/CON/Checkout+a+Branch+Using+GitBash)
-* [**Removing a Commit from a repository using GitBash]**(https://confluence.digital.nhs.uk/display/CON/Information+Governance)
+* [**Checking out a branch using GitBash**](https://confluence.digital.nhs.uk/display/CON/Checkout+a+Branch+Using+GitBash)
+* [**Removing a Commit from a repository using GitBash**](https://confluence.digital.nhs.uk/display/CON/Information+Governance)
 
 All other `Codon` "How-to Articles" can be found [here](https://confluence.digital.nhs.uk/display/CON/How-to+articles)
 
