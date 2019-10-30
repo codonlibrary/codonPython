@@ -27,7 +27,7 @@ The package can be directly installed by typing in your terminal:
 ```r
 python -m pip install --user git+https://github.com/codonlibrary/codonPython.git
 ```
-For further guidance on cloning from the remote repository to a local repository on your machine see the information in our [Wiki.](https://github.com/codonlibrary/codonPython/wiki/Installing-codonPython)
+For further guidance on cloning from the remote repository to a local repository on your machine see the information in our [Wiki.](https://github.com/codonlibrary/codonPython/wiki/1.-Installing-codonPython)
 
 ## Contributing to codonPython
 All new contributions to `codon` are welcome; please follow the Coding Conventions in the [guidance document](https://github.com/codonlibrary/codonPython/blob/master/CONTRIBUTING.md) for contribution guidance. 
