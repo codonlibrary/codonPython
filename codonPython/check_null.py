@@ -1,7 +1,7 @@
 import numpy
 import pandas as pd
 
-def check_null(dataframe: pd.DataFrame, columns_to_be_checked: list) -> bool:
+def check_null(dataframe: pd.DataFrame, columns_to_be_checked: list) -> int:
     """
     Checks a pandas dataframe for null values
 
