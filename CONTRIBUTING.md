@@ -26,4 +26,4 @@ Team codon
 
 ## Code of Conduct
 
-As a contributer you can help us keep the Django community open and inclusive. Please read and follow our [Code of Conduct](#)
+As a contributer you can help us keep the Django community open and inclusive. Please read and follow our [Code of Conduct](#).
