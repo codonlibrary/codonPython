@@ -23,3 +23,7 @@ Start reading our code to get a feel for it:
   
 :clinking_glasses: Thank you!
 Team codon
+
+## Code of Conduct
+
+As a contributer you can help us keep the Django community open and inclusive. Please read and follow our [Code of Conduct](#)
