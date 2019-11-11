@@ -1,7 +1,7 @@
 * **Please check if the Pull Request fulfills these requirements**
-- [] The commit message is clear and concise
-- [] Test for the changes have been added and reviewed
-- [] Documentation has been added to all new features and editied code has had documentation reviewed
+- [ ] The commit message is clear and concise
+- [ ] Test for the changes have been added and reviewed
+- [ ] Documentation has been added to all new features and edited code has had documentation reviewed
 
 * **What kind of change does this Pull request introduce?** (Bug fix, feature, docs update, ...)
 
