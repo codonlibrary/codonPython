@@ -20,10 +20,10 @@ Start reading our code to get a feel for it:
 * We use [PEP8](https://www.python.org/dev/peps/pep-0008/). Autoformatters for PEP8, for instance [autopep8](https://pypi.org/project/autopep8/), can easily ensure compliance.
 * We use docstrings and we try to (loosely) follow [`numpy`'s docstring standards](https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard).
 * This is open source software. Consider the people who will read your code, and make it look nice for them.
-  
-:clinking_glasses: Thank you!
-Team codon
 
 ## Code of Conduct
 
 As a contributer you can help us keep the Django community open and inclusive. Please read and follow our [Code of Conduct](#).
+
+:clinking_glasses: Thank you!
+Team codon
