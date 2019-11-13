@@ -23,7 +23,7 @@ Start reading our code to get a feel for it:
 
 ## Code of Conduct
 
-As a contributer you can help us keep the Codon community open and inclusive. Please read and follow our [Code of Conduct](https://github.com/codonlibrary/code-of-conduct/tree/master).
+As a contributer you can help us keep the Codon community open and inclusive. Please read and follow our [Code of Conduct](https://github.com/codonlibrary/code-of-conduct/tree/master). By contributing to it, you agree to comply with it.
 
 :clinking_glasses: Thank you!
 Team codon
