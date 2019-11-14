@@ -269,7 +269,7 @@ def compare(x, y, names = ['x','y'], dups = False, same = False, comment = False
     dict_temp = {}
     
     try:
-        dict_temp['same_values'] = pd.merge(x,y, how = 'inner')
+        dict_temp['same_values'] = pd.merge(x.drop_duplicates(),y.drop_duplicates(), how = 'inner')
     except:
         print('Unable to identify same values')
     try:
