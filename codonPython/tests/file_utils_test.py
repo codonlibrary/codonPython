@@ -55,7 +55,7 @@ dict_test = {'same_values': pd.DataFrame(np.array([[1,  2,  3,  2,  1],[9,  5,  
         
         True,
         
-        False,
+        False
     
     ),
     (
