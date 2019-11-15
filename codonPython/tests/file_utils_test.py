@@ -1,4 +1,5 @@
 from codonPython.file_utils import compare
+from codonPython.file_utils import file_search
 import numpy as np
 import pytest
 import pandas as pd
@@ -53,13 +54,22 @@ dict_test = {'same_values': pd.DataFrame(np.array([[1,  2,  3,  2,  1],[9,  5,  
         True,
         dict_test)])
 
-def test_compare_BAU(x, y, expected):
-    dict_test_1 = compare(x, y, names = ['df1','df2'], dups = True, same = True)
+def test_compare_BAU(x, y, names, dups, same, expected):
+    dict_test1 = compare(x, y, names = ['df1','df2'], dups = True, same = True)
     for i in expected.keys():
         if i == 'Same':
-            assert dict_test_1[i] == expected[i]
+            assert dict_test1[i] == expected[i]
         else: 
             for j in expected[i]:
-                list_test_1 = list(dict_test_1[i][j])
+                list_test1 = list(dict_test1[i][j])
                 list_exp = list(expected[i][j])
-                assert list_test_1 == list_exp
+                assert list_test1 == list_exp
+                
+@pytest.mark.parametrize("doctype, like, strict, expected", [
+    ('py',
+    ['file_utils'],
+    True,
+    ['file_utils.py'])])
+
+def test_file_search_BAU(doctype, like, strict, expected):
+    assert file_search(doctype = doctype, like = like, strict = strict) == expected
