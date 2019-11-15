@@ -66,10 +66,10 @@ def test_compare_BAU(x, y, names, dups, same, expected):
                 assert list_test1 == list_exp
                 
 @pytest.mark.parametrize("doctype, like, strict, expected", [
-    ('py',
-    ['file_utils'],
+    ('md',
+    ['README'],
     True,
-    ['file_utils.py'])])
+    ['README.md'])])
 
 def test_file_search_BAU(doctype, like, strict, expected):
     assert file_search(doctype = doctype, like = like, strict = strict) == expected
