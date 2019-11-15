@@ -29,7 +29,7 @@ def file_search(path = '.', doctype = 'csv', like = [''], strict = False):
     
     Examples
     -------
-    >>> file_search()
+    '>>> file_search()'
     ['Data_AprF_2019.csv',
      'Data_AugF_2019.csv',
      'Data_JulF_2019.csv',
@@ -37,14 +37,14 @@ def file_search(path = '.', doctype = 'csv', like = [''], strict = False):
      'Data_MayF_2019.csv',
      'Data_SepP_2019.csv']
     
-    >>> file_search(like = ['F', 'v1']) 
+    '>>> file_search(like = ['F', 'v1'])'
     ['Data_AprF_2019.csv',
      'Data_AugF_2019.csv',
      'Data_JulF_2019.csv',
      'Data_JunF_2019_v1.csv',
      'Data_MayF_2019.csv']
     
-    >>> file_search(like = ['F', 'v1'], strict = True)
+    '>>> file_search(like = ['F', 'v1'], strict = True)'
     ['Data_JunF_2019_v1.csv']
      
     """
@@ -109,7 +109,7 @@ def import_files(path = '.', doctype = 'csv', sheet = 'Sheet1', subdir = False, 
     Examples
     --------
     
-    >>> import_files()
+    '>>> import_files()'
 
     File Data_AprF_2019 is successfully imported
     
@@ -123,7 +123,7 @@ def import_files(path = '.', doctype = 'csv', sheet = 'Sheet1', subdir = False, 
     
     File Data_SepP_2019 is successfully imported
     
-    >>> import_files(like = ['Aug','Sep'])
+    '>>> import_files(like = ['Aug','Sep'])'
 
     File Data_AugF_2019 is successfully imported
     
@@ -232,7 +232,7 @@ def compare(x, y, names = ['x','y'], dups = False, same = False, comment = False
     Examples
     --------
 
-    >>> c = compare(df1, df2, names = ['df1','df2'], dups = True, same = True, comment =True)
+    '>>> c = compare(df1, df2, names = ['df1','df2'], dups = True, same = True, comment =True)'
 
     There are 133891 same values
     There are 16531 outliers in df1
@@ -241,7 +241,7 @@ def compare(x, y, names = ['x','y'], dups = False, same = False, comment = False
     There are 0 duplicates in df2
     The DataFrames are not the same
 
-    >>> c = compare(df2, df2, names = ['df2','df2'], dups = True, same = True, comment =True)
+    '>>> c = compare(df2, df2, names = ['df2','df2'], dups = True, same = True, comment =True)'
 
     There are 154444 same values
     There are 0 outliers in df2
