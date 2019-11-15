@@ -35,7 +35,7 @@ dict_test = {'same_values': pd.DataFrame(np.array([[1,  2,  3,  2,  1],[9,  5,  
                                    columns = ['A','B','C','D','E']),  
         'Same': False}
 
-@pytest.mark.parametrize("x, y, names = ['x','y'],expected", [
+@pytest.mark.parametrize("x, y, names, dups, same, comment, expected", [
     (
         pd.DataFrame({
             'A' : [1,5,6,1,8,5,9],
@@ -43,20 +43,16 @@ dict_test = {'same_values': pd.DataFrame(np.array([[1,  2,  3,  2,  1],[9,  5,  
             'C' : [3,4,5,3,1,5,9],
             'D' : [2,8,5,2,4,6,2],
             'E' : [1,2,6,1,3,5,5]}),
-    
         pd.DataFrame({
             'A' : [1,5,6,1,9,5,9],
             'B' : [2,9,5,2,21,3,5],
             'C' : [3,4,5,3,1,35,9],
             'D' : [2,8,7,2,4,6,2],
             'E' : [1,2,46,1,3,8,5]}),
-        
+        ['df1','df2'],
+        True, 
         True,
-        
-        True,
-        
         False
-    
     ),
     (
         dict_test
