@@ -17,7 +17,7 @@ df2 = pd.DataFrame({
 'D' : [2,8,7,2,4,6,2],
 'E' : [1,2,46,1,3,8,5]})
 
-df_test =        {'same_values': pd.DataFrame(np.array([[1,  2,  3,  2,  1],[9,  5,  9,  2,  5]]),
+dict_test = {'same_values': pd.DataFrame(np.array([[1,  2,  3,  2,  1],[9,  5,  9,  2,  5]]),
                                     columns = ['A','B','C','D','E']), 
          'df1_not_df2': pd.DataFrame(np.array([[5,8,4,8,2],
                                              [6,5,5,5,6],
@@ -59,8 +59,16 @@ df_test =        {'same_values': pd.DataFrame(np.array([[1,  2,  3,  2,  1],[9, 
     
     ),
     (
-        df_test
+        dict_test
     )])
 
 def test_compare_BAU(x, y, expected):
-    assert expected == compare(df1, df2, names = ['df1','df2'], dups = True, same = True)
+    dict_test_1 = compare(x, y, names = ['df1','df2'], dups = True, same = True)
+    for i in expected.keys():
+        if i == 'Same':
+            assert dict_test_1[i] == expected[i]
+        else: 
+            for j in expected[i]:
+                list_test_1 = list(dict_test_1[i][j])
+                list_exp = list(expected[i][j])
+                assert list_test_1 == list_exp
