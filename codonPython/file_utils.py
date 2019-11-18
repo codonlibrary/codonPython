@@ -32,7 +32,7 @@ def file_search(path = '.', doctype = 'csv', like = [''], strict = False):
     >>> file_search(doctype = 'md')
     ['README.md', 'CONTRIBUTING.md']
     
-    >>> file_search(like = ['READ'])
+    >>> file_search(doctype = 'md', like = ['READ'])
     ['README.md']
      
     """
