@@ -46,5 +46,3 @@ Quick links to begginer guidance can also be found below:
 All other `codon` "How-to Articles" can be found [here.](https://github.com/codonlibrary/codonPython/wiki/2.-Git-Guidance)
 
 Suggestions regarding additional guidance or How-to articles are welcome.
-
- 
