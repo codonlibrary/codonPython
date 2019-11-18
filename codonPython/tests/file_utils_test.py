@@ -73,3 +73,39 @@ def test_compare_BAU(x, y, names, dups, same, expected):
 
 def test_file_search_BAU(doctype, like, strict, expected):
     assert file_search(doctype = doctype, like = like, strict = strict) == expected
+
+@pytest.mark.parametrize("like", [
+
+    ('txt'),
+
+])
+
+def test_file_search_ValueError(like):
+
+    with pytest.raises(ValueError):
+
+        file_search(like = like)
+
+@pytest.mark.parametrize("like", [
+
+    ('txt'),
+
+])
+
+def test_import_files_ValueError(like):
+
+    with pytest.raises(ValueError):
+
+        import_files(like = like)
+
+@pytest.mark.parametrize("like", [
+
+    ('txt'),
+
+])
+
+def test_compare_ValueError(like):
+
+    with pytest.raises(ValueError):
+
+        compare(df1, df2, names = like)
