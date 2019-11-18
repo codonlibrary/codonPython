@@ -29,23 +29,11 @@ def file_search(path = '.', doctype = 'csv', like = [''], strict = False):
     
     Examples
     -------
-    '>>> file_search()'
-    ['Data_AprF_2019.csv',
-     'Data_AugF_2019.csv',
-     'Data_JulF_2019.csv',
-     'Data_JunF_2019_v1.csv',
-     'Data_MayF_2019.csv',
-     'Data_SepP_2019.csv']
+    >>> file_search(doctype = 'md')
+    ['CONTRIBUTING.md','README.md']
     
-    '>>> file_search(like = ['F', 'v1'])'
-    ['Data_AprF_2019.csv',
-     'Data_AugF_2019.csv',
-     'Data_JulF_2019.csv',
-     'Data_JunF_2019_v1.csv',
-     'Data_MayF_2019.csv']
-    
-    '>>> file_search(like = ['F', 'v1'], strict = True)'
-    ['Data_JunF_2019_v1.csv']
+    >>> file_search(like = ['READ'])
+    ['README.md']
      
     """
     
