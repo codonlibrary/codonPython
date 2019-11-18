@@ -1,5 +1,6 @@
 from codonPython.file_utils import compare
 from codonPython.file_utils import file_search
+from codonPython.file_utils import import_files
 import numpy as np
 import pytest
 import pandas as pd
