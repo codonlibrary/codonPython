@@ -37,7 +37,7 @@ Any improvements to documentation, bug fixes or general code enhancements are al
 ## New to GitHub?
 GitHub is a hosting site that allows for development and version control of software using Git. It allows users to edit and develop parts of code independently before submitting back to the master code, whilst using version control to track changes. Introductory videos to GitHub for beginners can be found [here.](https://github.com/codonlibrary/codonPython/wiki/2a.-GitHub-for-Beginners) 
 
-Quick links to begginer guidance can also be found below:
+Quick links to beginner guidance can also be found below:
 
 * [**Cloning a repository to your local machine using GitBash**](https://github.com/codonlibrary/codonPython/wiki/1.-Installing-codonPython)
 * [**Checking out a branch using GitBash**](https://github.com/codonlibrary/codonPython/wiki/2b.-Checkout-a-branch-using-GitBash)
