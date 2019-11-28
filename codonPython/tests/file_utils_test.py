@@ -74,6 +74,11 @@ def test_compare_BAU(x, y, names, dups, same, expected):
 
 def test_file_search_BAU(doctype, like, strict, expected):
     assert file_search(doctype = doctype, like = like, strict = strict) == expected
+    
+  
+#-------------ValueError tests-----------------
+
+#-------------File Search----------------------
 
 @pytest.mark.parametrize("like", [
 
@@ -81,32 +86,182 @@ def test_file_search_BAU(doctype, like, strict, expected):
 
 ])
 
-def test_file_search_ValueError(like):
+def test_file_search_ValueError_1(like):
 
     with pytest.raises(ValueError):
 
         file_search(like = like)
 
+@pytest.mark.parametrize("path", [
+
+    (1),
+
+])
+
+def test_file_search_ValueError_2(path):
+
+    with pytest.raises(ValueError):
+
+        file_search(path = path)
+
+
+@pytest.mark.parametrize("doctype", [
+
+    (['txt']),
+
+])
+
+def test_file_search_ValueError_3(doctype):
+
+    with pytest.raises(ValueError):
+
+        file_search(doctype = doctype)
+
+@pytest.mark.parametrize("strict", [
+
+    ('True'),
+
+])
+
+def test_file_search_ValueError_4(strict):
+
+    with pytest.raises(ValueError):
+
+        file_search(strict = strict)
+
+#-----------------Import files-------------------------
+
 @pytest.mark.parametrize("like", [
 
     ('txt'),
 
 ])
 
-def test_import_files_ValueError(like):
+def test_import_files_ValueError_1(like):
 
     with pytest.raises(ValueError):
 
         import_files(like = like)
 
-@pytest.mark.parametrize("like", [
+
+@pytest.mark.parametrize("subdir", [
+
+    ('True'),
+
+])
+
+def test_import_files_ValueError_2(subdir):
+
+    with pytest.raises(ValueError):
+
+        import_files(subdir = subdir)
+
+@pytest.mark.parametrize("doctype", [
+
+    (['txt']),
+
+])
+
+def test_import_files_ValueError_3(doctype):
+
+    with pytest.raises(ValueError):
+
+        import_files(doctype = doctype)
+
+@pytest.mark.parametrize("sheet", [
+
+    (1),
+
+])
+
+def test_import_files_ValueError_4(sheet):
+
+    with pytest.raises(ValueError):
+
+        import_files(sheet = sheet)
+
+@pytest.mark.parametrize("path", [
+
+    (['Desktop']),
+
+])
+
+def test_import_files_ValueError_5(path):
+
+    with pytest.raises(ValueError):
+
+        import_files(path = path)
+    
+@pytest.mark.parametrize("strict", [
+
+    ('True'),
+
+])
+
+def test_import_files_ValueError_6(strict):
+
+    with pytest.raises(ValueError):
+
+        import_files(strict = strict)
+
+#---------------Compare--------------------------
+
+@pytest.mark.parametrize("names", [
 
     ('txt'),
 
 ])
 
-def test_compare_ValueError(like):
+def test_compare_ValueError_1(names):
 
     with pytest.raises(ValueError):
 
-        compare(df1, df2, names = like)
+        compare(df1, df2, names = names)
+
+@pytest.mark.parametrize("x", [
+
+    ([1,2,3]),
+
+])
+
+def test_compare_ValueError_2(x):
+
+    with pytest.raises(ValueError):
+
+        compare(x, df2, names = ['x','df2'])
+
+@pytest.mark.parametrize("dups", [
+
+    ('True'),
+
+])
+
+def test_compare_ValueError_3(dups):
+
+    with pytest.raises(ValueError):
+
+        compare(df1, df2, names = ['df1','df2'], dups = dups)
+
+@pytest.mark.parametrize("same", [
+
+    ('True'),
+
+])
+
+def test_compare_ValueError_4(same):
+
+    with pytest.raises(ValueError):
+
+        compare(df1, df2, names = ['df1','df2'], same = same)
+
+@pytest.mark.parametrize("comment", [
+
+    ('True'),
+
+])
+
+def test_compare_ValueError_5(comment):
+
+    with pytest.raises(ValueError):
+
+        compare(df1, df2, names = ['df1','df2'], comment = comment)
