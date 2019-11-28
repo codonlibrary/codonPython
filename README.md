@@ -29,8 +29,22 @@ python -m pip install --user git+https://github.com/codonlibrary/codonPython.git
 ```
 For further guidance on cloning from the remote repository to a local repository on your machine see the information in our [Wiki.](https://github.com/codonlibrary/codonPython/wiki/1.-Installing-codonPython)
 
-## Contributing to codonPython
-All new contributions to `codon` are welcome; please follow the Coding Conventions in the [guidance document](https://github.com/codonlibrary/codonPython/blob/master/CONTRIBUTING.md) for contribution guidance. 
+## What is Codon looking for?
+Codon is looking for any **fully parametrised functions** that are useful in data publication work flows. Any other parametrised functions useful for healthcare Data, Insights or Statistics (DIS) are also welcomed.  
+
+Please check the `Codon` Do's and Don’ts against your code before contributing;
+
+| Do's | Don'ts        |
+|------|---------------|
+| Contribute fully parametrised code. |Supply non-parameterised scripts |
+|Supply unit and expected error testing files at 100% coverage| Untested functions|
+|Include function doc strings| Contribute code from established libraries. i.e. Pandas, NumPy, Matplotlib.|
+|Follow [PEP-8](https://www.python.org/dev/peps/pep-0008/) styling guide. |Be afraid to [ask](email) for any further guidance.|
+
+
+*Testing files should always cover 100% of the contributed code. If this is not achievable please highlight this during the Pull-Request process to the Codon team.*
+
+Please follow the [guidance document](https://github.com/codonlibrary/codonPython/blob/master/CONTRIBUTING.md) for further detailed guidance on contribution and Coding Convention.
 
 Any improvements to documentation, bug fixes or general code enhancements are also welcomed. If a bug is found on the master branch, please use the GitHub guidance on raising an [issue.](https://help.github.com/en/github/managing-your-work-on-github/creating-an-issue)
 
