@@ -126,12 +126,21 @@ def test_compare_console(x, y, names, dups, same, comment, capsys):
     assert captured.out == '\nThere are ' + str(dict_test1['same_values'].shape[0]) + ' same values\nThere are ' + str(dict_test1[names[0] + '_not_' + names[1]].shape[0]) + ' outliers in ' + str(names[0]) + '\nThere are ' + str(dict_test1[names[1] + '_not_' + names[0]].shape[0]) + ' outliers in ' + str(names[1]) + '\nThere are ' + str(dict_test1[names[0] + '_dups'].shape[0]) + ' duplicates in ' + str(names[0]) + '\nThere are ' + str(dict_test1[names[1] + '_dups'].shape[0]) + ' duplicates in ' + str(names[1]) + '\nDataFrames are ' + str(s) + '\n'
 
 @pytest.mark.parametrize("doctype", [
-    ('py')])
+    ('txt')])
 
-def test_import_files_console_2(doctype, capsys):
+def test_import_files_console(doctype, capsys):
     import_files(doctype = doctype)
     captured = capsys.readouterr()
-    assert captured.out == '\nImporting setu...Unable to read setu file\n'
+    assert captured.out == '\nImporting requirements...Unable to read requirements file\n'
+    
+@pytest.mark.parametrize("doctype, subdir", [
+    ('txt',
+    True)])
+
+def test_import_files_console_2(doctype, subdir, capsys):
+    import_files(doctype = doctype, subdir = subdir)
+    captured = capsys.readouterr()
+    assert captured.out == '\nImporting requirements...Unable to read requirements file\n'
   
 #-------------ValueError tests-----------------
 
