@@ -88,6 +88,14 @@ def test_import_files_BAU(expected):
 def test_import_files_BAU_2(subdir, expected):
     assert import_files(subdir = subdir) == expected
     
+@pytest.mark.parametrize("strict,subdir, expected", [
+    (True,
+    True,
+    {})])
+
+def test_import_files_BAU_3(strict, subdir, expected):
+    assert import_files(strict = strict, subdir = subdir) == expected
+    
   
 #-------------ValueError tests-----------------
 
