@@ -118,12 +118,8 @@ def test_import_files_BAU_3(strict, subdir, expected):
 
 def test_compare_console(x, y, names, dups, same, comment, capsys):
     dict_test1 = compare(x, y, names = ['df1','df2'], dups = True, same = True, comment = comment)
-    if dict_test1['Same'] == True:
-        s = 'the same'
-    else:
-        s = 'not the same'
     captured = capsys.readouterr()
-    assert captured.out == '\nThere are ' + str(dict_test1['same_values'].shape[0]) + ' same values\nThere are ' + str(dict_test1[names[0] + '_not_' + names[1]].shape[0]) + ' outliers in ' + str(names[0]) + '\nThere are ' + str(dict_test1[names[1] + '_not_' + names[0]].shape[0]) + ' outliers in ' + str(names[1]) + '\nThere are ' + str(dict_test1[names[0] + '_dups'].shape[0]) + ' duplicates in ' + str(names[0]) + '\nThere are ' + str(dict_test1[names[1] + '_dups'].shape[0]) + ' duplicates in ' + str(names[1]) + '\nDataFrames are ' + str(s) + '\n'
+    assert captured.out == '\nThere are ' + str(dict_test1['same_values'].shape[0]) + ' same values\nThere are ' + str(dict_test1[names[0] + '_not_' + names[1]].shape[0]) + ' outliers in ' + str(names[0]) + '\nThere are ' + str(dict_test1[names[1] + '_not_' + names[0]].shape[0]) + ' outliers in ' + str(names[1]) + '\nThere are ' + str(dict_test1[names[0] + '_dups'].shape[0]) + ' duplicates in ' + str(names[0]) + '\nThere are ' + str(dict_test1[names[1] + '_dups'].shape[0]) + ' duplicates in ' + str(names[1]) + '\nDataFrames are not the same\n'
 
 @pytest.mark.parametrize("doctype", [
     ('txt')])
