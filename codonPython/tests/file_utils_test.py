@@ -74,6 +74,19 @@ def test_compare_BAU(x, y, names, dups, same, expected):
 
 def test_file_search_BAU(doctype, like, strict, expected):
     assert file_search(doctype = doctype, like = like, strict = strict) == expected
+ 
+@pytest.mark.parametrize("expected", [
+    ({})])
+
+def test_import_files_BAU(expected):
+    assert import_files() == expected
+
+@pytest.mark.parametrize("subdir, expected", [
+    (True,
+    {})])
+
+def test_import_files_BAU_2(subdir, expected):
+    assert import_files(subdir = subdir) == expected
     
   
 #-------------ValueError tests-----------------
@@ -265,3 +278,16 @@ def test_compare_ValueError_5(comment):
     with pytest.raises(ValueError):
 
         compare(df1, df2, names = ['df1','df2'], comment = comment)
+    
+    
+@pytest.mark.parametrize("y", [
+
+    ([1,2,3]),
+
+])
+
+def test_compare_ValueError_6(y):
+
+    with pytest.raises(ValueError):
+
+        compare(df1, y, names = ['df1','y'])
