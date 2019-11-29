@@ -121,6 +121,24 @@ def test_compare_console(x, y, names, dups, same, comment, capsys):
     captured = capsys.readouterr()
     assert captured.out == '\nThere are ' + str(dict_test1['same_values'].shape[0]) + ' same values\nThere are ' + str(dict_test1[names[0] + '_not_' + names[1]].shape[0]) + ' outliers in ' + str(names[0]) + '\nThere are ' + str(dict_test1[names[1] + '_not_' + names[0]].shape[0]) + ' outliers in ' + str(names[1]) + '\nThere are ' + str(dict_test1[names[0] + '_dups'].shape[0]) + ' duplicates in ' + str(names[0]) + '\nThere are ' + str(dict_test1[names[1] + '_dups'].shape[0]) + ' duplicates in ' + str(names[1]) + '\nDataFrames are not the same\n'
 
+@pytest.mark.parametrize("x, y, names, dups, same, comment", [
+    (pd.DataFrame({
+            'A' : [1,5,6,1,8,5,9],
+            'B' : [2,8,5,2,21,3,5],
+            'C' : [3,4,5,3,1,5,9],
+            'D' : [2,8,5,2,4,6,2],
+            'E' : [1,2,6,1,3,5,5]}),
+        pd.DataFrame(),
+        ['df1','df2'],
+        True, 
+        True)])
+
+def test_compare_console_2(x, y, names, dups, same,capsys):
+    dict_test1 = compare(x, y, names = ['df1','df2'], dups = True, same = True)
+    captured = capsys.readouterr()
+    assert captured.out == 'Unable to identify same values\nUnable to find outliers\nUnable to find duplicates\n'
+
+    
 @pytest.mark.parametrize("doctype", [
     ('txt')])
 
