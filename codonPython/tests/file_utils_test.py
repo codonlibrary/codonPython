@@ -125,14 +125,13 @@ def test_compare_console(x, y, names, dups, same, comment, capsys):
     captured = capsys.readouterr()
     assert captured.out == '\nThere are ' + str(dict_test1['same_values'].shape[0]) + ' same values\nThere are ' + str(dict_test1[names[0] + '_not_' + names[1]].shape[0]) + ' outliers in ' + str(names[0]) + '\nThere are ' + str(dict_test1[names[1] + '_not_' + names[0]].shape[0]) + ' outliers in ' + str(names[1]) + '\nThere are ' + str(dict_test1[names[0] + '_dups'].shape[0]) + ' duplicates in ' + str(names[0]) + '\nThere are ' + str(dict_test1[names[1] + '_dups'].shape[0]) + ' duplicates in ' + str(names[1]) + '\nDataFrames are ' + str(s) + '\n'
 
-@pytest.mark.parametrize("doctype, strict", [
-    ('py',
-    True)])
+@pytest.mark.parametrize("doctype", [
+    ('py')])
 
-def test_import_files_console_2(doctype, strict, capsys):
-    import_files(doctype = doctype, strict = strict)
+def test_import_files_console_2(doctype, capsys):
+    import_files(doctype = doctype)
     captured = capsys.readouterr()
-    assert captured.out == '\nImporting setup...Unable to read setup file\n'
+    assert captured.out == '\nImporting setu...Unable to read setu file\n'
   
 #-------------ValueError tests-----------------
 
