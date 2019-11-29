@@ -95,7 +95,44 @@ def test_import_files_BAU_2(subdir, expected):
 
 def test_import_files_BAU_3(strict, subdir, expected):
     assert import_files(strict = strict, subdir = subdir) == expected
-    
+
+#----------------Console output-------------------------
+
+@pytest.mark.parametrize("x, y, names, dups, same, comment", [
+    (pd.DataFrame({
+            'A' : [1,5,6,1,8,5,9],
+            'B' : [2,8,5,2,21,3,5],
+            'C' : [3,4,5,3,1,5,9],
+            'D' : [2,8,5,2,4,6,2],
+            'E' : [1,2,6,1,3,5,5]}),
+        pd.DataFrame({
+            'A' : [1,5,6,1,9,5,9],
+            'B' : [2,9,5,2,21,3,5],
+            'C' : [3,4,5,3,1,35,9],
+            'D' : [2,8,7,2,4,6,2],
+            'E' : [1,2,46,1,3,8,5]}),
+        ['df1','df2'],
+        True, 
+        True,
+        True)])
+
+def test_compare_console(x, y, names, dups, same, comment, capsys):
+    dict_test1 = compare(x, y, names = ['df1','df2'], dups = True, same = True, comment = comment)
+    if dict_test1['Same'] == True:
+        s = 'the same'
+    else:
+        s = 'not the same'
+    captured = capsys.readouterr()
+    assert captured.out == '\nThere are ' + str(dict_test1['same_values'].shape[0]) + ' same values\nThere are ' + str(dict_test1[names[0] + '_not_' + names[1]].shape[0]) + ' outliers in ' + str(names[0]) + '\nThere are ' + str(dict_test1[names[1] + '_not_' + names[0]].shape[0]) + ' outliers in ' + str(names[1]) + '\nThere are ' + str(dict_test1[names[0] + '_dups'].shape[0]) + ' duplicates in ' + str(names[0]) + '\nThere are ' + str(dict_test1[names[1] + '_dups'].shape[0]) + ' duplicates in ' + str(names[1]) + '\nDataFrames are ' + str(s) + '\n'
+
+@pytest.mark.parametrize("doctype, strict", [
+    ('py',
+    True)])
+
+def test_import_files_console_2(doctype, strict, capsys):
+    import_files(doctype = doctype, strict = strict)
+    captured = capsys.readouterr()
+    assert captured.out == '\nImporting setup...Unable to read setup file\n'
   
 #-------------ValueError tests-----------------
 
