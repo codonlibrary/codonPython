@@ -39,6 +39,7 @@ Please check the `Codon` Do's and Don’ts against your code before contributing
 | Contribute fully parametrised code. |Supply non-parameterised scripts |
 |Supply unit and expected error testing files at 100% coverage| Untested functions|
 |Include function doc strings| Contribute code from established libraries. i.e. Pandas, NumPy, Matplotlib.|
+|Improve the code in the current repository. By Forking the repo and creating a Pull-Request. | Supply code that repeats a function in the current repo. |
 |Follow [PEP-8](https://www.python.org/dev/peps/pep-0008/) styling guide. |Be afraid to [ask](email) for any further guidance.|
 
 
