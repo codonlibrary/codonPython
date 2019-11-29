@@ -121,7 +121,7 @@ def test_compare_console(x, y, names, dups, same, comment, capsys):
     captured = capsys.readouterr()
     assert captured.out == '\nThere are ' + str(dict_test1['same_values'].shape[0]) + ' same values\nThere are ' + str(dict_test1[names[0] + '_not_' + names[1]].shape[0]) + ' outliers in ' + str(names[0]) + '\nThere are ' + str(dict_test1[names[1] + '_not_' + names[0]].shape[0]) + ' outliers in ' + str(names[1]) + '\nThere are ' + str(dict_test1[names[0] + '_dups'].shape[0]) + ' duplicates in ' + str(names[0]) + '\nThere are ' + str(dict_test1[names[1] + '_dups'].shape[0]) + ' duplicates in ' + str(names[1]) + '\nDataFrames are not the same\n'
 
-@pytest.mark.parametrize("x, y, names, dups, same, comment", [
+@pytest.mark.parametrize("x, y, names, dups, same", [
     (pd.DataFrame({
             'A' : [1,5,6,1,8,5,9],
             'B' : [2,8,5,2,21,3,5],
