@@ -1,5 +1,6 @@
 '''test script for SQL_connections
 - test the connections can run a dummy script (SELECT 1 as [Code], 'test' as [Name])'''
+from codonPython import SQL_connections
 import pandas as pd
 import pytest
 import SQL_connections as conn 
