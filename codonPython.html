@@ -1,0 +1,875 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>codonPython package &mdash; codon 0.0.21 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> codon
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">codonPython package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-codonPython.age_bands">codonPython.age_bands module</a></li>
+<li><a class="reference internal" href="#module-codonPython.check_consistent_measures">codonPython.check_consistent_measures module</a></li>
+<li><a class="reference internal" href="#module-codonPython.check_consistent_submissions">codonPython.check_consistent_submissions module</a></li>
+<li><a class="reference internal" href="#module-codonPython.check_nat_val">codonPython.check_nat_val module</a></li>
+<li><a class="reference internal" href="#module-codonPython.check_null">codonPython.check_null module</a></li>
+<li><a class="reference internal" href="#module-codonPython.dateValidator">codonPython.dateValidator module</a></li>
+<li><a class="reference internal" href="#module-codonPython.file_utils">codonPython.file_utils module</a></li>
+<li><a class="reference internal" href="#module-codonPython.nhsd_colours">codonPython.nhsd_colours module</a></li>
+<li><a class="reference internal" href="#module-codonPython.nhsNumber">codonPython.nhsNumber module</a></li>
+<li><a class="reference internal" href="#module-codonPython.suppression">codonPython.suppression module</a></li>
+<li><a class="reference internal" href="#module-codonPython.tableFromSql">codonPython.tableFromSql module</a></li>
+<li><a class="reference internal" href="#module-codonPython.tolerance">codonPython.tolerance module</a></li>
+<li><a class="reference internal" href="#module-codonPython">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">codon</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>codonPython package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/codonPython.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="codonpython-package">
+<h1>codonPython package<a class="headerlink" href="#codonpython-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-codonPython.age_bands">
+<span id="codonpython-age-bands-module"></span><h2>codonPython.age_bands module<a class="headerlink" href="#module-codonPython.age_bands" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="codonPython.age_bands.age_band_10_years">
+<code class="sig-prename descclassname">codonPython.age_bands.</code><code class="sig-name descname">age_band_10_years</code><span class="sig-paren">(</span><em class="sig-param">age: int</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#codonPython.age_bands.age_band_10_years" title="Permalink to this definition">¶</a></dt>
+<dd><p>Place age into appropriate 10 year band</p>
+<p>This function takes the age supplied as an argument and returns a string
+representing the relevant 10 year banding.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>age</strong> (<em>int</em>) – Age of the person</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>out</strong> – The 10 year age band</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">age_band_10_years</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">&#39;0-9&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">age_band_10_years</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="go">&#39;Age not known&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">age_band_10_years</span><span class="p">(</span><span class="mi">95</span><span class="p">)</span>
+<span class="go">&#39;90 and over&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="codonPython.age_bands.age_band_5_years">
+<code class="sig-prename descclassname">codonPython.age_bands.</code><code class="sig-name descname">age_band_5_years</code><span class="sig-paren">(</span><em class="sig-param">age: int</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#codonPython.age_bands.age_band_5_years" title="Permalink to this definition">¶</a></dt>
+<dd><p>Place age into appropriate 5 year band</p>
+<p>This function takes the age supplied as an argument and returns a string
+representing the relevant 5 year banding.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>age</strong> (<em>int</em>) – Age of the person</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>out</strong> – The 5 year age band</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">age_band_5_years</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">&#39;0-4&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">age_band_5_years</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="go">&#39;Age not known&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">age_band_5_years</span><span class="p">(</span><span class="mi">95</span><span class="p">)</span>
+<span class="go">&#39;90 and over&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-codonPython.check_consistent_measures">
+<span id="codonpython-check-consistent-measures-module"></span><h2>codonPython.check_consistent_measures module<a class="headerlink" href="#module-codonPython.check_consistent_measures" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="codonPython.check_consistent_measures.check_consistent_measures">
+<code class="sig-prename descclassname">codonPython.check_consistent_measures.</code><code class="sig-name descname">check_consistent_measures</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">geography_col: str = 'Org_Level'</em>, <em class="sig-param">measure_col: str = 'Measure'</em>, <em class="sig-param">measures_set: set = {}</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#codonPython.check_consistent_measures.check_consistent_measures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check every measure is in every geography level.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – DataFrame of data to check.</p></li>
+<li><p><strong>geography_col</strong> (<em>str</em><em>, </em><em>default = &quot;Org_Level&quot;</em>) – Column name for the geography level.</p></li>
+<li><p><strong>measure_col</strong> (<em>str</em><em>, </em><em>default = &quot;Measure&quot;</em>) – Column name for measure</p></li>
+<li><p><strong>measures_set</strong> (<em>set</em><em>, </em><em>default = set</em><em>(</em><em>)</em>) – Set of measures that should be in every geography level. If empty, the existing
+global set is presumed to be correct.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Whether the checks have been passed.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">check_consistent_measures</span><span class="p">(</span>
+<span class="gp">... </span>  <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<span class="gp">... </span>    <span class="s2">&quot;Geog&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;National&quot;</span> <span class="p">,</span><span class="s2">&quot;National&quot;</span><span class="p">,</span> <span class="s2">&quot;Region&quot;</span><span class="p">,</span> <span class="s2">&quot;Region&quot;</span><span class="p">,</span> <span class="s2">&quot;Local&quot;</span><span class="p">,</span> <span class="s2">&quot;Local&quot;</span><span class="p">,],</span>
+<span class="gp">... </span>    <span class="s2">&quot;measure&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m2&quot;</span><span class="p">,</span> <span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m2&quot;</span><span class="p">,</span> <span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m2&quot;</span><span class="p">,],</span>
+<span class="gp">... </span>    <span class="s2">&quot;Value_Unsuppressed&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,],</span>
+<span class="gp">... </span>  <span class="p">}),</span>
+<span class="gp">... </span>  <span class="n">geography_col</span> <span class="o">=</span> <span class="s2">&quot;Geog&quot;</span><span class="p">,</span>
+<span class="gp">... </span>  <span class="n">measure_col</span> <span class="o">=</span> <span class="s2">&quot;measure&quot;</span><span class="p">,</span>
+<span class="gp">... </span>  <span class="n">measures_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">({</span><span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m2&quot;</span><span class="p">}),</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">check_consistent_measures</span><span class="p">(</span>
+<span class="gp">... </span>  <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<span class="gp">... </span>    <span class="s2">&quot;Org_Level&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;National&quot;</span> <span class="p">,</span><span class="s2">&quot;National&quot;</span><span class="p">,</span> <span class="s2">&quot;Region&quot;</span><span class="p">,</span> <span class="s2">&quot;Region&quot;</span><span class="p">,</span> <span class="s2">&quot;Local&quot;</span><span class="p">,</span> <span class="s2">&quot;Local&quot;</span><span class="p">,],</span>
+<span class="gp">... </span>    <span class="s2">&quot;Measure&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m3&quot;</span><span class="p">,</span> <span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m2&quot;</span><span class="p">,</span> <span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m2&quot;</span><span class="p">,],</span>
+<span class="gp">... </span>    <span class="s2">&quot;Value_Unsuppressed&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,],</span>
+<span class="gp">... </span>  <span class="p">})</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-codonPython.check_consistent_submissions">
+<span id="codonpython-check-consistent-submissions-module"></span><h2>codonPython.check_consistent_submissions module<a class="headerlink" href="#module-codonPython.check_consistent_submissions" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="codonPython.check_consistent_submissions.check_consistent_submissions">
+<code class="sig-prename descclassname">codonPython.check_consistent_submissions.</code><code class="sig-name descname">check_consistent_submissions</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">national_geog_level: str = 'National'</em>, <em class="sig-param">geography_col: str = 'Org_Level'</em>, <em class="sig-param">submissions_col: str = 'Value_Unsuppressed'</em>, <em class="sig-param">measure_col: str = 'Measure'</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#codonPython.check_consistent_submissions.check_consistent_submissions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check total submissions for each measure are the same across all geography levels
+except national.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – DataFrame of data to check.</p></li>
+<li><p><strong>national_geog_level</strong> (<em>str</em><em>, </em><em>default = &quot;National&quot;</em>) – Geography level code for national values.</p></li>
+<li><p><strong>geography_col</strong> (<em>str</em><em>, </em><em>default = &quot;Org_Level&quot;</em>) – Column name for the geography level.</p></li>
+<li><p><strong>submissions_col</strong> (<em>str</em><em>, </em><em>default = &quot;Value_Unsuppressed&quot;</em>) – Column name for the submissions count.</p></li>
+<li><p><strong>measure_col</strong> (<em>str</em><em>, </em><em>default = &quot;Measure&quot;</em>) – Column name for measure.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Whether the checks have been passed.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">check_consistent_submissions</span><span class="p">(</span>
+<span class="gp">... </span>  <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<span class="gp">... </span>    <span class="s2">&quot;Geog&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;N&quot;</span> <span class="p">,</span><span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="s2">&quot;Region&quot;</span><span class="p">,</span> <span class="s2">&quot;Region&quot;</span><span class="p">,</span> <span class="s2">&quot;Local&quot;</span><span class="p">,</span> <span class="s2">&quot;Local&quot;</span><span class="p">,],</span>
+<span class="gp">... </span>    <span class="s2">&quot;measure&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m2&quot;</span><span class="p">,</span> <span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m2&quot;</span><span class="p">,</span> <span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m2&quot;</span><span class="p">,],</span>
+<span class="gp">... </span>    <span class="s2">&quot;submissions&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,],</span>
+<span class="gp">... </span>  <span class="p">}),</span>
+<span class="gp">... </span>  <span class="n">national_geog_level</span> <span class="o">=</span> <span class="s2">&quot;N&quot;</span><span class="p">,</span>
+<span class="gp">... </span>  <span class="n">geography_col</span> <span class="o">=</span> <span class="s2">&quot;Geog&quot;</span><span class="p">,</span>
+<span class="gp">... </span>  <span class="n">submissions_col</span> <span class="o">=</span> <span class="s2">&quot;submissions&quot;</span><span class="p">,</span>
+<span class="gp">... </span>  <span class="n">measure_col</span> <span class="o">=</span> <span class="s2">&quot;measure&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">check_consistent_submissions</span><span class="p">(</span>
+<span class="gp">... </span>  <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<span class="gp">... </span>    <span class="s2">&quot;Org_Level&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;National&quot;</span> <span class="p">,</span><span class="s2">&quot;National&quot;</span><span class="p">,</span> <span class="s2">&quot;Region&quot;</span><span class="p">,</span> <span class="s2">&quot;Region&quot;</span><span class="p">,</span> <span class="s2">&quot;Local&quot;</span><span class="p">,</span> <span class="s2">&quot;Local&quot;</span><span class="p">,],</span>
+<span class="gp">... </span>    <span class="s2">&quot;Measure&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m2&quot;</span><span class="p">,</span> <span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m2&quot;</span><span class="p">,</span> <span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m2&quot;</span><span class="p">,],</span>
+<span class="gp">... </span>    <span class="s2">&quot;Value_Unsuppressed&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,],</span>
+<span class="gp">... </span>  <span class="p">})</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-codonPython.check_nat_val">
+<span id="codonpython-check-nat-val-module"></span><h2>codonPython.check_nat_val module<a class="headerlink" href="#module-codonPython.check_nat_val" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="codonPython.check_nat_val.check_nat_val">
+<code class="sig-prename descclassname">codonPython.check_nat_val.</code><code class="sig-name descname">check_nat_val</code><span class="sig-paren">(</span><em class="sig-param">df: pandas.core.frame.DataFrame</em>, <em class="sig-param">breakdown_col: str = 'Breakdown'</em>, <em class="sig-param">measure_col: str = 'Measure'</em>, <em class="sig-param">value_col: str = 'Value_Unsuppressed'</em>, <em class="sig-param">nat_val: str = 'National'</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#codonPython.check_nat_val.check_nat_val" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check national value less than or equal to sum of breakdowns.</p>
+<p>This function checks that the national value is less than or equal to the
+sum of each organisation level breakdown.
+This function does not apply to values which are averages.
+This function does not apply to values which are percentages calculated
+from the numerator and denominator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – DataFrame of data to check.</p></li>
+<li><p><strong>breakdown_col</strong> (<em>str</em><em>, </em><em>default = &quot;Breakdown&quot;</em>) – Column name for the breakdown level.</p></li>
+<li><p><strong>measure_col</strong> (<em>str</em><em>, </em><em>default = &quot;Measure&quot;</em>) – Column name for measures</p></li>
+<li><p><strong>value_col</strong> (<em>str</em><em>, </em><em>default = &quot;Value_Unsuppressed&quot;</em>) – Column name for values</p></li>
+<li><p><strong>nat_val</strong> (<em>str</em><em>, </em><em>default = &quot;National&quot;</em>) – Value in breakdown column denoting national values</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Whether the checks have been passed.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">check_nat_val</span><span class="p">(</span>
+<span class="gp">... </span>  <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<span class="gp">... </span>    <span class="s2">&quot;Breakdown&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;National&#39;</span><span class="p">,</span> <span class="s1">&#39;CCG&#39;</span><span class="p">,</span> <span class="s1">&#39;CCG&#39;</span><span class="p">,</span> <span class="s1">&#39;Provider&#39;</span><span class="p">,</span> <span class="s1">&#39;Provider&#39;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s1">&#39;National&#39;</span> <span class="p">,</span><span class="s1">&#39;CCG&#39;</span><span class="p">,</span> <span class="s1">&#39;CCG&#39;</span><span class="p">,</span> <span class="s1">&#39;Provider&#39;</span><span class="p">,</span> <span class="s1">&#39;Provider&#39;</span><span class="p">,</span><span class="s1">&#39;National&#39;</span> <span class="p">,</span><span class="s1">&#39;CCG&#39;</span><span class="p">,</span> <span class="s1">&#39;CCG&#39;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s1">&#39;Provider&#39;</span><span class="p">,</span> <span class="s1">&#39;Provider&#39;</span><span class="p">,],</span>
+<span class="gp">... </span>    <span class="s2">&quot;Measure&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;m1&#39;</span><span class="p">,</span> <span class="s1">&#39;m1&#39;</span><span class="p">,</span> <span class="s1">&#39;m1&#39;</span><span class="p">,</span> <span class="s1">&#39;m1&#39;</span><span class="p">,</span> <span class="s1">&#39;m1&#39;</span><span class="p">,</span> <span class="s1">&#39;m2&#39;</span><span class="p">,</span> <span class="s1">&#39;m2&#39;</span><span class="p">,</span> <span class="s1">&#39;m2&#39;</span><span class="p">,</span> <span class="s1">&#39;m2&#39;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s1">&#39;m2&#39;</span><span class="p">,</span> <span class="s1">&#39;m3&#39;</span><span class="p">,</span> <span class="s1">&#39;m3&#39;</span><span class="p">,</span> <span class="s1">&#39;m3&#39;</span><span class="p">,</span> <span class="s1">&#39;m3&#39;</span><span class="p">,</span> <span class="s1">&#39;m3&#39;</span><span class="p">,],</span>
+<span class="gp">... </span>    <span class="s2">&quot;Value_Unsuppressed&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span>
+<span class="gp">... </span><span class="mi">3</span><span class="p">],</span>
+<span class="gp">... </span>  <span class="p">}),</span>
+<span class="gp">... </span>  <span class="n">breakdown_col</span> <span class="o">=</span> <span class="s2">&quot;Breakdown&quot;</span><span class="p">,</span>
+<span class="gp">... </span>  <span class="n">measure_col</span> <span class="o">=</span> <span class="s2">&quot;Measure&quot;</span><span class="p">,</span>
+<span class="gp">... </span>  <span class="n">value_col</span> <span class="o">=</span> <span class="s2">&quot;Value_Unsuppressed&quot;</span><span class="p">,</span>
+<span class="gp">... </span>  <span class="n">nat_val</span> <span class="o">=</span> <span class="s2">&quot;National&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">check_nat_val</span><span class="p">(</span>
+<span class="gp">... </span>  <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<span class="gp">... </span>    <span class="s2">&quot;Breakdown&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;National&#39;</span><span class="p">,</span> <span class="s1">&#39;CCG&#39;</span><span class="p">,</span> <span class="s1">&#39;CCG&#39;</span><span class="p">,</span> <span class="s1">&#39;Provider&#39;</span><span class="p">,</span> <span class="s1">&#39;Provider&#39;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s1">&#39;National&#39;</span> <span class="p">,</span><span class="s1">&#39;CCG&#39;</span><span class="p">,</span> <span class="s1">&#39;CCG&#39;</span><span class="p">,</span> <span class="s1">&#39;Provider&#39;</span><span class="p">,</span> <span class="s1">&#39;Provider&#39;</span><span class="p">,</span><span class="s1">&#39;National&#39;</span> <span class="p">,</span><span class="s1">&#39;CCG&#39;</span><span class="p">,</span> <span class="s1">&#39;CCG&#39;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s1">&#39;Provider&#39;</span><span class="p">,</span> <span class="s1">&#39;Provider&#39;</span><span class="p">,],</span>
+<span class="gp">... </span>    <span class="s2">&quot;Measure&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;m1&#39;</span><span class="p">,</span> <span class="s1">&#39;m1&#39;</span><span class="p">,</span> <span class="s1">&#39;m1&#39;</span><span class="p">,</span> <span class="s1">&#39;m1&#39;</span><span class="p">,</span> <span class="s1">&#39;m1&#39;</span><span class="p">,</span> <span class="s1">&#39;m2&#39;</span><span class="p">,</span> <span class="s1">&#39;m2&#39;</span><span class="p">,</span> <span class="s1">&#39;m2&#39;</span><span class="p">,</span> <span class="s1">&#39;m2&#39;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s1">&#39;m2&#39;</span><span class="p">,</span> <span class="s1">&#39;m3&#39;</span><span class="p">,</span> <span class="s1">&#39;m3&#39;</span><span class="p">,</span> <span class="s1">&#39;m3&#39;</span><span class="p">,</span> <span class="s1">&#39;m3&#39;</span><span class="p">,</span> <span class="s1">&#39;m3&#39;</span><span class="p">,],</span>
+<span class="gp">... </span>    <span class="s2">&quot;Value_Unsuppressed&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span>
+<span class="gp">... </span><span class="mi">3</span><span class="p">],</span>
+<span class="gp">... </span>  <span class="p">}),</span>
+<span class="gp">... </span>  <span class="n">breakdown_col</span> <span class="o">=</span> <span class="s2">&quot;Breakdown&quot;</span><span class="p">,</span>
+<span class="gp">... </span>  <span class="n">measure_col</span> <span class="o">=</span> <span class="s2">&quot;Measure&quot;</span><span class="p">,</span>
+<span class="gp">... </span>  <span class="n">value_col</span> <span class="o">=</span> <span class="s2">&quot;Value_Unsuppressed&quot;</span><span class="p">,</span>
+<span class="gp">... </span>  <span class="n">nat_val</span> <span class="o">=</span> <span class="s2">&quot;National&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-codonPython.check_null">
+<span id="codonpython-check-null-module"></span><h2>codonPython.check_null module<a class="headerlink" href="#module-codonPython.check_null" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="codonPython.check_null.check_null">
+<code class="sig-prename descclassname">codonPython.check_null.</code><code class="sig-name descname">check_null</code><span class="sig-paren">(</span><em class="sig-param">dataframe: pandas.core.frame.DataFrame</em>, <em class="sig-param">columns_to_be_checked: list</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#codonPython.check_null.check_null" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks a pandas dataframe for null values</p>
+<p>This function takes a pandas dataframe supplied as an argument and returns a integer value representing any null values found within the columns to check</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pandas.DataFrame</em>) – Dataframe to read</p></li>
+<li><p><strong>columns_to_be_checked</strong> (<em>list</em>) – Given dataframe columns to be checked for null values</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>out</strong> – The number of null values found in the given columns</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">check_null</span><span class="p">(</span><span class="n">dataframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;col1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;col2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]}),</span><span class="n">columns_to_be_checked</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;col1&#39;</span><span class="p">,</span> <span class="s1">&#39;col2&#39;</span><span class="p">])</span>
+<span class="go">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">check_null</span><span class="p">(</span><span class="n">dataframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;col1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="n">numpy</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span> <span class="s1">&#39;col2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]}),</span><span class="n">columns_to_be_checked</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;col1&#39;</span><span class="p">])</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-codonPython.dateValidator">
+<span id="codonpython-datevalidator-module"></span><h2>codonPython.dateValidator module<a class="headerlink" href="#module-codonPython.dateValidator" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="codonPython.dateValidator.validDate">
+<code class="sig-prename descclassname">codonPython.dateValidator.</code><code class="sig-name descname">validDate</code><span class="sig-paren">(</span><em class="sig-param">date_string: str</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#codonPython.dateValidator.validDate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates stringtype dates of type <cite>dd/mm/yyyy</cite>, <cite>dd-mm-yyyy</cite> or <cite>dd.mm.yyyy</cite> from
+years 1900-9999. Leap year support included.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>date_string</strong> (<em>str</em>) – Date to be validated</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Whether the date is valid or not</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">validDate</span><span class="p">(</span><span class="s2">&quot;11/02/1996&quot;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">validDate</span><span class="p">(</span><span class="s2">&quot;29/02/2016&quot;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">validDate</span><span class="p">(</span><span class="s2">&quot;43/01/1996&quot;</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-codonPython.file_utils">
+<span id="codonpython-file-utils-module"></span><h2>codonPython.file_utils module<a class="headerlink" href="#module-codonPython.file_utils" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="codonPython.file_utils.compare">
+<code class="sig-prename descclassname">codonPython.file_utils.</code><code class="sig-name descname">compare</code><span class="sig-paren">(</span><em class="sig-param">x, y, names=['x', 'y'], dups=False, same=False, comment=False</em><span class="sig-paren">)</span><a class="headerlink" href="#codonPython.file_utils.compare" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns a dictionary with:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Same values between data frames x and y</p></li>
+<li><p>Values in x, not in y</p></li>
+<li><p>Values in y, not in x</p></li>
+</ol>
+<p>(optional):
+(4) Duplicates of x
+(5) Duplicates of y
+(6) Boolean of whether x and y are the same</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>pandas.DataFrame</em>) – DataFrame #1</p></li>
+<li><p><strong>y</strong> (<em>pandas.DataFrame</em>) – DataFrame #2</p></li>
+<li><p><strong>names</strong> (<em>list</em>) – a list of user preferred file names
+e.g. [‘File1’, ‘File2’]
+default = [‘x’,’y’]</p></li>
+<li><p><strong>dups</strong> (<em>bool</em>) – True to include duplicates check for each file
+default = False</p></li>
+<li><p><strong>same</strong> (<em>bool</em>) – True to activate. Outputs True if DataFrames are the same
+default = False</p></li>
+<li><p><strong>comment</strong> (<em>bool</em>) – True to activate. Prints out statistics of the compariosn results
+e.g. number of same valeus, number of duplicates, number of outliers and whether the DataFrames are the same
+default = False</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>out</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>‘&gt;&gt;&gt; c = compare(df1, df2, names = [‘df1’,’df2’], dups = True, same = True, comment =True)’</p>
+<p>There are 133891 same values
+There are 16531 outliers in df1
+There are 20937 outliers in df2
+There are 48704 duplicates in df1
+There are 0 duplicates in df2
+The DataFrames are not the same</p>
+<p>‘&gt;&gt;&gt; c = compare(df2, df2, names = [‘df2’,’df2’], dups = True, same = True, comment =True)’</p>
+<p>There are 154444 same values
+There are 0 outliers in df2
+There are 0 outliers in df2
+There are 0 duplicates in df2
+There are 0 duplicates in df2
+The DataFrames are the same</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="codonPython.file_utils.file_search">
+<code class="sig-prename descclassname">codonPython.file_utils.</code><code class="sig-name descname">file_search</code><span class="sig-paren">(</span><em class="sig-param">path='.', doctype='csv', like=[''], strict=False</em><span class="sig-paren">)</span><a class="headerlink" href="#codonPython.file_utils.file_search" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function creates a list of all files of a certain type, satisfying the criteria outlined
+in like = […] parameter. The function only searches for files in the specified folder
+of the current working directory that is set by the user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>string</em>) – Path to a folder in the current working directory
+default = ‘.’, i.e. current working directory folder</p></li>
+<li><p><strong>doctype</strong> (<em>string</em>) – Document format to search for
+e.g. ‘csv’ or ‘xlsx’
+default = ‘csv’</p></li>
+<li><p><strong>like</strong> (<em>list</em>) – A list of words to filter the file search on
+default = [‘’], i.e. no filter</p></li>
+<li><p><strong>strict</strong> (<em>bool</em>) – Set True to search for filenames containing all words from ‘like’ list (
+default = False</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">file_search</span><span class="p">(</span><span class="n">doctype</span> <span class="o">=</span> <span class="s1">&#39;md&#39;</span><span class="p">)</span>
+<span class="go">[&#39;README.md&#39;, &#39;CONTRIBUTING.md&#39;]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">file_search</span><span class="p">(</span><span class="n">doctype</span> <span class="o">=</span> <span class="s1">&#39;md&#39;</span><span class="p">,</span> <span class="n">like</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;READ&#39;</span><span class="p">])</span>
+<span class="go">[&#39;README.md&#39;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="codonPython.file_utils.import_files">
+<code class="sig-prename descclassname">codonPython.file_utils.</code><code class="sig-name descname">import_files</code><span class="sig-paren">(</span><em class="sig-param">path='.', doctype='csv', sheet='Sheet1', subdir=False, like=[''], strict=False</em><span class="sig-paren">)</span><a class="headerlink" href="#codonPython.file_utils.import_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function imports all documents of a given format to a dictionary
+and returns this dictionary, keeping original file names.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>string</em>) – Path to a folder in the current working directory
+default = ‘.’, i.e. current working directory folder</p></li>
+<li><p><strong>doctype</strong> (<em>string</em>) – Document format to search for
+e.g. ‘csv’ or ‘xlsx’
+default = ‘csv’</p></li>
+<li><p><strong>sheet</strong> (<em>string</em>) – Sheet name of the xlsx file
+default = ‘Sheet1’</p></li>
+<li><p><strong>subdir</strong> (<em>bool</em>) – True to allow download all files, including the subdirectories
+default = False</p></li>
+<li><p><strong>like</strong> (<em>list</em>) – A list of words to filter the file search on
+default = [‘’], i.e. no filter</p></li>
+<li><p><strong>strict</strong> (<em>bool</em>) – Set True to search for filenames containing all words from ‘like’ list
+default = False</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>out</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>‘&gt;&gt;&gt; import_files()’</p>
+<p>File Data_AprF_2019 is successfully imported</p>
+<p>File Data_AugF_2019 is successfully imported</p>
+<p>File Data_JulF_2019 is successfully imported</p>
+<p>File Data_JunF_2019_v1 is successfully imported</p>
+<p>File Data_MayF_2019 is successfully imported</p>
+<p>File Data_SepP_2019 is successfully imported</p>
+<p>‘&gt;&gt;&gt; import_files(like = [‘Aug’,’Sep’])’</p>
+<p>File Data_AugF_2019 is successfully imported</p>
+<p>File Data_SepP_2019 is successfully imported</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-codonPython.nhsd_colours">
+<span id="codonpython-nhsd-colours-module"></span><h2>codonPython.nhsd_colours module<a class="headerlink" href="#module-codonPython.nhsd_colours" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="codonPython.nhsd_colours.nhsd_colours">
+<code class="sig-prename descclassname">codonPython.nhsd_colours.</code><code class="sig-name descname">nhsd_colours</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#codonPython.nhsd_colours.nhsd_colours" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dictionary full of the different official NHSD colours from the
+style guide:
+<a class="reference external" href="https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/nhs-digital-style-guidelines/how-we-look/colour-palette">https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/nhs-digital-style-guidelines/how-we-look/colour-palette</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>colour_dict</strong> – A dictionary containing sets of official NHS Digital branding colours
+(Hexidecimal format) and fonts.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict (Python dictionary)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="codonPython.nhsd_colours.nhsd_seaborn_style">
+<code class="sig-prename descclassname">codonPython.nhsd_colours.</code><code class="sig-name descname">nhsd_seaborn_style</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#codonPython.nhsd_colours.nhsd_seaborn_style" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the seaborn style to be inline with NHSD guidlines. This means your
+graphs in Seaborn, or in Matplotlib will come out looking as per the NHSD
+style guide. Simply run this function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-codonPython.nhsNumber">
+<span id="codonpython-nhsnumber-module"></span><h2>codonPython.nhsNumber module<a class="headerlink" href="#module-codonPython.nhsNumber" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="codonPython.nhsNumber.nhsNumberGenerator">
+<code class="sig-prename descclassname">codonPython.nhsNumber.</code><code class="sig-name descname">nhsNumberGenerator</code><span class="sig-paren">(</span><em class="sig-param">to_generate: int</em>, <em class="sig-param">random_state: int = None</em><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#codonPython.nhsNumber.nhsNumberGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates up to 1M random NHS numbers compliant with modulus 11 checks as recorded
+in the data dictonary.
+<a class="reference external" href="https://www.datadictionary.nhs.uk/data_dictionary/attributes/n/nhs/nhs_number_de.asp?shownav=1">https://www.datadictionary.nhs.uk/data_dictionary/attributes/n/nhs/nhs_number_de.asp?shownav=1</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>to_generate</strong> (<em>int</em>) – number of NHS numbers to generate</p></li>
+<li><p><strong>random_state</strong> (<em>int</em><em>, </em><em>default : None</em>) – Optional seed for random number generation, for testing and reproducibility.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>generated</strong> – List of randomly generated NHS numbers</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nhsNumberGenerator</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="go">[8429141456, 2625792787]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="codonPython.nhsNumber.nhsNumberValidator">
+<code class="sig-prename descclassname">codonPython.nhsNumber.</code><code class="sig-name descname">nhsNumberValidator</code><span class="sig-paren">(</span><em class="sig-param">number: int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#codonPython.nhsNumber.nhsNumberValidator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate NHS Number according to modulus 11 checks as recorded in the data dictionary.
+<a class="reference external" href="https://www.datadictionary.nhs.uk/data_dictionary/attributes/n/nhs/nhs_number_de.asp?shownav=1">https://www.datadictionary.nhs.uk/data_dictionary/attributes/n/nhs/nhs_number_de.asp?shownav=1</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>number</strong> (<em>int</em>) – 10 digit integer to validate.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>If the number passes modulus 11 checks a.k.a. is valid.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nhsNumberValidator</span><span class="p">(</span><span class="mi">8429141456</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nhsNumberValidator</span><span class="p">(</span><span class="mi">8429141457</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-codonPython.suppression">
+<span id="codonpython-suppression-module"></span><h2>codonPython.suppression module<a class="headerlink" href="#module-codonPython.suppression" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="codonPython.suppression.suppress_value">
+<code class="sig-prename descclassname">codonPython.suppression.</code><code class="sig-name descname">suppress_value</code><span class="sig-paren">(</span><em class="sig-param">valuein: int</em>, <em class="sig-param">rc: str = '*'</em>, <em class="sig-param">upper: int = 100000000</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#codonPython.suppression.suppress_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Suppress values less than or equal to 7, round all non-national values.</p>
+<p>This function suppresses value if it is less than or equal to 7.
+If value is 0 then it will remain as 0.
+If value is at national level it will remain unsuppressed.
+All other values will be rounded to the nearest 5.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>valuein</strong> (<em>int</em>) – Metric value</p></li>
+<li><p><strong>rc</strong> (<em>str</em>) – Replacement character if value needs suppressing</p></li>
+<li><p><strong>upper</strong> (<em>int</em>) – Upper limit for suppression of numbers</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>out</strong> – Suppressed value (*), 0 or valuein if greater than 7 or national</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">suppress_value</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">&#39;*&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">suppress_value</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span>
+<span class="go">&#39;25&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">suppress_value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">&#39;0&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-codonPython.tableFromSql">
+<span id="codonpython-tablefromsql-module"></span><h2>codonPython.tableFromSql module<a class="headerlink" href="#module-codonPython.tableFromSql" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="codonPython.tableFromSql.tableFromSql">
+<code class="sig-prename descclassname">codonPython.tableFromSql.</code><code class="sig-name descname">tableFromSql</code><span class="sig-paren">(</span><em class="sig-param">server: str</em>, <em class="sig-param">database: str</em>, <em class="sig-param">table_name: str</em>, <em class="sig-param">user: str = ''</em>, <em class="sig-param">password: str = ''</em>, <em class="sig-param">schema: str = None</em>, <em class="sig-param">index_col: str = None</em>, <em class="sig-param">coerce_float: bool = True</em>, <em class="sig-param">parse_dates: list = None</em>, <em class="sig-param">columns: list = None</em>, <em class="sig-param">chunksize: int = None</em><span class="sig-paren">)</span><a class="headerlink" href="#codonPython.tableFromSql.tableFromSql" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a SQL table in a DataFrame.</p>
+<p>Convert a table stored in SQL Server 2016 into a pandas dataframe.
+Uses sqlalchemy and pandas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>server</strong> (<em>string</em>) – Name of the SQL server</p></li>
+<li><p><strong>database</strong> (<em>string</em>) – Name of the SQL database</p></li>
+<li><p><strong>user</strong> (<em>string</em><em>, </em><em>default: &quot;&quot;</em>) – If verification is required, name of the user</p></li>
+<li><p><strong>password</strong> (<em>string</em><em>, </em><em>default: &quot;&quot;</em>) – If verification is required, password of the user</p></li>
+<li><p><strong>table_name</strong> (<em>string</em>) – Name of SQL table in database.</p></li>
+<li><p><strong>schema</strong> (<em>string</em><em>, </em><em>default : None</em>) – Name of SQL schema in database to query (if database flavor supports this). Uses
+default schema if None (default).</p></li>
+<li><p><strong>index_col</strong> (<em>string</em><em> or </em><em>list of strings</em><em>, </em><em>default : None</em>) – Column(s) to set as index(MultiIndex).</p></li>
+<li><p><strong>coerce_float</strong> (<em>boolean</em><em>, </em><em>default : True</em>) – Attempts to convert values of non-string, non-numeric objects (like decimal.Decimal)
+to floating point. Can result in loss of Precision.</p></li>
+<li><p><strong>parse_dates</strong> (<em>list</em><em> or </em><em>dict</em><em>, </em><em>default : None</em>) – <ul>
+<li><p>List of column names to parse as dates.</p></li>
+<li><p>Dict of {column_name: format string} where format string is strftime compatible in</p></li>
+</ul>
+<p>case of parsing string times or is one of (D, s, ns, ms, us) in case of parsing
+integer timestamps.
+- Dict of {column_name: arg dict}, where the arg dict corresponds to the keyword
+arguments of pandas.to_datetime() Especially useful with databases without native
+Datetime support, such as SQLite.</p>
+</p></li>
+<li><p><strong>columns</strong> (<em>list</em><em>, </em><em>default : None</em>) – List of column names to select from SQL table</p></li>
+<li><p><strong>chunksize</strong> (<em>int</em><em>, </em><em>default : None</em>) – If specified, returns an iterator where chunksize is the number of rows to include
+in each chunk.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Dataframe of the table requested from sql server</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p># &gt;&gt;&gt; tableFromSql(“myServer2”, “myDatabase2”, “myTable2”)
+# pd.DataFrame
+# &gt;&gt;&gt; tableFromSql(“myServer”, “myDatabase”, “myTable”, schema=”specialSchema”, columns=[“col_1”, “col_3”])
+# pd.DataFrame</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-codonPython.tolerance">
+<span id="codonpython-tolerance-module"></span><h2>codonPython.tolerance module<a class="headerlink" href="#module-codonPython.tolerance" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="codonPython.tolerance.check_tolerance">
+<code class="sig-prename descclassname">codonPython.tolerance.</code><code class="sig-name descname">check_tolerance</code><span class="sig-paren">(</span><em class="sig-param">t, y, to_exclude: int = 1, poly_features: list = [1, 2], alpha: float = 0.05, parse_dates: bool = False, predict_all: bool = False</em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="headerlink" href="#codonPython.tolerance.check_tolerance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check that some future values are within a weighted least squares confidence interval.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> (<em>pd.Series</em>) – N explanatory time points of shape (N, 1).</p></li>
+<li><p><strong>y</strong> (<em>pd.Series</em>) – The corresponding response variable values to X, of shape (N, 1).</p></li>
+<li><p><strong>to_exclude</strong> (<em>int</em><em>, </em><em>default = 1</em>) – How many of the last y values will have their tolerances checked.</p></li>
+<li><p><strong>poly_features</strong> (<em>list</em><em>, </em><em>default =</em><em> [</em><em>1</em><em>, </em><em>2</em><em>]</em>) – List of degrees of polynomial basis to fit to the data. One model will be
+produced for each number in the list, eg. the default will fit a linear and
+a second degree polynomial to the data and return both sets of results.</p></li>
+<li><p><strong>alpha</strong> (<em>float</em><em>, </em><em>default = 0.05</em>) – Alpha parameter for the weighted least squares confidence interval.</p></li>
+<li><p><strong>parse_dates</strong> (<em>bool</em><em>, </em><em>default = True</em>) – Set to true to parse string dates in t</p></li>
+<li><p><strong>predict_all</strong> (<em>bool</em><em>, </em><em>default = False</em>) – Set to true to show predictions for all points of the dataset.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>DataFrame containing:</dt><dd><p>”t”         : Value for t
+“yhat_u”    : Upper condfidence interval for y
+“yobs”      : Observed value for y
+“yhat”      : Predicted value for y
+“yhat_l”    : Lower confidence interval for y
+“polynomial”: Max polynomial of model fit to the data</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">check_tolerance</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">t</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1001</span><span class="p">,</span><span class="mi">1002</span><span class="p">,</span><span class="mi">1003</span><span class="p">,</span><span class="mi">1004</span><span class="p">,</span><span class="mi">1005</span><span class="p">,</span><span class="mi">1006</span><span class="p">]),</span>
+<span class="gp">... </span>    <span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mf">4.5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mf">5.1</span><span class="p">]),</span>
+<span class="gp">... </span>    <span class="n">to_exclude</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">      t     yhat_u  yobs   yhat    yhat_l  polynomial</span>
+<span class="go">0  1005   6.817413   5.0  5.500  4.182587           1</span>
+<span class="go">1  1006   7.952702   5.1  6.350  4.747298           1</span>
+<span class="go">2  1005   9.077182   5.0  4.875  0.672818           2</span>
+<span class="go">3  1006  13.252339   5.1  4.975 -3.302339           2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-codonPython">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-codonPython" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright under BSD-5 license
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
