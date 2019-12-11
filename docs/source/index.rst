@@ -7,6 +7,8 @@ To find the documentation for the module you want, please search or click on `mo
    :maxdepth: 2
    :caption: Contents:
 
+   source/README.md
+
 Indices and tables
 ==================
 
