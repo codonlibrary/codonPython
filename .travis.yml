@@ -13,7 +13,7 @@ script:
 
 after_success:
   - codecov
-  - cd docs && make html
+  - cd docs && ln -s ../README.md && make html
 
 deploy:
   provider: pages
