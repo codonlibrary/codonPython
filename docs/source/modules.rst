@@ -5,4 +5,3 @@ codonPython
    :maxdepth: 4
 
    codonPython
-   setup
