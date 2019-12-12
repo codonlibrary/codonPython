@@ -1,13 +1,13 @@
-Welcome to codonPython's documentation!
-=================================
+Welcome to the Documentation!
+=============================
 
-To find the documentation for the module you want, please search or click on `module index`.
+.. mdinclude:: ../../README.md
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   source/README.md
+   modules
 
 Indices and tables
 ==================
