@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Welcome to codonPython’s documentation! &mdash; codon 0.0.21 documentation</title>
+  <title>Welcome to the Documentation! &mdash; codon 0.0.21 documentation</title>
   
 
   
@@ -34,7 +34,8 @@
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="codonPython" href="modules.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -78,12 +79,11 @@
               
             
             
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">Welcome to codonPython’s documentation!</a></li>
-<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">codonPython</a></li>
 </ul>
-</div>
+
             
           
         </div>
@@ -127,7 +127,7 @@
     
       <li><a href="#">Docs</a> &raquo;</li>
         
-      <li>Welcome to codonPython’s documentation!</li>
+      <li>Welcome to the Documentation!</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -146,10 +146,59 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="welcome-to-codonpython-s-documentation">
-<h1>Welcome to codonPython’s documentation!<a class="headerlink" href="#welcome-to-codonpython-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>To find the documentation for the module you want, please search or click on <cite>module index</cite>.</p>
+  <div class="section" id="welcome-to-the-documentation">
+<h1>Welcome to the Documentation!<a class="headerlink" href="#welcome-to-the-documentation" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="codonpython">
+<h1>codonPython<a class="headerlink" href="#codonpython" title="Permalink to this headline">¶</a></h1>
+<a class="reference external image-reference" href="https://travis-ci.com/codonlibrary/codonPython"><img alt="Build Status" src="https://travis-ci.com/codonlibrary/codonPython.svg?branch=master" /></a>
+<a class="reference external image-reference" href="https://codecov.io/gh/codonlibrary/codonPython"><img alt="codecov" src="https://codecov.io/gh/codonlibrary/codonPython/branch/master/graph/badge.svg" /></a>
+<div class="section" id="what-is-codon">
+<h2>What is <code class="docutils literal notranslate"><span class="pre">codon</span></code>?<a class="headerlink" href="#what-is-codon" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">codon</span></code> project was created to increase code sharing, consistancy of code and coding standards and encourage collaboration. The repository contains Python, R and SQL code for ease of use in workflows on platforms used within NHS Digital such as Databricks. Package documentation is available on the <a class="reference external" href="https://codonlibrary.github.io/codonPython/">GitHub pages</a> however further information for NHS Digital staff can be found <a class="reference external" href="https://confluence.digital.nhs.uk/display/CON/Codon+-+Code+sharing">here</a>, via our internal confluence page. <code class="docutils literal notranslate"><span class="pre">codonPython</span></code> aims to reduce the barrier for entry for analysis and provide software development experience for those at a higher level of technical ability.</p>
+<div class="section" id="why-codon">
+<h3>Why <code class="docutils literal notranslate"><span class="pre">codon</span></code>?<a class="headerlink" href="#why-codon" title="Permalink to this headline">¶</a></h3>
+<p>In biological terms, a <code class="docutils literal notranslate"><span class="pre">codon</span></code> is one of the building blocks that make up our DNA. By openly sharing our code we hope that others will be able to take those blocks of code to build their own processes using the data that NHS Digital hold.</p>
+<p>By sharing code, the project aims to:</p>
+<p><strong>Increase Transparency</strong>: To align with government data principles and build public trust.</p>
+<p><strong>Improve Code</strong>: To innovate and improve the code we use and provide.</p>
+<p><strong>Improve usability</strong>: By increasing the accessibility and uniformity of code, it becomes easier for data users to find and use relevant code.</p>
+<p><strong>Be more cost effective</strong>: Reusable ‘generalised’ code will increase efficiency in creating higher level processes.</p>
+</div>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>The package can be directly installed by typing in your terminal:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="o">://</span><span class="n">github.com</span><span class="o">/</span><span class="n">codonlibrary</span><span class="o">/</span><span class="n">codonPython.git</span>
+</pre></div>
+</div>
+<p>For further guidance on cloning from the remote repository to a local repository on your machine see the information in our <a class="reference external" href="https://github.com/codonlibrary/codonPython/wiki/1.-Installing-codonPython">Wiki.</a></p>
+</div>
+<div class="section" id="contributing-to-codonpython">
+<h2>Contributing to codonPython<a class="headerlink" href="#contributing-to-codonpython" title="Permalink to this headline">¶</a></h2>
+<p>All new contributions to <code class="docutils literal notranslate"><span class="pre">codon</span></code> are welcome; please follow the Coding Conventions in the <a class="reference external" href="https://github.com/codonlibrary/codonPython/blob/master/CONTRIBUTING.md">guidance document</a> for contribution guidance.</p>
+<p>Any improvements to documentation, bug fixes or general code enhancements are also welcomed. If a bug is found on the master branch, please use the GitHub guidance on raising an <a class="reference external" href="https://help.github.com/en/github/managing-your-work-on-github/creating-an-issue">issue.</a></p>
+</div>
+<div class="section" id="new-to-github">
+<h2>New to GitHub?<a class="headerlink" href="#new-to-github" title="Permalink to this headline">¶</a></h2>
+<p>GitHub is a hosting site that allows for development and version control of software using Git. It allows users to edit and develop parts of code independently before submitting back to the master code, whilst using version control to track changes. Introductory videos to GitHub for beginners can be found <a class="reference external" href="https://github.com/codonlibrary/codonPython/wiki/2a.-GitHub-for-Beginners">here.</a></p>
+<p>Quick links to beginner guidance can also be found below:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/codonlibrary/codonPython/wiki/1.-Installing-codonPython">**Cloning a repository to your local machine using GitBash**</a></p></li>
+<li><p><a class="reference external" href="https://github.com/codonlibrary/codonPython/wiki/2b.-Checkout-a-branch-using-GitBash">**Checking out a branch using GitBash**</a></p></li>
+<li><p><a class="reference external" href="https://github.com/codonlibrary/codonPython/wiki/3.-Removing-a-Commit-From-a-GitHub-Repository">**Removing a Commit from a repository using GitBash**</a></p></li>
+</ul>
+<p>All other <code class="docutils literal notranslate"><span class="pre">codon</span></code> “How-to Articles” can be found <a class="reference external" href="https://github.com/codonlibrary/codonPython/wiki/2.-Git-Guidance">here.</a></p>
+<p>Suggestions regarding additional guidance or How-to articles are welcome.</p>
 <div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">codonPython</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="codonPython.html">codonPython package</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="section" id="indices-and-tables">
@@ -167,12 +216,19 @@
           </div>
           <footer>
   
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="modules.html" class="btn btn-neutral float-right" title="codonPython" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright under BSD-5 license
+        &copy; Copyright under BSD-3 license
 
     </p>
   </div>
