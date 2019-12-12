@@ -1,3 +1,16 @@
+'''
+Tests for functions in ref_decode_test.py
+
+tests:
+-------
+ref_decode
+  - test_ref_decode_col_num(): Test that function returns correct number of columns with different single column inputs
+  - as this is largely dependent on org_col, sno_col and icd10_col, other tests are performed on those functions
+org_code
+  - test_org_col_col_num(): test correct number of columns
+  - test_org_col_names(): test output org names are correct
+'''
+
 from codonPython import ref_decode
 import numpy as np
 import pandas as pd
@@ -35,10 +48,32 @@ test_df_1.to_sql(test,conn)
                           ('OrganisationCode', None, 'icd10', 2),
                           (None, None, 'icd10', 1),
                          ])
-def test_ref_decode_col_num():
+def test_ref_decode_col_num(org_cols_test, num_cols):
     df_out = ref_decode(test_df_1, 
                         org_cols=org_cols_test,
                         sno_cols=sno_cols_test,
                         icd10_cols=icd10_cols_test,
                         conn = conn)
     assert len(df_out.columns) == len(test_df_1) + num_cols
+    
+@pytest.mark.parametrize("org_cols_test, num_cols",
+                         [('OrganisationCode', 1), # single item
+                          (['OrganisationCode'], 1), # single item in list
+                          (['OrganisationCode','CCG'], 2), # multiple items in list
+                         ])
+def test_org_col_col_num(org_cols_test, num_cols):
+    df_out = org_col(test_df_1, 
+                        org_cols=org_cols_test,
+                        conn = conn)
+    assert len(df_out.columns) == len(test_df_1) + num_cols
+    
+@pytest.mark.parametrize("org_cols_test, answer_cols",
+                          (['OrganisationCode','CCG'], ['Name', 'Name']),
+                         (['OrganisationCode'], ['Name']),
+                         ('OrganisationCode', 'Name')
+                         ])
+def test_org_col_names(org_cols_test, answer_cols):
+    df_out = org_col(test_df_1, 
+                     org_cols=org_cols_test,
+                     conn = conn)
+    assert df_out[org_cols_test] == test_df_1[answer_cols]
