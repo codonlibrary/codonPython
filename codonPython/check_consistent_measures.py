@@ -2,7 +2,12 @@ import pandas as pd
 import numpy as np
 
 
-def check_consistent_measures(data, geography_col: str = "Org_Level", measure_col: str = "Measure", measures_set: set = set()) -> bool:
+def check_consistent_measures(
+    data,
+    geography_col: str = "Org_Level",
+    measure_col: str = "Measure",
+    measures_set: set = set(),
+) -> bool:
     """
     Check every measure is in every geography level.
 
@@ -48,7 +53,7 @@ def check_consistent_measures(data, geography_col: str = "Org_Level", measure_co
 
     if data.isna().any(axis=None):
         raise ValueError(
-        f"Missing values at locations {list(map(tuple, np.argwhere(data.isna().values)))}"
+            f"Missing values at locations {list(map(tuple, np.argwhere(data.isna().values)))}"
         )
     if not isinstance(geography_col, str) or not isinstance(measure_col, str):
         raise ValueError("Please input strings for column indexes.")
@@ -59,8 +64,7 @@ def check_consistent_measures(data, geography_col: str = "Org_Level", measure_co
 
     # Every geography level should have the same set of measures as the global set.
     global_set = measures_set if measures_set else set(data[measure_col].unique())
-    subsets = data.groupby(geography_col) \
-                    .agg({measure_col: "unique"})
+    subsets = data.groupby(geography_col).agg({measure_col: "unique"})
     subset_agreement = all(set(x) == global_set for x in subsets[measure_col])
 
     return subset_agreement

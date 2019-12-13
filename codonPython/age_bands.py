@@ -5,7 +5,7 @@ def age_band_5_years(age: int) -> str:
     """
     Place age into appropriate 5 year band
 
-    This function takes the age supplied as an argument and returns a string 
+    This function takes the age supplied as an argument and returns a string
     representing the relevant 5 year banding.
 
     Parameters
@@ -29,26 +29,26 @@ def age_band_5_years(age: int) -> str:
     """
 
     if age is None:
-        return 'Age not known'
+        return "Age not known"
 
     if age >= 90:
         if age >= 150:
             raise ValueError("The age input: {} is too large.".format(age))
         else:
-            return '90 and over'
+            return "90 and over"
     elif age < 0:
         raise ValueError("The age input: {} is too low.".format(age))
     else:
         lowerbound = 5 * int(math.floor(age / 5))
         upperbound = lowerbound + 4
-        return '{}-{}'.format(lowerbound, upperbound)
+        return "{}-{}".format(lowerbound, upperbound)
 
 
 def age_band_10_years(age: int) -> str:
     """
     Place age into appropriate 10 year band
 
-    This function takes the age supplied as an argument and returns a string 
+    This function takes the age supplied as an argument and returns a string
     representing the relevant 10 year banding.
 
     Parameters
@@ -72,16 +72,16 @@ def age_band_10_years(age: int) -> str:
     """
 
     if age is None:
-        return 'Age not known'
+        return "Age not known"
 
     if age >= 90:
         if age >= 150:
             raise ValueError("The age input: {} is too large.".format(age))
         else:
-            return '90 and over'
+            return "90 and over"
     elif age < 0:
         raise ValueError("The age input: {} is too low.".format(age))
     else:
         lowerbound = 10 * int(math.floor(age / 10))
         upperbound = lowerbound + 9
-        return '{}-{}'.format(lowerbound, upperbound)
+        return "{}-{}".format(lowerbound, upperbound)

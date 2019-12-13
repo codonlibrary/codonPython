@@ -7,7 +7,15 @@ import statsmodels.api as sm
 from statsmodels.sandbox.regression.predstd import wls_prediction_std
 
 
-def check_tolerance(t, y, to_exclude: int = 1, poly_features: list = [1, 2], alpha: float = 0.05, parse_dates: bool = False, predict_all: bool = False) -> pd.DataFrame:
+def check_tolerance(
+    t,
+    y,
+    to_exclude: int = 1,
+    poly_features: list = [1, 2],
+    alpha: float = 0.05,
+    parse_dates: bool = False,
+    predict_all: bool = False,
+) -> pd.DataFrame:
     """
     Check that some future values are within a weighted least squares confidence interval.
 
@@ -58,32 +66,31 @@ def check_tolerance(t, y, to_exclude: int = 1, poly_features: list = [1, 2], alp
     """
 
     if not isinstance(poly_features, list):
-        raise ValueError("Please input a list of integers from 0 to 4 for poly_features.")
-    assert all(0 <= degree <= 4 for degree in poly_features), (
-      "Please ensure all numbers in poly_features are from 0 to 4."  
-    )
+        raise ValueError(
+            "Please input a list of integers from 0 to 4 for poly_features."
+        )
+    assert all(
+        0 <= degree <= 4 for degree in poly_features
+    ), "Please ensure all numbers in poly_features are from 0 to 4."
     if not isinstance(alpha, float) or 0 > alpha >= 1:
         raise ValueError("Please input a float between 0 and 1 for alpha.")
     if not isinstance(to_exclude, int):
-        raise ValueError("Please input an integer between 1 and your sample size for to_exclude.")
-    assert ((len(t) - to_exclude) >= 4), (
-        """The sample size for your model is smaller than 4. This will not produce a good 
+        raise ValueError(
+            "Please input an integer between 1 and your sample size for to_exclude."
+        )
+    assert (
+        len(t) - to_exclude
+    ) >= 4, """The sample size for your model is smaller than 4. This will not produce a good
         model. Either reduce to_exclude or increase your sample size to continue."""
-    )
-    assert y.notna().all(), (
-        f"""Your sample contains missing or infinite values for y at locations
+    assert y.notna().all(), f"""Your sample contains missing or infinite values for y at locations
         {list(map(tuple, np.where(np.isnan(y))))}. Exclude these values to continue."""
-    )
-    assert t.notna().all(), (
-        f"""Your sample contains missing or infinite values for t at locations
+    assert t.notna().all(), f"""Your sample contains missing or infinite values for t at locations
         {list(map(tuple, np.where(np.isnan(t))))}. Exclude these values to continue."""
-    )
 
     # Convert date strings to numeric variables for the model
     if parse_dates:
         t_numeric = pd.to_datetime(t)
-        t_numeric = (t_numeric - datetime(1970, 1, 1)) \
-                            .apply(lambda x: x.days)
+        t_numeric = (t_numeric - datetime(1970, 1, 1)).apply(lambda x: x.days)
 
     # Sort data by t increasing. t_ is for internal use.
     idx = np.argsort(t_numeric.values) if parse_dates else np.argsort(t.values)
@@ -93,10 +100,7 @@ def check_tolerance(t, y, to_exclude: int = 1, poly_features: list = [1, 2], alp
 
     results = pd.DataFrame()
     for degree in poly_features:
-        transforms = make_pipeline(
-            StandardScaler(),
-            PolynomialFeatures(degree=degree),
-        )
+        transforms = make_pipeline(StandardScaler(), PolynomialFeatures(degree=degree))
 
         # Fit transforms to training data only, apply to all data.
         fitted_transforms = transforms.fit(t_[:-to_exclude].values.reshape(-1, 1))
@@ -108,7 +112,7 @@ def check_tolerance(t, y, to_exclude: int = 1, poly_features: list = [1, 2], alp
             y if predict_all else y[-to_exclude:],
             t if predict_all else t[-to_exclude:],
         )
-        
+
         # Fit ordinary least squares model to the training data, then predict for the
         # prediction data.
         model = sm.OLS(y_train, t_train).fit()
@@ -119,16 +123,17 @@ def check_tolerance(t, y, to_exclude: int = 1, poly_features: list = [1, 2], alp
 
         # Store model results in master frame
         results = results.append(
-            pd.DataFrame({
-              "t" : t_orig,
-              "yhat_u" : yhat_u,
-              "yobs" : y_predict,
-              "yhat" : yhat,
-              "yhat_l" : yhat_l,  
-              "polynomial" : degree
-            }),
+            pd.DataFrame(
+                {
+                    "t": t_orig,
+                    "yhat_u": yhat_u,
+                    "yobs": y_predict,
+                    "yhat": yhat,
+                    "yhat_l": yhat_l,
+                    "polynomial": degree,
+                }
+            ),
             ignore_index=True,
         )
 
     return results
-    

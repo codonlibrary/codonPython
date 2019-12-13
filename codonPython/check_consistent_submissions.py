@@ -1,7 +1,13 @@
 import pandas as pd
 
 
-def check_consistent_submissions(data, national_geog_level: str = "National", geography_col: str = "Org_Level", submissions_col: str = "Value_Unsuppressed", measure_col: str = "Measure", ) -> bool:
+def check_consistent_submissions(
+    data,
+    national_geog_level: str = "National",
+    geography_col: str = "Org_Level",
+    submissions_col: str = "Value_Unsuppressed",
+    measure_col: str = "Measure",
+) -> bool:
     """
     Check total submissions for each measure are the same across all geography levels
     except national.
@@ -49,24 +55,28 @@ def check_consistent_submissions(data, national_geog_level: str = "National", ge
     """
 
     if (
-        not isinstance(submissions_col, str) or
-        not isinstance(measure_col, str) or
-        not isinstance(geography_col, str) or
-        not isinstance(national_geog_level, str)
+        not isinstance(submissions_col, str)
+        or not isinstance(measure_col, str)
+        or not isinstance(geography_col, str)
+        or not isinstance(national_geog_level, str)
     ):
-        raise ValueError("Please input strings for column names and national geography level.")
+        raise ValueError(
+            "Please input strings for column names and national geography level."
+        )
     if (
-        submissions_col not in data.columns or
-        measure_col not in data.columns or
-        geography_col not in data.columns
+        submissions_col not in data.columns
+        or measure_col not in data.columns
+        or geography_col not in data.columns
     ):
         raise KeyError("Check column names correspond to the DataFrame.")
 
     # All non-national measures should have only one unique submission number for each
     # geography level.
-    submissions_by_measure = data[data[geography_col] != national_geog_level] \
-                                .groupby(measure_col) \
-                                    .agg({submissions_col: "nunique"})
+    submissions_by_measure = (
+        data[data[geography_col] != national_geog_level]
+        .groupby(measure_col)
+        .agg({submissions_col: "nunique"})
+    )
     result = (submissions_by_measure[submissions_col] == 1).all()
 
     return result
