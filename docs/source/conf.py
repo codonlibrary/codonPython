@@ -18,7 +18,7 @@ sys.setrecursionlimit(1500)
 # -- Project information -----------------------------------------------------
 
 project = 'codon'
-copyright = 'under BSD-5 license'
+copyright = 'under BSD-3 license'
 author = 'PH, PE, NC, GR, MM'
 
 # The full version, including alpha/beta/rc tags
@@ -34,6 +34,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.napoleon',
     'sphinx.ext.githubpages',
+    'm2r',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
