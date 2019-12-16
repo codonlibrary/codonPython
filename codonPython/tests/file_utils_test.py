@@ -172,55 +172,6 @@ def test_compare_console(x, y, names, dups, same, comment, capsys):
         + "\nDataFrames are not the same\n"
     )
 
-
-@pytest.mark.parametrize(
-    "x, y, names, dups, same",
-    [
-        (
-            pd.DataFrame(
-                {
-                    "A": [1, 5, 6, 1, 8, 5, 9],
-                    "B": [2, 8, 5, 2, 21, 3, 5],
-                    "C": [3, 4, 5, 3, 1, 5, 9],
-                    "D": [2, 8, 5, 2, 4, 6, 2],
-                    "E": [1, 2, 6, 1, 3, 5, 5],
-                }
-            ),
-            pd.DataFrame(),
-            ["df1", "df2"],
-            True,
-            True,
-        )
-    ],
-)
-def test_compare_console_2(x, y, names, dups, same, capsys):
-    dict_test1 = compare(x, y, names=["df1", "df2"], dups=True, same=True)
-    captured = capsys.readouterr()
-    assert (
-        captured.out
-        == """Unable to identify same values\nUnable to find outliers
-        Unable to determine whether the Dataframes are the same\n"""
-    )
-
-
-@pytest.mark.parametrize("doctype", [("txt")])
-def test_import_files_console(doctype, capsys):
-    import_files(doctype=doctype)
-    captured = capsys.readouterr()
-    assert (
-        captured.out == "\nImporting requirements...Unable to read requirements file\n"
-    )
-
-
-@pytest.mark.parametrize("doctype, subdir", [("txt", True)])
-def test_import_files_console_2(doctype, subdir, capsys):
-    import_files(doctype=doctype, subdir=subdir)
-    captured = capsys.readouterr()
-    assert (
-        captured.out == "\nImporting requirements...Unable to read requirements file\n"
-    )
-
-
 # -------------ValueError tests-----------------
 
 # -------------File Search----------------------
