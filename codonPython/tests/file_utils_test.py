@@ -11,7 +11,7 @@ df1 = pd.DataFrame(
         "B": [2, 8, 5, 2, 21, 3, 5],
         "C": [3, 4, 5, 3, 1, 5, 9],
         "D": [2, 8, 5, 2, 4, 6, 2],
-        "E": [1, 2, 6, 1, 3, 5, 5],
+        "E": [1, 2, 6, 1, 3, 5, 5]
     }
 )
 
@@ -21,7 +21,7 @@ df2 = pd.DataFrame(
         "B": [2, 9, 5, 2, 21, 3, 5],
         "C": [3, 4, 5, 3, 1, 35, 9],
         "D": [2, 8, 7, 2, 4, 6, 2],
-        "E": [1, 2, 46, 1, 3, 8, 5],
+        "E": [1, 2, 46, 1, 3, 8, 5]
     }
 )
 
@@ -45,7 +45,7 @@ dict_test = {
     "df2_dups": pd.DataFrame(
         np.array([[1, 2, 3, 2, 1]]), columns=["A", "B", "C", "D", "E"]
     ),
-    "Same": False,
+    "Same": False
 }
 
 
@@ -59,7 +59,7 @@ dict_test = {
                     "B": [2, 8, 5, 2, 21, 3, 5],
                     "C": [3, 4, 5, 3, 1, 5, 9],
                     "D": [2, 8, 5, 2, 4, 6, 2],
-                    "E": [1, 2, 6, 1, 3, 5, 5],
+                    "E": [1, 2, 6, 1, 3, 5, 5]
                 }
             ),
             pd.DataFrame(
@@ -68,15 +68,15 @@ dict_test = {
                     "B": [2, 9, 5, 2, 21, 3, 5],
                     "C": [3, 4, 5, 3, 1, 35, 9],
                     "D": [2, 8, 7, 2, 4, 6, 2],
-                    "E": [1, 2, 46, 1, 3, 8, 5],
+                    "E": [1, 2, 46, 1, 3, 8, 5]
                 }
             ),
             ["df1", "df2"],
             True,
             True,
-            dict_test,
+            dict_test
         )
-    ],
+    ]
 )
 def test_compare_BAU(x, y, names, dups, same, expected):
     dict_test1 = compare(x, y, names=["df1", "df2"], dups=True, same=True)
@@ -125,7 +125,7 @@ def test_import_files_BAU_3(strict, subdir, expected):
                     "B": [2, 8, 5, 2, 21, 3, 5],
                     "C": [3, 4, 5, 3, 1, 5, 9],
                     "D": [2, 8, 5, 2, 4, 6, 2],
-                    "E": [1, 2, 6, 1, 3, 5, 5],
+                    "E": [1, 2, 6, 1, 3, 5, 5]
                 }
             ),
             pd.DataFrame(
@@ -134,15 +134,15 @@ def test_import_files_BAU_3(strict, subdir, expected):
                     "B": [2, 9, 5, 2, 21, 3, 5],
                     "C": [3, 4, 5, 3, 1, 35, 9],
                     "D": [2, 8, 7, 2, 4, 6, 2],
-                    "E": [1, 2, 46, 1, 3, 8, 5],
+                    "E": [1, 2, 46, 1, 3, 8, 5]
                 }
             ),
             ["df1", "df2"],
             True,
             True,
-            True,
+            True
         )
-    ],
+    ]
 )
 def test_compare_console(x, y, names, dups, same, comment, capsys):
     dict_test1 = compare(
@@ -191,7 +191,7 @@ def test_compare_console(x, y, names, dups, same, comment, capsys):
             True,
             True,
         )
-    ],
+    ]
 )
 def test_compare_console_2(x, y, names, dups, same, capsys):
     dict_test1 = compare(x, y, names=["df1", "df2"], dups=True, same=True)
