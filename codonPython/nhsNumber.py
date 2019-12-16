@@ -26,16 +26,13 @@ def nhsNumberValidator(number: int) -> bool:
     """
 
     if not isinstance(number, int):
-        raise ValueError(
-            "Please input a positive 10 digit integer to validate.")
+        raise ValueError("Please input a positive 10 digit integer to validate.")
     if number < 0:
-        raise ValueError(
-            "Please input a postitive 10 digit integer to validate.")
+        raise ValueError("Please input a postitive 10 digit integer to validate.")
     digits = [int(digit) for digit in str(number)]
     # NHS Numbers are 10 digits long.
     if not len(digits) == 10:
-        raise ValueError(
-            "Please input a postitive 10 digit integer to validate.")
+        raise ValueError("Please input a postitive 10 digit integer to validate.")
     # Apply weighting to first 9 digits
     weighted_digits = np.dot(np.array(digits[:9]), np.arange(10, 1, -1))
     # Validity is based on the check digit, which has to be equal to `remainder`
@@ -51,7 +48,7 @@ def nhsNumberValidator(number: int) -> bool:
 
 def nhsNumberGenerator(to_generate: int, random_state: int = None) -> list:
     """
-    Generates up to 1M random NHS numbers compliant with modulus 11 checks as recorded 
+    Generates up to 1M random NHS numbers compliant with modulus 11 checks as recorded
     in the data dictonary.
     https://www.datadictionary.nhs.uk/data_dictionary/attributes/n/nhs/nhs_number_de.asp?shownav=1
 
@@ -76,13 +73,11 @@ def nhsNumberGenerator(to_generate: int, random_state: int = None) -> list:
     if random_state:
         random.seed(random_state)
     if not isinstance(to_generate, int):
-        raise ValueError(
-            "Please input a positive integer to generate numbers.")
+        raise ValueError("Please input a positive integer to generate numbers.")
     if to_generate > 1000000:
         raise ValueError("More than one million values requested")
     if to_generate < 0:
-        raise ValueError(
-            "Please input a postitive integer to generate numbers.")
+        raise ValueError("Please input a postitive integer to generate numbers.")
 
     generated = []
     while len(generated) < to_generate:

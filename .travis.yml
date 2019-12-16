@@ -10,6 +10,7 @@ install:
 
 script:
  - pytest --cov=./
+ - flake8 codonPython
 
 after_success:
   - codecov

@@ -1,4 +1,4 @@
-def suppress_value(valuein: int, rc: str = '*', upper: int = 100000000)->str:
+def suppress_value(valuein: int, rc: str = "*", upper: int = 100000000) -> str:
     """
     Suppress values less than or equal to 7, round all non-national values.
 
@@ -42,8 +42,7 @@ def suppress_value(valuein: int, rc: str = '*', upper: int = 100000000)->str:
     elif valuein >= 1 and valuein <= 7:
         valueout = rc
     elif valuein > 7 and valuein <= upper:
-        valueout = str(base * round(valuein/base))
+        valueout = str(base * round(valuein / base))
     else:
-        raise ValueError(
-            "The input: {} is greater than: {}.".format(valuein, upper))
+        raise ValueError("The input: {} is greater than: {}.".format(valuein, upper))
     return valueout
