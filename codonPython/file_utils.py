@@ -278,8 +278,8 @@ def compare(x, y, names=["x", "y"], dups=False, same=False, comment=False):
 
     if dups is True:
         try:
-            dict_temp[names[0] + "_dups"] = x[x.duplicated() is True]
-            dict_temp[names[1] + "_dups"] = y[y.duplicated() is True]
+            dict_temp[names[0] + "_dups"] = x[x.duplicated() == True]
+            dict_temp[names[1] + "_dups"] = y[y.duplicated() == True]
         except Exception as ex:
             raise (ex)
     if same is True:
