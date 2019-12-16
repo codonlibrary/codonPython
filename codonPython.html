@@ -192,7 +192,7 @@ representing the relevant 10 year banding.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">age_band_10_years</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">age_band_10_years</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="go">&#39;0-9&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">age_band_10_years</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
 <span class="go">&#39;Age not known&#39;</span>
@@ -220,7 +220,7 @@ representing the relevant 5 year banding.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">age_band_5_years</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">age_band_5_years</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="go">&#39;0-4&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">age_band_5_years</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
 <span class="go">&#39;Age not known&#39;</span>
@@ -255,7 +255,7 @@ global set is presumed to be correct.</p></li>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">check_consistent_measures</span><span class="p">(</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">check_consistent_measures</span><span class="p">(</span>
 <span class="gp">... </span>  <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
 <span class="gp">... </span>    <span class="s2">&quot;Geog&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;National&quot;</span> <span class="p">,</span><span class="s2">&quot;National&quot;</span><span class="p">,</span> <span class="s2">&quot;Region&quot;</span><span class="p">,</span> <span class="s2">&quot;Region&quot;</span><span class="p">,</span> <span class="s2">&quot;Local&quot;</span><span class="p">,</span> <span class="s2">&quot;Local&quot;</span><span class="p">,],</span>
 <span class="gp">... </span>    <span class="s2">&quot;measure&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m2&quot;</span><span class="p">,</span> <span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m2&quot;</span><span class="p">,</span> <span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m2&quot;</span><span class="p">,],</span>
@@ -304,7 +304,7 @@ except national.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">check_consistent_submissions</span><span class="p">(</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">check_consistent_submissions</span><span class="p">(</span>
 <span class="gp">... </span>  <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
 <span class="gp">... </span>    <span class="s2">&quot;Geog&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;N&quot;</span> <span class="p">,</span><span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="s2">&quot;Region&quot;</span><span class="p">,</span> <span class="s2">&quot;Region&quot;</span><span class="p">,</span> <span class="s2">&quot;Local&quot;</span><span class="p">,</span> <span class="s2">&quot;Local&quot;</span><span class="p">,],</span>
 <span class="gp">... </span>    <span class="s2">&quot;measure&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m2&quot;</span><span class="p">,</span> <span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m2&quot;</span><span class="p">,</span> <span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m2&quot;</span><span class="p">,],</span>
@@ -358,7 +358,7 @@ from the numerator and denominator.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">check_nat_val</span><span class="p">(</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">check_nat_val</span><span class="p">(</span>
 <span class="gp">... </span>  <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
 <span class="gp">... </span>    <span class="s2">&quot;Breakdown&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;National&#39;</span><span class="p">,</span> <span class="s1">&#39;CCG&#39;</span><span class="p">,</span> <span class="s1">&#39;CCG&#39;</span><span class="p">,</span> <span class="s1">&#39;Provider&#39;</span><span class="p">,</span> <span class="s1">&#39;Provider&#39;</span><span class="p">,</span>
 <span class="gp">... </span><span class="s1">&#39;National&#39;</span> <span class="p">,</span><span class="s1">&#39;CCG&#39;</span><span class="p">,</span> <span class="s1">&#39;CCG&#39;</span><span class="p">,</span> <span class="s1">&#39;Provider&#39;</span><span class="p">,</span> <span class="s1">&#39;Provider&#39;</span><span class="p">,</span><span class="s1">&#39;National&#39;</span> <span class="p">,</span><span class="s1">&#39;CCG&#39;</span><span class="p">,</span> <span class="s1">&#39;CCG&#39;</span><span class="p">,</span>
@@ -401,7 +401,8 @@ from the numerator and denominator.</p>
 <dt id="codonPython.check_null.check_null">
 <code class="sig-prename descclassname">codonPython.check_null.</code><code class="sig-name descname">check_null</code><span class="sig-paren">(</span><em class="sig-param">dataframe: pandas.core.frame.DataFrame</em>, <em class="sig-param">columns_to_be_checked: list</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#codonPython.check_null.check_null" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks a pandas dataframe for null values</p>
-<p>This function takes a pandas dataframe supplied as an argument and returns a integer value representing any null values found within the columns to check</p>
+<p>This function takes a pandas dataframe supplied as an argument and returns a integer value
+representing any null values found within the columns to check.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -417,7 +418,7 @@ from the numerator and denominator.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">check_null</span><span class="p">(</span><span class="n">dataframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;col1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;col2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]}),</span><span class="n">columns_to_be_checked</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;col1&#39;</span><span class="p">,</span> <span class="s1">&#39;col2&#39;</span><span class="p">])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">check_null</span><span class="p">(</span><span class="n">dataframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;col1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;col2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]}),</span><span class="n">columns_to_be_checked</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;col1&#39;</span><span class="p">,</span> <span class="s1">&#39;col2&#39;</span><span class="p">])</span>
 <span class="go">0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">check_null</span><span class="p">(</span><span class="n">dataframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;col1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="n">numpy</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span> <span class="s1">&#39;col2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]}),</span><span class="n">columns_to_be_checked</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;col1&#39;</span><span class="p">])</span>
 <span class="go">1</span>
@@ -445,7 +446,7 @@ years 1900-9999. Leap year support included.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">validDate</span><span class="p">(</span><span class="s2">&quot;11/02/1996&quot;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">validDate</span><span class="p">(</span><span class="s2">&quot;11/02/1996&quot;</span><span class="p">)</span>
 <span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">validDate</span><span class="p">(</span><span class="s2">&quot;29/02/2016&quot;</span><span class="p">)</span>
 <span class="go">True</span>
@@ -542,11 +543,11 @@ default = False</p></li>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">file_search</span><span class="p">(</span><span class="n">doctype</span> <span class="o">=</span> <span class="s1">&#39;md&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">file_search</span><span class="p">(</span><span class="n">doctype</span> <span class="o">=</span> <span class="s1">&#39;md&#39;</span><span class="p">)</span>
 <span class="go">[&#39;README.md&#39;, &#39;CONTRIBUTING.md&#39;]</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">file_search</span><span class="p">(</span><span class="n">doctype</span> <span class="o">=</span> <span class="s1">&#39;md&#39;</span><span class="p">,</span> <span class="n">like</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;READ&#39;</span><span class="p">])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">file_search</span><span class="p">(</span><span class="n">doctype</span> <span class="o">=</span> <span class="s1">&#39;md&#39;</span><span class="p">,</span> <span class="n">like</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;READ&#39;</span><span class="p">])</span>
 <span class="go">[&#39;README.md&#39;]</span>
 </pre></div>
 </div>
@@ -661,7 +662,7 @@ in the data dictonary.
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nhsNumberGenerator</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nhsNumberGenerator</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="go">[8429141456, 2625792787]</span>
 </pre></div>
 </div>
@@ -684,7 +685,7 @@ in the data dictonary.
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nhsNumberValidator</span><span class="p">(</span><span class="mi">8429141456</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nhsNumberValidator</span><span class="p">(</span><span class="mi">8429141456</span><span class="p">)</span>
 <span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nhsNumberValidator</span><span class="p">(</span><span class="mi">8429141457</span><span class="p">)</span>
 <span class="go">False</span>
@@ -719,7 +720,7 @@ All other values will be rounded to the nearest 5.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">suppress_value</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">suppress_value</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="go">&#39;*&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">suppress_value</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span>
 <span class="go">&#39;25&#39;</span>
@@ -818,7 +819,7 @@ a second degree polynomial to the data and return both sets of results.</p></li>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">check_tolerance</span><span class="p">(</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">check_tolerance</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">t</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1001</span><span class="p">,</span><span class="mi">1002</span><span class="p">,</span><span class="mi">1003</span><span class="p">,</span><span class="mi">1004</span><span class="p">,</span><span class="mi">1005</span><span class="p">,</span><span class="mi">1006</span><span class="p">]),</span>
 <span class="gp">... </span>    <span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mf">4.5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mf">5.1</span><span class="p">]),</span>
 <span class="gp">... </span>    <span class="n">to_exclude</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
