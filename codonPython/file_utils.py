@@ -161,7 +161,7 @@ def import_files(
                             ] = pd.read_excel(name, sheet_name=sheet)
                             print("\rFile " + k + " is successfully imported")
                     except Exception as ex:
-                        raise(ex)
+                        raise (ex)
     else:
         for file in os.listdir(path):
             b = any(x in file for x in like)
@@ -180,7 +180,7 @@ def import_files(
                         dict_files[k] = pd.read_excel(name, sheet_name=sheet)
                         print("\rFile " + k + " is successfully imported")
                 except Exception as ex:
-                    raise(ex)
+                    raise (ex)
 
     return dict_files
 
@@ -265,7 +265,7 @@ def compare(x, y, names=["x", "y"], dups=False, same=False, comment=False):
             x.drop_duplicates(), y.drop_duplicates(), how="inner"
         )
     except Exception as ex:
-        raise(ex)
+        raise (ex)
     try:
         dict_temp[names[0] + "_not_" + names[1]] = pd.concat(
             [x, dict_temp["same_values"]], ignore_index=True
@@ -274,14 +274,14 @@ def compare(x, y, names=["x", "y"], dups=False, same=False, comment=False):
             [y, dict_temp["same_values"]], ignore_index=True
         ).drop_duplicates(keep=False)
     except Exception as ex:
-        raise(ex)
+        raise (ex)
 
     if dups is True:
         try:
             dict_temp[names[0] + "_dups"] = x[x.duplicated() is True]
             dict_temp[names[1] + "_dups"] = y[y.duplicated() is True]
         except Exception as ex:
-            raise(ex)
+            raise (ex)
     if same is True:
         try:
             if (x.shape == y.shape) & (x.shape == dict_temp["same_values"].shape):
@@ -289,7 +289,7 @@ def compare(x, y, names=["x", "y"], dups=False, same=False, comment=False):
             else:
                 dict_temp["Same"] = False
         except Exception as ex:
-            raise(ex)
+            raise (ex)
     try:
         if comment is True:
             print(
@@ -327,6 +327,6 @@ def compare(x, y, names=["x", "y"], dups=False, same=False, comment=False):
                     s = "not the same"
                 print("DataFrames are " + s)
     except Exception as ex:
-        raise(ex)
+        raise (ex)
 
     return dict_temp

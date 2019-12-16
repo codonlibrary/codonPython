@@ -194,10 +194,11 @@ def test_compare_console(x, y, names, dups, same, comment, capsys):
     ],
 )
 def test_compare_console_2(x, y, names, dups, same, capsys):
+    dict_test1 = compare(x, y, names=["df1", "df2"], dups=True, same=True)
     captured = capsys.readouterr()
     assert (
         captured.out
-        == """Unable to identify same values\nUnable to find outliers\n
+        == """Unable to identify same values\nUnable to find outliers
         Unable to determine whether the Dataframes are the same\n"""
     )
 
