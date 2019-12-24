@@ -1,5 +1,6 @@
 ''' Author(s): Sam Hollings
-Desc: This module contains various functions to decode reference data into a description, which will be widely used across projects.
+Desc: This module contains various functions to decode reference data into a description, which will be widely used
+across projects.
 Contents:
     ref_decode()
     org_col()
@@ -7,17 +8,13 @@ Contents:
     icd10_col()
     dss_org_api()
     ICD10_lkp()
-    SNO_lkp()
-'''
+    SNO_lkp()'''
 
-import numpy as np
 import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-from SQL_connections import conn_DSS, conn_DSS2016UAT
+from codonPython.SQL_connections import conn_DSS, conn_DSS2016UAT
 
-''''Main Function'''
-def ref_decode(df, org_cols=[], sno_cols=[], icd10_cols=[], conn=conn_DSS2016UAT()):
+'''Main Function'''
+def ref_decode(df, org_cols=[], sno_cols=[], icd10_cols=[], org_lkp=None, sno_lkp=None, icd10_lkp=None, conn=conn_DSS2016UAT()):
     '''Converts the org codes, SNOMED codes and ICD10 codes in the supplied columns of the supplied 
     dataframe into the corresponding names/descriptions.
     Inputs:
@@ -38,12 +35,13 @@ def ref_decode(df, org_cols=[], sno_cols=[], icd10_cols=[], conn=conn_DSS2016UAT
     '''
     df_decoded = df.copy()
     if org_cols != []:
-        df_decoded = org_col(df_decoded,org_cols,conn=conn)
+        df_decoded = org_col(df_decoded, org_cols, conn=conn)
     if sno_cols != []:
-        df_decoded = sno_col(df_decoded,sno_cols,conn=conn)
+        df_decoded = sno_col(df_decoded, sno_cols, conn=conn)
     if icd10_cols != []:
-        df_decoded = icd10_col(df_decoded,icd10_cols,conn=conn)
+        df_decoded = icd10_col(df_decoded, icd10_cols, conn=conn)
     return df_decoded
+
 
 '''Sub functions'''
 def org_col(df, column_list, org_lkp=None, conn=conn_DSS2016UAT()):
@@ -60,18 +58,18 @@ def org_col(df, column_list, org_lkp=None, conn=conn_DSS2016UAT()):
         submitted df with additional columns called column+"_name" with corresponding organisation code names
     '''
     # handle single values
-    if type(column_list) != type([]):
-        column_list = [column_list]    
-    # get the org_Code lookup
+    if type(column_list) != list:
+        column_list = [column_list]
+        # get the org_Code lookup
     if org_lkp is None:
-        df_org_lkp = dss_org_api(conn=conn).set_index('OrganisationId')['Name']  # this allows us to pull names easily
+        org_lkp = dss_org_api(conn=conn).set_index('OrganisationId')['Name']  # this allows us to pull names easily
     # join the columns on
     df_out = df.copy()
     for column in column_list:
-        df_out = df_out.join(df_org_lkp, on=column).rename(columns={'Name': column + '_name'})
+        df_out = df_out.join(org_lkp, on=column).rename(columns={'Name': column + '_name'})
     return df_out
 
-def sno_col(df, column_list,df_sno_lkp=None, conn=conn_DSS2016UAT()):
+def sno_col(df, column_list, df_sno_lkp=None, conn=conn_DSS2016UAT()):
     '''Desc: Converts column of SNOMED codes into SNOMED descriptions (TERMs) using DSS SNOMED tables.
     inputs:
     -------
@@ -85,11 +83,13 @@ def sno_col(df, column_list,df_sno_lkp=None, conn=conn_DSS2016UAT()):
         submitted df with additional columns called column+"_desc" with corresponding SNOMED TERMS
     '''
     # handle single values
-    if type(column_list) == type([]):
+    if type(column_list) != list:
         column_list = [column_list]
     if df_sno_lkp is None:
         df_sno_lkp = SNO_lkp(conn=conn).set_index('CONCEPT_ID')
     df_out = df.copy()
+
+    print(df[column_list])
     for column in column_list:
         print('sno_col: ', column)
         df_out = df_out.join(df_sno_lkp, on=column).rename(columns={'TERM': column + '_desc'})
@@ -120,7 +120,7 @@ def icd10_col(df, column_list, fourchar=False, df_icd10_lkp=None, conn=conn_DSS2
     df_out = df.copy()
     for column in column_list:
         df_out = (df_out.join(df_icd10_lkp, on=column, how='left')
-                        .rename(columns={'ICD10_DESCRIPTION': column + '_desc'}))
+                  .rename(columns={'ICD10_DESCRIPTION': column + '_desc'}))
     return df_out
 
 
@@ -154,7 +154,7 @@ def dss_org_api(conn=conn_DSS2016UAT()):
     return df_dss_org
 
 
-def ICD10_lkp(, conn=conn_DSS2016UAT()):
+def ICD10_lkp(conn=conn_DSS2016UAT()):
     '''Desc: Creates and returns pd.DataFrame of ICD10 codes [CODE] and associated descriptions [ICD10_DESCRIPTION]'''
     ICD10_sql = """SELECT [DSS_KEY]
           ,[CODE]
@@ -201,5 +201,5 @@ def SNO_lkp(conn=conn_DSS2016UAT()):
                     on sno.CONCEPT_ID = maxid.CONCEPT_ID and sno.ID = maxid.ID
                 ORDER BY CONCEPT_ID
                 '''
-    df_SNO = pd.read_sql_query(SNO_sql,conn)
+    df_SNO = pd.read_sql_query(SNO_sql, conn)
     return df_SNO
