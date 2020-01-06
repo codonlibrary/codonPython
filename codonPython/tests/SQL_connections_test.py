@@ -3,11 +3,11 @@
 from codonPython import SQL_connections
 import pandas as pd
 import pytest
-import SQL_connections as conn 
+import codonPython.SQL_connections as conn
 
 @pytest.mark.parametrize("connection", 
 			 [conn.conn_DSS(),
-			  conn.conn_DSS2016UAT
+			  conn.conn_DSS2016UAT()
 			 ])
 def test_SELECT1(connection):
 	sql = """SELECT 1 as [Code], 'Test' as [Name]"""
