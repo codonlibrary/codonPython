@@ -1,6 +1,6 @@
 # How to contribute
 
-First off, thank you for taking the time to contribute! If you have a functionality that you would like to see in codon, we have a few standards and guidelines so we can merge your pull request quicker.
+First off, thank you for taking the time to contribute! If you have a functionality that you would like to see in codon, we have a few standards and guidelines so we can merge your pull request quicker. We are looking for functions and/or classes which are useful for workflows used in DIS specifically. Bare scripts can't be implemented in the package.
 
 ## Basic idea
 
@@ -33,6 +33,10 @@ Start reading our code to get a feel for it but most importantly, remember that 
 * We use [PEP8](https://www.python.org/dev/peps/pep-0008/). Autoformatters for PEP8, for instance [autopep8](https://pypi.org/project/autopep8/), can easily ensure compliance.
 * We use docstrings and we try to (loosely) follow [`numpy`'s docstring standards](https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard).
 * This is open source software. Consider the people who will read your code, and make it look nice for them.
+
+## Tests
+
+We do ask that you include some basic tests with your contributions. While the logic of your contribution is important, some basic unit tests to verify functionality and data types for the inputs are requested, for a baseline level of assurance and 'elegant failing'.
 
 ## Code of Conduct
 

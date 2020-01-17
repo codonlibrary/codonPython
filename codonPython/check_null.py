@@ -1,11 +1,13 @@
 import numpy
 import pandas as pd
 
+
 def check_null(dataframe: pd.DataFrame, columns_to_be_checked: list) -> int:
     """
     Checks a pandas dataframe for null values
 
-    This function takes a pandas dataframe supplied as an argument and returns a integer value representing any null values found within the columns to check
+    This function takes a pandas dataframe supplied as an argument and returns a integer value
+    representing any null values found within the columns to check.
 
     Parameters
     ----------
@@ -29,14 +31,12 @@ def check_null(dataframe: pd.DataFrame, columns_to_be_checked: list) -> int:
 
     if not isinstance(columns_to_be_checked, list):
         raise ValueError("Please make sure that all your columns passed are strings")
-    else:
-        pass
 
     for eachCol in columns_to_be_checked:
         if eachCol not in dataframe.columns:
-            raise KeyError("Please check the column names correspond to values in the DataFrame.")
-        else:
-            pass
+            raise KeyError(
+                "Please check the column names correspond to values in the DataFrame."
+            )
 
     null_count = 0
     for eachColumn in columns_to_be_checked:
