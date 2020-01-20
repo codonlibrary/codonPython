@@ -31,7 +31,3 @@ def conn_dummy(path=r''):
     conn = create_engine(r'{0}{1}'.format(conn_string, path))
 
     return conn
-
-
-
-
