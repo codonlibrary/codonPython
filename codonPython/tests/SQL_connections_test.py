@@ -4,11 +4,12 @@ import pandas as pd
 import pytest
 import codonPython.SQL_connections as conn
 
+
 @pytest.mark.parametrize("connection", 
-			 [conn.conn_DSS(),
-			  conn.conn_DSS2016UAT()
-			 ])
+                        [conn.conn_dummy(),
+                        conn.conn_dummy('test.db')
+                        ])
 def test_SELECT1(connection):
-	result = pd.read_sql("""SELECT 1 as [Code], 'Test' as [Name]""", connection).iloc[0,0]
-	expected = pd.DataFrame([{'Code': 1, 'Name' : 'Test'}]).iloc[0,0]
-	assert result == expected
+    result = pd.read_sql("""SELECT 1 as [Code], 'Test' as [Name]""", connection).iloc[0,0]
+    expected = pd.DataFrame([{'Code': 1, 'Name' : 'Test'}]).iloc[0,0]
+    assert result == expected
