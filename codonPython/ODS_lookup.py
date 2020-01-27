@@ -52,7 +52,8 @@ def get_addresses(codes: Iterable[str]) -> pd.DataFrame:
 
     Examples
     ---------
-    >>> get_addresses(pd.Series(["X26"]))
+    >>> result = get_addresses(pd.Series(["X26"]))
+    >>> result.reindex(columns=sorted(result.columns))
               Org_AddrLn1 Org_Code Org_Country     Org_Name Org_PostCode Org_Town
     0  1 TREVELYAN SQUARE      X26     ENGLAND  NHS Digital      LS1 6AE    LEEDS
     """
