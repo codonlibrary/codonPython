@@ -4,8 +4,9 @@ import pandas as pd
 import numpy as np
 
 
-def query_api(code: str) -> Dict:
-    """Query the ODS API for a single org code and return the full JSON result. Full API docs can be found here:
+def query_ods_api(code: str) -> Dict:
+    """Query the ODS (organisation data service) API for a single org code
+    and return the full JSON result. Full API docs can be found here:
     https://digital.nhs.uk/services/organisation-data-service/guidance-for-developers/organisation-endpoint
 
     Parameters
@@ -17,6 +18,14 @@ def query_api(code: str) -> Dict:
     ----------
     dict
         The data returned from the API.
+
+    Examples
+    ---------
+    >>> result = query_ods_api("X26")
+    >>> result["Organisation"]["Name"]
+    'NHS DIGITAL'
+    >>> result["Organisation"]["GeoLoc"]["Location"]["AddrLn1"]
+    '1 TREVELYAN SQUARE'
     """
     if not isinstance(code, str):
         raise ValueError(f"ODS code must be a string, received {type(code)}")
@@ -34,8 +43,8 @@ def query_api(code: str) -> Dict:
 
 
 def get_addresses(codes: Iterable[str]) -> pd.DataFrame:
-    """Query the ODS API for a series of org codes and return
-    a data frame containing names and addresses.
+    """Query the ODS (organisation data service) API for a series of
+    org codes and return a data frame containing names and addresses.
     Invalid codes will cause a message to be printed but will
     otherwise be ignored, as an incomplete merge table is more
     useful than no table at all.
@@ -71,6 +80,7 @@ def get_addresses(codes: Iterable[str]) -> pd.DataFrame:
         }
         return result
 
+    # Remove duplicate values
     to_query = set(codes)
     if np.nan in to_query:
         # 'NaN' is actually a valid code but we don't want it for null values
@@ -79,7 +89,7 @@ def get_addresses(codes: Iterable[str]) -> pd.DataFrame:
     result = []
     for code in to_query:
         try:
-            api_result = query_api(code)
+            api_result = query_ods_api(code)
             result.append(extract_data(api_result, code))
         except ValueError as e:
             print(f"No result for ODS code {code}. {e}")
