@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 
 
-def query_ods_api(code: str) -> Dict:
+def query_api(code: str) -> Dict:
     """Query the ODS (organisation data service) API for a single org code
     and return the full JSON result. Full API docs can be found here:
     https://digital.nhs.uk/services/organisation-data-service/guidance-for-developers/organisation-endpoint
@@ -21,7 +21,7 @@ def query_ods_api(code: str) -> Dict:
 
     Examples
     ---------
-    >>> result = query_ods_api("X26")
+    >>> result = query_api("X26")
     >>> result["Organisation"]["Name"]
     'NHS DIGITAL'
     >>> result["Organisation"]["GeoLoc"]["Location"]["AddrLn1"]
@@ -89,7 +89,7 @@ def get_addresses(codes: Iterable[str]) -> pd.DataFrame:
     result = []
     for code in to_query:
         try:
-            api_result = query_ods_api(code)
+            api_result = query_api(code)
             result.append(extract_data(api_result, code))
         except ValueError as e:
             print(f"No result for ODS code {code}. {e}")
