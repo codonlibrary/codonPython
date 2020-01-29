@@ -76,6 +76,13 @@ codonPython.nhsNumber module
    :undoc-members:
    :show-inheritance:
 
+codonPython.ODS_lookup module
+----------------------------
+
+.. automodule:: codonPython.ODS_lookup
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 codonPython.suppression module
 ------------------------------

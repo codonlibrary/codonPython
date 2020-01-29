@@ -93,6 +93,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#module-codonPython.file_utils">codonPython.file_utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-codonPython.nhsd_colours">codonPython.nhsd_colours module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-codonPython.nhsNumber">codonPython.nhsNumber module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#codonpython-ods-lookup-module">codonPython.ODS_lookup module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-codonPython.suppression">codonPython.suppression module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-codonPython.tableFromSql">codonPython.tableFromSql module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-codonPython.tolerance">codonPython.tolerance module</a></li>
@@ -689,6 +690,64 @@ in the data dictonary.
 <span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nhsNumberValidator</span><span class="p">(</span><span class="mi">8429141457</span><span class="p">)</span>
 <span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="codonpython-ods-lookup-module">
+<h2>codonPython.ODS_lookup module<a class="headerlink" href="#codonpython-ods-lookup-module" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-codonPython.ODS_lookup"></span><dl class="function">
+<dt id="codonPython.ODS_lookup.get_addresses">
+<code class="sig-prename descclassname">codonPython.ODS_lookup.</code><code class="sig-name descname">get_addresses</code><span class="sig-paren">(</span><em class="sig-param">codes: Iterable[str]</em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="headerlink" href="#codonPython.ODS_lookup.get_addresses" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query the ODS (organisation data service) API for a series of
+org codes and return a data frame containing names and addresses.
+Invalid codes will cause a message to be printed but will
+otherwise be ignored, as an incomplete merge table is more
+useful than no table at all.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>codes</strong> (<em>list</em><em>, </em><em>ndarray</em><em> or </em><em>pd.Series</em>) – 3 character organization codes to retrieve information for.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Address information for the given org codes.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">get_addresses</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;X26&quot;</span><span class="p">]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span>
+<span class="go">          Org_AddrLn1 Org_Code Org_Country     Org_Name Org_PostCode Org_Town</span>
+<span class="go">0  1 TREVELYAN SQUARE      X26     ENGLAND  NHS Digital      LS1 6AE    LEEDS</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="codonPython.ODS_lookup.query_api">
+<code class="sig-prename descclassname">codonPython.ODS_lookup.</code><code class="sig-name descname">query_api</code><span class="sig-paren">(</span><em class="sig-param">code: str</em><span class="sig-paren">)</span> &#x2192; Dict<a class="headerlink" href="#codonPython.ODS_lookup.query_api" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query the ODS (organisation data service) API for a single org code
+and return the full JSON result. Full API docs can be found here:
+<a class="reference external" href="https://digital.nhs.uk/services/organisation-data-service/guidance-for-developers/organisation-endpoint">https://digital.nhs.uk/services/organisation-data-service/guidance-for-developers/organisation-endpoint</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>code</strong> (<em>str</em>) – 3 character organization code.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The data returned from the API.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">query_api</span><span class="p">(</span><span class="s2">&quot;X26&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;Organisation&quot;</span><span class="p">][</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span>
+<span class="go">&#39;NHS DIGITAL&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;Organisation&quot;</span><span class="p">][</span><span class="s2">&quot;GeoLoc&quot;</span><span class="p">][</span><span class="s2">&quot;Location&quot;</span><span class="p">][</span><span class="s2">&quot;AddrLn1&quot;</span><span class="p">]</span>
+<span class="go">&#39;1 TREVELYAN SQUARE&#39;</span>
 </pre></div>
 </div>
 </dd></dl>
