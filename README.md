@@ -7,9 +7,11 @@
 
 ## What is `codon`?
 
-`Codon` is a project working towards creating a code repository to increase code sharing, consistancy and collaboration. The repository contains Python, R and SQL code for ease of use in workflows on platforms such as data bricks. Further information can be found [here.](https://confluence.digital.nhs.uk/display/CON/Codon+-+Code+sharing)
+`Codon` is a project working towards creating a code repository to increase code sharing, consistancy and collaboration. This repository contains python functions for ease of use in workflows, on platforms such as databricks.
 
 ### Why `codon`?
+
+In biological terms, a `codon` is one of the building blocks that make up our DNA. By openly sharing our code we hope that others will be able to take those blocks of code to build their own processes using the data that NHS Digital hold.
 
 **Transparency**: To aline with government data principles and build public trust.
 
@@ -23,21 +25,22 @@
 ## Instillation 
 The package can be directly installed by typing in your terminal: 
 ```r
-python -m pip install --user git+https://github.com/codonlibrary/codonPython.git
+python -m pip install --user git+https://github.com/NHSDigital/codonPython.git
 ```
-For further guidance to clone a local repository to your machine from the remote repository using [GitBash/Command Line.](https://confluence.digital.nhs.uk/display/CON/Installing+codonPython?flashId=685465781)
+For further guidance on cloning a local repository to your machine from the remote repository using GitBash/Command Line see our [Wiki pages.](https://github.com/codonlibrary/codonPython/wiki/2.-Installing-codonPython)
 
 ## Contributing to codonPython
-All new contributions codon are welcome, please follow the Coding Conventions in the [guidance document.](https://github.com/codonlibrary/codonPython/blob/master/CONTRIBUTING.md) for contribution guidance. 
-Any improvements to documentaion, bug fixes or general code enhancments are also welcomed. If a bug is found on the master branch please use the GitHub guidance on raising and [issue.](https://help.github.com/en/github/managing-your-work-on-github/creating-an-issue)
+Any improvements to documentaion, bug fixes or general code enhancments are also welcomed. If a bug is found on the master branch please use the GitHub guidance on raising an [issue.](https://help.github.com/en/github/managing-your-work-on-github/creating-an-issue)
+All new contributions codon are welcome, for contribution guidance and coding conventions please see our [guidance document.](https://github.com/NHSDigital/codonPython/blob/master/CONTRIBUTING.md)  
 
 ## New to GitHub?
-GitHub is a hosting site that allows for development and version control of software using Git. It allows users to edit and develop parts of code independently before submitting back to the master code, whilst using version control to track changes. Beginners introductionary videos to GitHub can be found [here.](https://confluence.digital.nhs.uk/display/CON/GitHub+for+beginners) Quick links to begginer guidance can be found below;
+GitHub is a hosting site that allows for development and version control of software using Git. It allows users to edit and develop parts of code independently before submitting back to the master code, whilst using version control to track changes. Beginners introductionary videos to GitHub can be found [here.](https://github.com/codonlibrary/codonPython/wiki/1.-GitHub-for-Beginners) Quick links to other guidance can be found below;
 
-* [**Cloning a repositor to our local machine using GitBash**](https://confluence.digital.nhs.uk/display/CON/Installing+codonPython)
-* [**Checking out a branch using GitBash**](https://confluence.digital.nhs.uk/display/CON/Checkout+a+Branch+Using+GitBash)
-* [**Removing a Commit from a repository using GitBash**](https://confluence.digital.nhs.uk/display/CON/Information+Governance)
+* [**Cloning a repositor to your local machine**](https://github.com/codonlibrary/codonPython/wiki/3.-Forking-and-Cloning-codonPython)
+* [**Checking out a branch**](https://github.com/codonlibrary/codonPython/wiki/4.-Checkout-a-branch-using-GitBash)
+* [**Removing a Commit from a repository**](https://github.com/codonlibrary/codonPython/wiki/Removing-a-Commit-From-a-GitHub-Repository)
 
-All other `Codon` "How-to Articles" can be found [here](https://confluence.digital.nhs.uk/display/CON/How-to+articles)
+All other `Codon` "How-to Articles" can be found [here](https://github.com/codonlibrary/codonPython/wiki) in the Wiki.
 
+If you would find any additional guidance or How-to articles useful, we welcome any suggestions to our email codon.library@nhs.net 
  
