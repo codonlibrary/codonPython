@@ -5,7 +5,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='codonPython',
-    version='0.2.1',
+    version='0.2.2',
     license='BSD',
     packages=['codonPython', ],
     install_requires=requirements,
