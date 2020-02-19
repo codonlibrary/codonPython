@@ -1,6 +1,8 @@
 # How to contribute
 
-First off, thank you for taking the time to contribute! If you have a functionality that you would like to see in codon, we have a few standards and guidelines so we can merge your pull request quicker. We are looking for functions and/or classes which are useful for workflows used in DIS specifically. Bare scripts can't be implemented in the package.
+First off, thank you for taking the time to contribute! If you have a functionality that you would like to see in codon, we have a few standards and guidelines so we can merge your pull request quicker.
+
+We are looking for functions and/or classes which are useful for workflows used in DIS specifically. Please note bare scripts can't be implemented in the package.
 
 ## Basic idea
 
@@ -14,7 +16,7 @@ We suggest you make sure all of your commits are atomic (one feature per commit)
 
 ## Coding conventions
 
-We use the industry standard [PEP 8](https://www.python.org/dev/peps/pep-0008/) styling guide within the `codonPython` package. **Therefore, it’s imperative that you use the coding standards found within PEP 8 when creating or modifying any code within the `codonPython` package**. Autoformatters for PEP8, for instance [autopep8](https://pypi.org/project/autopep8/), can easily ensure compliance. The reason we use PEP 8 coding standards is to make sure there is a layer of consistency across our codebase. This reduces the number of decisions that you need to make when styling your code, and also makes code easier to read when switching between functions etc.
+We use the industry standard [PEP 8](https://www.python.org/dev/peps/pep-0008/) styling guide within the `codonPython` package. **Therefore, it’s imperative that you use the coding standards found within PEP 8 when creating or modifying any code within the `codonPython` package**. Autoformatters for PEP8, for instance [black](https://black.readthedocs.io/en/stable/), can easily ensure compliance. The reason we use PEP 8 coding standards is to make sure there is a layer of consistency across our codebase. This reduces the number of decisions that you need to make when styling your code, and also makes code easier to read when switching between functions etc.
 
 While you are creating code, we recommend that you understand the style guide standards for the following topics:
 
@@ -30,13 +32,13 @@ We also use docstrings and we try to follow [`numpy`'s docstring standards](http
 
 Start reading our code to get a feel for it but most importantly, remember that this is open source software - consider the people who will read your code, and make it look nice for them.
 
-* We use [PEP8](https://www.python.org/dev/peps/pep-0008/). Autoformatters for PEP8, for instance [autopep8](https://pypi.org/project/autopep8/), can easily ensure compliance.
+* We use [PEP8](https://www.python.org/dev/peps/pep-0008/). Autoformatters for PEP8, for instance [black](https://black.readthedocs.io/en/stable/), can easily ensure compliance.
 * We use docstrings and we try to (loosely) follow [`numpy`'s docstring standards](https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard).
 * This is open source software. Consider the people who will read your code, and make it look nice for them.
 
 ## Tests
 
-We do ask that you include some basic tests with your contributions. While the logic of your contribution is important, some basic unit tests to verify functionality and data types for the inputs are requested, for a baseline level of assurance and 'elegant failing'.
+We do ask that you include some basic tests with your contributions. While the logic of your contribution is important, some basic unit tests to verify functionality and data types for the inputs are requested for a baseline level of assurance and 'elegant failing'.
 
 ## Code of Conduct
 
