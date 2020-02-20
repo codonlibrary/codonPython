@@ -41,10 +41,10 @@ class MESHConnection:
     base_ca_loc : string
         Path to the base MESH certificate authority certificate bundle.
         Set to False to disable inbound SSL checks if necessary
-    root_url : string
+    root_url : string, default = "https://mesh-sync.national.ncrs.nhs.uk"
         Root MESH URL. Default value is the live MESH service
-    org : string
-        Organisation name. Default value NHS Digital
+    org : string, default = "NHS Digital"
+        Name of organisation owning the mailbox
     """
 
     mailbox: str
@@ -64,7 +64,7 @@ class MESHConnection:
         Returns
         ----------
         bool
-            indicates if authentication was successful or not
+            Indicates if authentication was successful or not
         
         Raises
         ----------
@@ -73,7 +73,7 @@ class MESHConnection:
         
         Examples
         ----------
-        >>> client.check_authentication()
+        >>> client.check_authentication() #doctest: +SKIP
         True
         """
         resp = r.post(
@@ -121,23 +121,26 @@ class MESHConnection:
             Path to the readable file to send as a message
         workflow_id : string
             DTS Workflow ID
-        message_subject : string
+        message_subject : string, default = None
             Optional subject line to use for the message, for SMTP (email) messages.
-        message_id : string
+        message_id : string, default = None
             Optional local identifier for the message. Required to track the message later.
-        process_id : string
-            Optional process ID for the MESH message. Currently not used.
-        compress_message : boolean
-            Indicates if the message should be encrypted. If true (default), then the message will be compressed
+        process_id : string, default = None
+            Optional process ID for the MESH message. Currently not used in MESH, but included to ensure
+            future compatibility.
+        compress_message : boolean, default = True
+            Indicates if the message should be compressed. If true, then the message will be compressed
             using gzip before sending to MESH.
-        encrypted : boolean
+        encrypted : boolean, default = False
             Indicates if the file to send has been encrypted. This is solely used to pass a flag to MESH
             and does not encrypt the file or otherwise alter processing.
             
         Returns
         ----------
         dict
-            key 'messageID', holding value of the MESH internal ID assigned to the sent message
+            Dictionary of returned values from the MESH API
+            
+            * messageID (str): value of the MESH internal ID assigned to the sent message
         
         Raises
         ----------
@@ -151,7 +154,7 @@ class MESHConnection:
         
         Examples
         ----------
-        >>> client.send_file("TEST", 'c:/test/test.txt', 'test_flow')
+        >>> client.send_file("TEST", 'c:/test/test.txt', 'test_flow') #doctest: +SKIP
         {'messageID': '20200211115928515346_9359E2'}
         """
         with open(message_location, "rb") as file:
@@ -197,23 +200,26 @@ class MESHConnection:
             Original filename for the message being transmitted
         workflow_id : string
             DTS Workflow ID
-        message_subject : string
+        message_subject : string, default = None
             Optional subject line to use for the message, for SMTP (email) messages.
-        message_id : string
+        message_id : string, default = None
             Optional local identifier for the message. Required to track the message later.
-        process_id : string
-            Optional process ID for the MESH message. Currently not used.
-        compress_message : boolean
-            Indicates if the message should be encrypted. If true (default), then the message will be compressed
+        process_id : string, default = None
+            Optional process ID for the MESH message. Currently not used in MESH, but included to ensure
+            future compatibility.
+        compress_message : boolean, default = True
+            Indicates if the message should be compressed. If true, then the message will be compressed
             using gzip before sending to MESH.
-        encrypted : boolean
-            Indicates if the message being sent has been encrypted. This is solely used to pass a flag to MESH
-            and does not encrypt the message or otherwise alter processing.
+        encrypted : boolean, default = False
+            Indicates if the file to send has been encrypted. This is solely used to pass a flag to MESH
+            and does not encrypt the file or otherwise alter processing.
             
         Returns
         ----------
         dict
-            key 'messageID', holding value of the MESH internal ID assigned to the sent message
+            Dictionary of returned values from the MESH API
+            
+            * messageID (str): value of the MESH internal ID assigned to the sent message
         
         Raises
         ----------
@@ -227,7 +233,7 @@ class MESHConnection:
         
         Examples
         ----------
-        >>> client.send_message("TEST", b'test', 'test.txt', 'test_flow')
+        >>> client.send_message("TEST", b'test', 'test.txt', 'test_flow') #doctest: +SKIP
         {'messageID': '20200211115928515346_9359E2'}
         """
         checksum = md5(message).hexdigest()
@@ -278,7 +284,7 @@ class MESHConnection:
                 raise MESHUnknownError
             message_id = resp.json()["messageID"]
             for chunk in range(2, ceil(len(message) / 80000000) + 1):
-                self.send_message_chunk(
+                self._send_message_chunk(
                     message_id=message_id,
                     message_chunk=message[(chunk - 1) * 80000000 : chunk * 80000000],
                     chunk_no=chunk,
@@ -302,7 +308,7 @@ class MESHConnection:
 
         return resp.json()
 
-    def send_message_chunk(
+    def _send_message_chunk(
         self,
         message_id: str,
         message_chunk: bytes,
@@ -324,8 +330,8 @@ class MESHConnection:
             The number of the chunk to upload
         chunk_range : integer
             How many chunks there are to upload in total
-        compressed : boolean
-            Default True. Is the message compressed?
+        compressed : boolean, default = True
+            Is the message compressed?
         
         Raises
         ----------
@@ -337,7 +343,7 @@ class MESHConnection:
         
         Examples
         ----------
-        >>> client.send_message_chunk("20200211115754892283_BC7B68", b'test', 2)
+        >>> client._send_message_chunk("20200211115754892283_BC7B68", b'test', 2) #doctest: +SKIP
         """
         headers = {
             "Authorization": generate_authorization(
@@ -381,14 +387,14 @@ class MESHConnection:
         MESHAuthenticationError
             There was an authentication error accessing this page. Either the SSL certificate used is invalid,
             or the client provided the wrong Mailbox ID, Password, or Shared Key.
-        MESHMultiplematches
+        MESHMultipleMatches
             There are multiple messages in the outbox with this local ID
         MESHUnknownError
             There was an unexpected return status from the MESH API
         
         Examples
         ----------
-        >>> client.check_message_status(test)
+        >>> client.check_message_status(test) #doctest: +SKIP
         {"statusSuccess": ...}
         """
         resp = r.get(
@@ -415,6 +421,83 @@ class MESHConnection:
             raise MESHUnknownError
         return resp.json()
 
+    def check_inbox(self) -> list:
+        """
+        Determine the MESH IDs of the contents of the inbox.
+        This will return at most 500 entries, owing to the limitations of the API.
+        
+        Returns
+        ----------
+        list
+            The MESH IDs of the messages in the inbox (str)
+        
+        Raises
+        ----------
+        MESHAuthenticationError
+            There was an authentication error accessing this page. Either the SSL certificate used is invalid,
+            or the client provided the wrong Mailbox ID, Password, or Shared Key.
+        MESHUnknownError
+            There was an unexpected return status from the MESH API
+        
+        Examples
+        ----------
+        >>> client.check_inbox() #doctest: +SKIP
+        ["20200211115754892283_BC7B68", "20200211115928515346_9359E2"]
+        """
+        resp = r.get(
+            url=f"{self.root_url}/messageexchange/{self.mailbox}/inbox",
+            headers={
+                "Authorization": generate_authorization(
+                    self.mailbox, self.password, self.api_shared_key
+                )
+            },
+            cert=(self.cert_loc, self.key_loc),
+            verify=self.base_ca_loc,
+        )
+        if resp.status_code == 403:
+            raise MESHAuthenticationError
+        if resp.status_code != 200:
+            raise MESHUnknownError
+        return resp.json()["messages"]
+
+    def check_inbox_count(self) -> int:
+        """
+        Determine how many messages are in the MESH mailbox to download.
+        
+        Returns
+        ----------
+        int
+            The number of messages ready to download
+        
+        Raises
+        ----------
+        MESHAuthenticationError
+            There was an authentication error accessing this page. Either the SSL certificate used is invalid,
+            or the client provided the wrong Mailbox ID, Password, or Shared Key.
+        MESHUnknownError
+            There was an unexpected return status from the MESH API
+        
+        Examples
+        ----------
+        >>> client.check_inbox_count() #doctest: +SKIP
+        2
+        """
+        resp = r.get(
+            url=f"{self.root_url}/messageexchange/{self.mailbox}/count",
+            headers={
+                "Authorization": generate_authorization(
+                    self.mailbox, self.password, self.api_shared_key
+                )
+            },
+            cert=(self.cert_loc, self.key_loc),
+            verify=self.base_ca_loc,
+        )
+        if resp.status_code == 403:
+            raise MESHAuthenticationError
+        if resp.status_code != 200:
+            raise MESHUnknownError
+        return resp.json()["count"]
+
     def check_and_download(
         self, save_folder: str = None, recursive: bool = True
     ) -> Union[Generator[dict, None, None], None]:
@@ -436,33 +519,32 @@ class MESHConnection:
         
         Parameters
         ----------
-        save_folder : string
-            The folder to save the downloaded messages to. If None (default), then the files are not saved.
-            The generator will only yield outputs if save_folder is not provided
-        recursive : boolean
-            If there are more than 500 messages in the inbox, should the method call itself recursively until the inbox
-            is empty? The MESH API will only yield the first 500 messages in a call to fetch inbox contents; if set,
-            this flag will ensure all messages are handled, if unset then the first 500 will be handled.
+        save_folder : string, default = None
+            If provided, the folder to save all downloaded files to when this function is called. The function
+            will not yield intermediate results.
+
+            * For data files, the file will be saved in this folder with its original filename.
+            * For non-delivery reports, there will be a file created in the folder with filename
+              'Non delivery report: (MESH message ID of failed delivery).txt', and with
+              content 'Message not delivered. All known details below' followed by the full
+              dictionary of headers from the download response.
+              
+            If not provided, then this function will instead yield results as documented below.
+        recursive : boolean, default = True
+            If true, then this method will be called recursively so long as there are more than 500 messages in the inbox,
+            the maximum number of messages the MESH API will provide IDs for at once. If false, then only one call will be
+            made to retrieve inbox contents, and at most 500 messages will be downloaded.
         
         Yields
         ----------
         dict
-            If the message is a non delivery report, then the dict will have the key 'Non-Delivery',
-                with value a dictionary of all message headers
-            If the message is a data message, then the dict will have key equal to the FILENAME of
-                the original file (as given by the Mex-FileName header), with value a dictionary with keys
-                data (containing the bytes value of the message) and headers (containing all headers)
+            Dictionary of details about the downloaded file.
             
-        Side Effects
-        ----------
-        For each message in the inbox,
-        If the message is a non delivery report, then a file will be written to save_folder (if provided),
-            with filename 'Non delivery report: (MESH message ID of failed delivery).txt', and with
-            content 'Message not delivered. All known details below' followed by the full dictionary of
-            headers from the download response
-        If the message is a data message, then a file will be written to save_folder (if provided), with
-            filename set to the FILENAME of the original file (as given by the Mex-FileName header), and
-            content the (potentially reconstructed and/or decompressed) message body.
+            * filename (str): Filename of the original file (if provided).
+            * contents (bytes): Contents of the file (reconstructed and decompressed if necessary).
+            * headers (dict): Dictionary of headers returned by MESH on the initial download request.
+              For full details see the MESH API documentation.
+            * datafile (boolean): Indicates if this was a data file or a non-delivery report.
         
         Raises
         ----------
@@ -479,11 +561,12 @@ class MESHConnection:
         
         Examples
         ----------
-        >>> client.check_and_download("C:/Test Folder/")
-        >>> for message in client.check_and_download():
-        >>>     print(message)
-        {'test.txt': b'test_message'}
-        {'test2.txt': b'test_message_2'}
+        >>> client.check_and_download("C:/Test Folder/") #doctest: +SKIP
+        >>> for message in client.check_and_download(): #doctest: +SKIP
+        >>>     print(message) #doctest: +SKIP
+        {'filename': 'test.txt', 'contents': b'test_message', 'headers': {'Mex-Filename': 'test.txt', ...}, datafile: True}
+        {'filename': 'test2.txt', 'contents': b'test_message_2', 'headers': {'Mex-Filename': 'test.txt', ...}, datafile: True}
+        {'filename': None, 'contents': b'', 'headers': {'LinkedMessageId': '1234567890', ...}, datafile: False}
         """
         if save_folder is None:
             return self._check_download_generator(recursive)
@@ -541,83 +624,6 @@ class MESHConnection:
         if exceptions:
             raise MESHDownloadErrors(exceptions)
 
-    def check_inbox(self) -> list:
-        """
-        Determine the MESH IDs of the contents of the inbox.
-        This will return at most 500 entries, owing to the limitations of the API.
-        
-        Returns
-        ----------
-        list
-            The MESH IDs of the messages in the inbox
-        
-        Raises
-        ----------
-        MESHAuthenticationError
-            There was an authentication error accessing this page. Either the SSL certificate used is invalid,
-            or the client provided the wrong Mailbox ID, Password, or Shared Key.
-        MESHUnknownError
-            There was an unexpected return status from the MESH API
-        
-        Examples
-        ----------
-        >>> client.check_inbox()
-        ["20200211115754892283_BC7B68", "20200211115928515346_9359E2"]
-        """
-        resp = r.get(
-            url=f"{self.root_url}/messageexchange/{self.mailbox}/inbox",
-            headers={
-                "Authorization": generate_authorization(
-                    self.mailbox, self.password, self.api_shared_key
-                )
-            },
-            cert=(self.cert_loc, self.key_loc),
-            verify=self.base_ca_loc,
-        )
-        if resp.status_code == 403:
-            raise MESHAuthenticationError
-        if resp.status_code != 200:
-            raise MESHUnknownError
-        return resp.json()["messages"]
-
-    def check_inbox_count(self) -> int:
-        """
-        Determine how many messages are in the MESH mailbox to download.
-        
-        Returns
-        ----------
-        int
-            The number of messages ready to download
-        
-        Raises
-        ----------
-        MESHAuthenticationError
-            There was an authentication error accessing this page. Either the SSL certificate used is invalid,
-            or the client provided the wrong Mailbox ID, Password, or Shared Key.
-        MESHUnknownError
-            There was an unexpected return status from the MESH API
-        
-        Examples
-        ----------
-        >>> client.check_inbox_count()
-        2
-        """
-        resp = r.get(
-            url=f"{self.root_url}/messageexchange/{self.mailbox}/count",
-            headers={
-                "Authorization": generate_authorization(
-                    self.mailbox, self.password, self.api_shared_key
-                )
-            },
-            cert=(self.cert_loc, self.key_loc),
-            verify=self.base_ca_loc,
-        )
-        if resp.status_code == 403:
-            raise MESHAuthenticationError
-        if resp.status_code != 200:
-            raise MESHUnknownError
-        return resp.json()["count"]
-
     def download_message(self, message_id: str, save_folder: str = None) -> dict:
         """
         Request a message from the MESH API.
@@ -630,27 +636,25 @@ class MESHConnection:
         ----------
         message_id : string
             The internal MESH ID of the message to download
-        save_folder : string
-            The folder to save the downloaded message to. If None (default), then the files are not saved.
+        save_folder : string, default = None
+            Optional, the folder to save the downloaded message to. If not provided, then the files are not saved.
+            
+            * For data files, the file will be saved in this folder with its original filename.
+            * For non-delivery reports, there will be a file created in the folder with filename
+              'Non delivery report: (MESH message ID of failed delivery).txt', and with
+              content 'Message not delivered. All known details below' followed by the full
+              dictionary of headers from the download response.
         
         Returns
         ----------
         dict
-            If the message is a non delivery report, then the dict will have the key 'Non-Delivery',
-                with value a dictionary of all message headers
-            If the message is a data message, then the dict will have key equal to the FILENAME of
-                the original file (as given by the Mex-FileName header), with value a dictionary with keys data
-                (holding the message contents) and headers (holding all headers from the original response)
+            Dictionary of details about the downloaded file.
             
-        Side Effects
-        ----------
-        If the message is a non delivery report, then a file will be written to save_folder (if provided),
-            with filename 'Non delivery report: (MESH message ID of failed delivery).txt', and with
-            content 'Message not delivered. All known details below' followed by the full dictionary of
-            headers from the download response
-        If the message is a data message, then a file will be written to save_folder (if provided), with
-            filename set to the FILENAME of the original file (as given by the Mex-FileName header), and
-            content the (potentially reconstructed and/or decompressed) message body.
+            * filename (str): Filename of the original file (if provided).
+            * contents (bytes): Contents of the file (reconstructed and decompressed if necessary).
+            * headers (dict): Dictionary of headers returned by MESH on the initial download request.
+              For full details see the MESH API documentation.
+            * datafile (boolean): Indicates if this was a data file or a non-delivery report.
         
         Raises
         ----------
@@ -666,10 +670,10 @@ class MESHConnection:
         
         Examples
         ----------
-        >>> client.download_message("20200211115754892283_BC7B68", "C:/Test Folder/")
-        {'test.txt': b'test_message'}
-        >>> client.download_message("20200211115754892283_BC7B69")
-        {'Non-Delivery': {(significant list of headers)}}
+        >>> client.download_message("20200211115754892283_BC7B68", "C:/Test Folder/") #doctest: +SKIP
+        {'filename': 'test.txt', 'contents': b'test_message', 'headers': {'Mex-Filename': 'test.txt', ...}, data: True}
+        >>> client.download_message("20200211115754892283_BC7B69") #doctest: +SKIP
+        {'filename': None, 'contents': b'', 'headers': {'LinkedMessageId': '1234567890', ...}, data: False}
         """
         resp = r.get(
             url=f"{self.root_url}/messageexchange/{self.mailbox}/inbox/{message_id}",
@@ -693,7 +697,7 @@ class MESHConnection:
             core_data = resp.raw.data
             chunk_count = int(resp.headers["Mex-Chunk-Range"][2:])
             for chunk in range(2, chunk_count + 1):
-                core_data += self.download_message_chunk(message_id, chunk)
+                core_data += self._download_message_chunk(message_id, chunk)
         elif resp.status_code == 200:
             core_data = resp.raw.data
         else:
@@ -718,7 +722,12 @@ class MESHConnection:
                         "Message not delivered. All known details below\n"
                         + str(resp.headers)
                     )
-            return {"Non-Delivery": resp.headers}
+            return {
+                "filename": resp.headers.get("Mex-Filename"),
+                "contents": resp.content,
+                "headers": resp.headers,
+                "datafile": False,
+            }
 
         if ("Content-Encoding" in resp.headers) and (
             resp.headers["Content-Encoding"] == "gzip"
@@ -731,13 +740,13 @@ class MESHConnection:
             ) as file:
                 file.write(core_data)
         return {
-            resp.headers["Mex-Filename"]: {"data": core_data, "headers": resp.headers}
+            "filename": resp.headers["Mex-Filename"],
+            "contents": core_data,
+            "headers": resp.headers,
+            "datafile": True,
         }
-        # CASES:
-        # Message is complete and is a non delivery report
-        #   log the non delivery report, create message in folder
 
-    def download_message_chunk(self, message_id: str, chunk_no: int) -> bytes:
+    def _download_message_chunk(self, message_id: str, chunk_no: int) -> bytes:
         """
         Request a message chunk from the MESH API.
         This is expected to only be called by the download_message method.
@@ -768,7 +777,7 @@ class MESHConnection:
         
         Examples
         ----------
-        >>> client.download_message_chunk("20200211115754892283_BC7B68", 1)
+        >>> client._download_message_chunk("20200211115754892283_BC7B68", 1) #doctest: +SKIP
         b'test_message'
         """
         resp = r.get(
@@ -805,10 +814,6 @@ class MESHConnection:
         message_id : string
             The internal MESH ID of the downloaded message
         
-        Returns
-        ----------
-        None
-        
         Raises
         ----------
         MESHAuthenticationError
@@ -819,7 +824,7 @@ class MESHConnection:
         
         Examples
         ----------
-        >>> client.ack_download_message("20200211115754892283_BC7B68")
+        >>> client.ack_download_message("20200211115754892283_BC7B68") #doctest: +SKIP
         """
         resp = r.put(
             url=f"{self.root_url}/messageexchange/{self.mailbox}/inbox/{message_id}/status/acknowledged",
@@ -857,9 +862,9 @@ def generate_authorization(mailbox: str, password: str, api_shared_key: str) -> 
     
     Examples
     ----------
-    >>> generate_authorization("TEST_BOX", "TEST_PW", "TEST_KEY")
+    >>> generate_authorization("TEST_BOX", "TEST_PW", "TEST_KEY") #doctest: +SKIP
     "NHSMESH TEST_BOX:ccd54b96-ee41-4d34-9700-7f9ec63d0720:1:202002120857:7632c7e908147f51f3d544209621f50126903779071417236428e47ea047872c"
-    >>> generate_authorization("NEW_BOX", "NEW_PW", "TEST_KEY")
+    >>> generate_authorization("NEW_BOX", "NEW_PW", "TEST_KEY") #doctest: +SKIP
     "NHSMESH NEW_BOX:662c4ffa-c85c-4858-bae8-7327e09aeeb5:1:202002120858:7f1ef837210936a3125d24ae9d4e0e972079ed4a9ac6a4bf0b7bddb11cf20d95"
     """
     nonce = uuid4()
