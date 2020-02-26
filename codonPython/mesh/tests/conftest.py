@@ -7,7 +7,7 @@ def mock_generate_authorization(*args):
 
 @pytest.fixture
 def mesh_connection(monkeypatch):
-    import mesh
+    import codonPython.mesh as mesh
 
     monkeypatch.setattr(
         mesh.mesh, "generate_authorization", mock_generate_authorization

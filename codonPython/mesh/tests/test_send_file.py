@@ -1,6 +1,6 @@
 import pytest
 
-import mesh
+import codonPython.mesh as mesh
 
 
 @pytest.fixture

@@ -1,7 +1,5 @@
 import pytest
 
-import mesh
-
 
 def test_Ack_ValidRequest_CallsOnce(requests_mock, mesh_connection):
     requests_mock.put(

@@ -1,6 +1,6 @@
 import pytest
 
-import mesh
+import codonPython.mesh as mesh
 
 
 def test_CheckInbox_ValidRequest_ReturnsJson(requests_mock, mesh_connection):

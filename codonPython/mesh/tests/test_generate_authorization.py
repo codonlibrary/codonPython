@@ -1,7 +1,7 @@
 import pytest
 import re
 
-import mesh
+import codonPython.mesh as mesh
 
 
 class Test_generate_authorization:

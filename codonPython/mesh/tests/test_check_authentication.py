@@ -1,6 +1,6 @@
 import pytest
 
-import mesh
+import codonPython.mesh as mesh
 
 
 def test_CheckAuthentication_ValidRequest_ReturnsTrue(requests_mock, mesh_connection):
