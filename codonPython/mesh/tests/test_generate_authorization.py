@@ -3,10 +3,11 @@ import re
 
 import codonPython.mesh as mesh
 
+mailbox = "(Test_Mailbox|)"
 nonce = "[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}"
 time = "[0-9]{12}"
 hash_out = "[0-9a-z]{64}"
-auth_regex = re.compile(f"NHSMESH Test_Mailbox:{nonce}:1:{time}:{hash_out}")
+auth_regex = re.compile(f"NHSMESH {mailbox}:{nonce}:1:{time}:{hash_out}")
 
 
 class Test_generate_authorization:
