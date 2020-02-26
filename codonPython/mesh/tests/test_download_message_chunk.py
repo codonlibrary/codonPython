@@ -23,7 +23,7 @@ def test_DownloadMessageChunk_403_RaisesAuthenticationError(
         request_headers=base_headers,
         status_code=403,
     )
-    with pytest.raises(mesh.MESHAuthenticationError) as e:
+    with pytest.raises(mesh.MESHAuthenticationError):
         mesh_connection._download_message_chunk(**base_params)
 
 
@@ -35,7 +35,7 @@ def test_DownloadMessageChunk_404_RaisesMissingError(
         request_headers=base_headers,
         status_code=404,
     )
-    with pytest.raises(mesh.MESHMessageMissing) as e:
+    with pytest.raises(mesh.MESHMessageMissing):
         mesh_connection._download_message_chunk(**base_params)
 
 
@@ -47,7 +47,7 @@ def test_DownloadMessageChunk_410_RaisesGoneError(
         request_headers=base_headers,
         status_code=410,
     )
-    with pytest.raises(mesh.MESHMessageAlreadyDownloaded) as e:
+    with pytest.raises(mesh.MESHMessageAlreadyDownloaded):
         mesh_connection._download_message_chunk(**base_params)
 
 
@@ -59,7 +59,7 @@ def test_DownloadMessageChunk_400_RaisesUnknownError(
         request_headers=base_headers,
         status_code=400,
     )
-    with pytest.raises(mesh.MESHUnknownError) as e:
+    with pytest.raises(mesh.MESHUnknownError):
         mesh_connection._download_message_chunk(**base_params)
 
 

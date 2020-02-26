@@ -23,7 +23,7 @@ def test_CheckInbox_403StatusCode_ReturnsAuthenticationError(
         request_headers={"Authorization": "xxxauthorizationxxx"},
         status_code=403,
     )
-    with pytest.raises(mesh.MESHAuthenticationError) as e:
+    with pytest.raises(mesh.MESHAuthenticationError):
         mesh_connection.check_inbox()
     assert requests_mock.call_count == 1
 
@@ -34,6 +34,6 @@ def test_CheckInbox_400StatusCode_ReturnsUnknownError(requests_mock, mesh_connec
         request_headers={"Authorization": "xxxauthorizationxxx"},
         status_code=400,
     )
-    with pytest.raises(mesh.MESHUnknownError) as e:
+    with pytest.raises(mesh.MESHUnknownError):
         mesh_connection.check_inbox()
     assert requests_mock.call_count == 1

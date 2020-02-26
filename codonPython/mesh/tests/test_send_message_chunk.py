@@ -30,7 +30,7 @@ def test_SendMessageChunk_403_RaisesAuthenticationError(
         request_headers=base_headers,
         status_code=403,
     )
-    with pytest.raises(mesh.MESHAuthenticationError) as e:
+    with pytest.raises(mesh.MESHAuthenticationError):
         mesh_connection._send_message_chunk(**base_params)
 
 
@@ -42,7 +42,7 @@ def test_SendMessageChunk_400_RaisesUnknownError(
         request_headers=base_headers,
         status_code=400,
     )
-    with pytest.raises(mesh.MESHUnknownError) as e:
+    with pytest.raises(mesh.MESHUnknownError):
         mesh_connection._send_message_chunk(**base_params)
 
 

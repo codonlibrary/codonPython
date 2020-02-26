@@ -34,7 +34,7 @@ def test_SendMessage_403_RaisesAuthenticationError(
         request_headers=base_headers,
         status_code=403,
     )
-    with pytest.raises(mesh.MESHAuthenticationError) as e:
+    with pytest.raises(mesh.MESHAuthenticationError):
         mesh_connection.send_message(**base_params)
     assert requests_mock.call_count == 1
 
@@ -47,7 +47,7 @@ def test_SendMessage_417_RaisesRecipientError(
         request_headers=base_headers,
         status_code=417,
     )
-    with pytest.raises(mesh.MESHInvalidRecipient) as e:
+    with pytest.raises(mesh.MESHInvalidRecipient):
         mesh_connection.send_message(**base_params)
     assert requests_mock.call_count == 1
 
@@ -60,7 +60,7 @@ def test_SendMessage_400_RaisesUnknownError(
         request_headers=base_headers,
         status_code=400,
     )
-    with pytest.raises(mesh.MESHUnknownError) as e:
+    with pytest.raises(mesh.MESHUnknownError):
         mesh_connection.send_message(**base_params)
     assert requests_mock.call_count == 1
 

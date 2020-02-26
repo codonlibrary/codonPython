@@ -127,8 +127,8 @@ def test_CheckDownload_NoRecurseSave(patch_recurse, track_ack, tmpdir):
     assert p.join("1").read() == "1"
     assert p.join("2").read() == "2"
     assert p.join("3").read() == "3"
-    assert p.join("4").exists() == False
-    assert p.join("5").exists() == False
+    assert p.join("4").exists() is False
+    assert p.join("5").exists() is False
     assert track_ack.data == [(("1",), {}), (("2",), {}), (("3",), {})]
 
 
@@ -224,10 +224,10 @@ def test_CheckDownload_ErrorsNoRecurseSave(patch_errors, track_ack, tmpdir):
     assert type(exc.value.exceptions[3][1]) == mesh.MESHMessageAlreadyDownloaded
     assert len(exc.value.exceptions) == 4
 
-    assert p.join("1").exists() == False
-    assert p.join("2").exists() == False
-    assert p.join("3").exists() == False
-    assert p.join("4").exists() == False
+    assert p.join("1").exists() is False
+    assert p.join("2").exists() is False
+    assert p.join("3").exists() is False
+    assert p.join("4").exists() is False
     assert p.join("5").read() == "5"
     assert track_ack.data == [(("5",), {})]
 
@@ -269,15 +269,15 @@ def test_CheckDownload_ErrorsRecurseSave(patch_errors, track_ack, tmpdir):
     assert type(exc.value.exceptions[5][1]) == mesh.MESHMessageAlreadyDownloaded
     assert len(exc.value.exceptions) == 6
 
-    assert p.join("1").exists() == False
-    assert p.join("2").exists() == False
-    assert p.join("3").exists() == False
-    assert p.join("4").exists() == False
+    assert p.join("1").exists() is False
+    assert p.join("2").exists() is False
+    assert p.join("3").exists() is False
+    assert p.join("4").exists() is False
     assert p.join("5").read() == "5"
-    assert p.join("6").exists() == False
+    assert p.join("6").exists() is False
     assert p.join("7").read() == "7"
     assert p.join("8").read() == "8"
-    assert p.join("9").exists() == False
+    assert p.join("9").exists() is False
     assert track_ack.data == [(("5",), {}), (("7",), {}), (("8",), {})]
 
 
@@ -308,4 +308,3 @@ def test_CheckDownload_ErrorsRecurseGen(patch_errors, track_ack):
     assert len(exc.value.exceptions) == 6
 
     assert track_ack.data == [(("5",), {}), (("7",), {}), (("8",), {})]
-

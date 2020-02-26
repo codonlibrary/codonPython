@@ -23,6 +23,6 @@ def test_CheckInboxCount_403StatusCode_ReturnsAuthenticationError(
         request_headers={"Authorization": "xxxauthorizationxxx"},
         status_code=403,
     )
-    with pytest.raises(mesh.MESHAuthenticationError) as e:
+    with pytest.raises(mesh.MESHAuthenticationError):
         mesh_connection.check_inbox_count()
     assert requests_mock.call_count == 1

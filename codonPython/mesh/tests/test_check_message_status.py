@@ -24,7 +24,7 @@ def test_CheckMessage_403_RaisesAuthenticationError(
         request_headers=base_headers,
         status_code=403,
     )
-    with pytest.raises(mesh.MESHAuthenticationError) as e:
+    with pytest.raises(mesh.MESHAuthenticationError):
         mesh_connection.check_message_status(**base_params)
 
 
@@ -36,7 +36,7 @@ def test_CheckMessage_404_RaisesMissingError(
         request_headers=base_headers,
         status_code=404,
     )
-    with pytest.raises(mesh.MESHMessageMissing) as e:
+    with pytest.raises(mesh.MESHMessageMissing):
         mesh_connection.check_message_status(**base_params)
 
 
@@ -48,7 +48,7 @@ def test_CheckMessage_400_RaisesUnknownError(
         request_headers=base_headers,
         status_code=400,
     )
-    with pytest.raises(mesh.MESHUnknownError) as e:
+    with pytest.raises(mesh.MESHUnknownError):
         mesh_connection.check_message_status(**base_params)
 
 
@@ -60,7 +60,7 @@ def test_CheckMessage_300_RaisesMultipleError(
         request_headers=base_headers,
         status_code=300,
     )
-    with pytest.raises(mesh.MESHMultipleMatches) as e:
+    with pytest.raises(mesh.MESHMultipleMatches):
         mesh_connection.check_message_status(**base_params)
 
 
@@ -74,7 +74,7 @@ def test_CheckMessage_Fake300_RaisesMultipleError(
         status_code=200,
         text="<html><title>300: Multiple Choices</title><body>300: Multiple Choices</body></html>",
     )
-    with pytest.raises(mesh.MESHMultipleMatches) as e:
+    with pytest.raises(mesh.MESHMultipleMatches):
         mesh_connection.check_message_status(**base_params)
 
 
