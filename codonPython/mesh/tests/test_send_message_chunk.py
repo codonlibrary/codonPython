@@ -31,7 +31,7 @@ def test_SendMessageChunk_403_RaisesAuthenticationError(
         status_code=403,
     )
     with pytest.raises(mesh.MESHAuthenticationError) as e:
-        mesh_connection.send_message_chunk(**base_params)
+        mesh_connection._send_message_chunk(**base_params)
 
 
 def test_SendMessageChunk_400_RaisesUnknownError(
@@ -43,7 +43,7 @@ def test_SendMessageChunk_400_RaisesUnknownError(
         status_code=400,
     )
     with pytest.raises(mesh.MESHUnknownError) as e:
-        mesh_connection.send_message_chunk(**base_params)
+        mesh_connection._send_message_chunk(**base_params)
 
 
 def test_SendMessageChunk_Valid_SentOnce(
@@ -54,7 +54,7 @@ def test_SendMessageChunk_Valid_SentOnce(
         request_headers=base_headers,
         status_code=202,
     )
-    mesh_connection.send_message_chunk(**base_params)
+    mesh_connection._send_message_chunk(**base_params)
     assert requests_mock.call_count == 1
 
 
@@ -66,7 +66,7 @@ def test_SendMessageChunk_Compressed_CorrectHeaders(
         request_headers=base_headers,
         status_code=202,
     )
-    mesh_connection.send_message_chunk(**base_params)
+    mesh_connection._send_message_chunk(**base_params)
     assert requests_mock.request_history[0].headers["Content-Encoding"] == "gzip"
 
 
@@ -79,5 +79,5 @@ def test_SendMessageChunk_NotCompressed_CorrectHeaders(
         request_headers=base_headers,
         status_code=202,
     )
-    mesh_connection.send_message_chunk(**base_params)
+    mesh_connection._send_message_chunk(**base_params)
     assert "Content-Encoding" not in requests_mock.request_history[0].headers

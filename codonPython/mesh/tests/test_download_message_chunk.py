@@ -24,7 +24,7 @@ def test_DownloadMessageChunk_403_RaisesAuthenticationError(
         status_code=403,
     )
     with pytest.raises(mesh.MESHAuthenticationError) as e:
-        mesh_connection.download_message_chunk(**base_params)
+        mesh_connection._download_message_chunk(**base_params)
 
 
 def test_DownloadMessageChunk_404_RaisesMissingError(
@@ -36,7 +36,7 @@ def test_DownloadMessageChunk_404_RaisesMissingError(
         status_code=404,
     )
     with pytest.raises(mesh.MESHMessageMissing) as e:
-        mesh_connection.download_message_chunk(**base_params)
+        mesh_connection._download_message_chunk(**base_params)
 
 
 def test_DownloadMessageChunk_410_RaisesGoneError(
@@ -48,7 +48,7 @@ def test_DownloadMessageChunk_410_RaisesGoneError(
         status_code=410,
     )
     with pytest.raises(mesh.MESHMessageAlreadyDownloaded) as e:
-        mesh_connection.download_message_chunk(**base_params)
+        mesh_connection._download_message_chunk(**base_params)
 
 
 def test_DownloadMessageChunk_400_RaisesUnknownError(
@@ -60,7 +60,7 @@ def test_DownloadMessageChunk_400_RaisesUnknownError(
         status_code=400,
     )
     with pytest.raises(mesh.MESHUnknownError) as e:
-        mesh_connection.download_message_chunk(**base_params)
+        mesh_connection._download_message_chunk(**base_params)
 
 
 def test_DownloadMessageChunk_Valid_SentOnce(
@@ -72,7 +72,7 @@ def test_DownloadMessageChunk_Valid_SentOnce(
         status_code=200,
         text="test",
     )
-    mesh_connection.download_message_chunk(**base_params)
+    mesh_connection._download_message_chunk(**base_params)
     assert requests_mock.call_count == 1
 
 
@@ -85,7 +85,7 @@ def test_DownloadMessageChunk_206_NoRaise(
         status_code=206,
         text="test",
     )
-    mesh_connection.download_message_chunk(**base_params)
+    mesh_connection._download_message_chunk(**base_params)
     assert requests_mock.call_count == 1
 
 
@@ -98,4 +98,4 @@ def test_DownloadMessageChunk_ReturnsCorrect(
         status_code=200,
         text="test",
     )
-    assert mesh_connection.download_message_chunk(**base_params) == b"test"
+    assert mesh_connection._download_message_chunk(**base_params) == b"test"

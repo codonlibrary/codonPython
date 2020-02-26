@@ -8,7 +8,7 @@ def mock_download(message_id, save_folder=None):
     if save_folder is not None:
         with open(path.join(save_folder, str(message_id)), "w") as file:
             file.write(str(message_id))
-    return {"filename": message_id, "contents": message_id, "headers": {}, "data": True}
+    return {"filename": message_id, "contents": message_id, "headers": {}, "datafile": True}
 
 
 def mock_download_fail_auth(message_id, save_folder=None):
@@ -94,12 +94,12 @@ def test_CheckDownload_DownloadsCorrectSave(patch_valid, track_ack, tmpdir):
 def test_CheckDownload_DownloadsCorrectGenerator(patch_valid, track_ack):
     out = patch_valid.check_and_download(save_folder=None, recursive=False)
     msg = next(out)
-    assert msg == {"filename": "1", "contents": "1", "headers": {}, "data": True}
+    assert msg == {"filename": "1", "contents": "1", "headers": {}, "datafile": True}
     msg = next(out)
-    assert msg == {"filename": "2", "contents": "2", "headers": {}, "data": True}
+    assert msg == {"filename": "2", "contents": "2", "headers": {}, "datafile": True}
     assert track_ack.data == [(("1",), {})]
     msg = next(out)
-    assert msg == {"filename": "3", "contents": "3", "headers": {}, "data": True}
+    assert msg == {"filename": "3", "contents": "3", "headers": {}, "datafile": True}
     assert track_ack.data == [(("1",), {}), (("2",), {})]
     with pytest.raises(StopIteration):
         msg = next(out)
@@ -153,12 +153,12 @@ def test_CheckDownload_RecurseSave(patch_recurse, track_ack, tmpdir):
 def test_CheckDownload_NoRecurseGen(patch_recurse, track_ack):
     out = patch_recurse.check_and_download(save_folder=None, recursive=False)
     msg = next(out)
-    assert msg == {"filename": "1", "contents": "1", "headers": {}, "data": True}
+    assert msg == {"filename": "1", "contents": "1", "headers": {}, "datafile": True}
     msg = next(out)
-    assert msg == {"filename": "2", "contents": "2", "headers": {}, "data": True}
+    assert msg == {"filename": "2", "contents": "2", "headers": {}, "datafile": True}
     assert track_ack.data == [(("1",), {})]
     msg = next(out)
-    assert msg == {"filename": "3", "contents": "3", "headers": {}, "data": True}
+    assert msg == {"filename": "3", "contents": "3", "headers": {}, "datafile": True}
     assert track_ack.data == [(("1",), {}), (("2",), {})]
     with pytest.raises(StopIteration):
         msg = next(out)
@@ -168,18 +168,18 @@ def test_CheckDownload_NoRecurseGen(patch_recurse, track_ack):
 def test_CheckDownload_RecurseGen(patch_recurse, track_ack):
     out = patch_recurse.check_and_download(save_folder=None, recursive=True)
     msg = next(out)
-    assert msg == {"filename": "1", "contents": "1", "headers": {}, "data": True}
+    assert msg == {"filename": "1", "contents": "1", "headers": {}, "datafile": True}
     msg = next(out)
-    assert msg == {"filename": "2", "contents": "2", "headers": {}, "data": True}
+    assert msg == {"filename": "2", "contents": "2", "headers": {}, "datafile": True}
     assert track_ack.data == [(("1",), {})]
     msg = next(out)
-    assert msg == {"filename": "3", "contents": "3", "headers": {}, "data": True}
+    assert msg == {"filename": "3", "contents": "3", "headers": {}, "datafile": True}
     assert track_ack.data == [(("1",), {}), (("2",), {})]
     msg = next(out)
-    assert msg == {"filename": "4", "contents": "4", "headers": {}, "data": True}
+    assert msg == {"filename": "4", "contents": "4", "headers": {}, "datafile": True}
     assert track_ack.data == [(("1",), {}), (("2",), {}), (("3",), {})]
     msg = next(out)
-    assert msg == {"filename": "5", "contents": "5", "headers": {}, "data": True}
+    assert msg == {"filename": "5", "contents": "5", "headers": {}, "datafile": True}
     assert track_ack.data == [(("1",), {}), (("2",), {}), (("3",), {}), (("4",), {})]
     with pytest.raises(StopIteration):
         msg = next(out)
@@ -235,7 +235,7 @@ def test_CheckDownload_ErrorsNoRecurseSave(patch_errors, track_ack, tmpdir):
 def test_CheckDownload_ErrorsNoRecurseGen(patch_errors, track_ack):
     out = patch_errors.check_and_download(save_folder=None, recursive=False)
     msg = next(out)
-    assert msg == {"filename": "5", "contents": "5", "headers": {}, "data": True}
+    assert msg == {"filename": "5", "contents": "5", "headers": {}, "datafile": True}
     with pytest.raises(mesh.MESHDownloadErrors) as exc:
         msg = next(out)
     assert exc.value.exceptions[0][0] == "1"
@@ -284,12 +284,12 @@ def test_CheckDownload_ErrorsRecurseSave(patch_errors, track_ack, tmpdir):
 def test_CheckDownload_ErrorsRecurseGen(patch_errors, track_ack):
     out = patch_errors.check_and_download(save_folder=None, recursive=True)
     msg = next(out)
-    assert msg == {"filename": "5", "contents": "5", "headers": {}, "data": True}
+    assert msg == {"filename": "5", "contents": "5", "headers": {}, "datafile": True}
     msg = next(out)
-    assert msg == {"filename": "7", "contents": "7", "headers": {}, "data": True}
+    assert msg == {"filename": "7", "contents": "7", "headers": {}, "datafile": True}
     assert track_ack.data == [(("5",), {})]
     msg = next(out)
-    assert msg == {"filename": "8", "contents": "8", "headers": {}, "data": True}
+    assert msg == {"filename": "8", "contents": "8", "headers": {}, "datafile": True}
     assert track_ack.data == [(("5",), {}), (("7",), {})]
     with pytest.raises(mesh.MESHDownloadErrors) as exc:
         msg = next(out)

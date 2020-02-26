@@ -212,7 +212,7 @@ def test_chunk_massive_file(
     mesh_connection, requests_mock, base_params, base_headers, monkeypatch
 ):
     chunks_sent = Tracker()
-    monkeypatch.setattr(mesh_connection, "send_message_chunk", chunks_sent.inc)
+    monkeypatch.setattr(mesh_connection, "_send_message_chunk", chunks_sent.inc)
     base_params["compress_message"] = False
     base_params["message"] = ("x" * 200000000).encode()
     requests_mock.post(
