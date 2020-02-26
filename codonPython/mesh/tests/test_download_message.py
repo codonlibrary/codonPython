@@ -26,7 +26,7 @@ def test_DownloadMessage_SimpleFileReturnsCorrect(
     assert mesh_connection.download_message(**base_params) == {
         "filename": "test.txt",
         "contents": b"test",
-        "headers": {"Mex-FileName": "test.txt", "Mex-MessageType": "DATA",},
+        "headers": {"Mex-FileName": "test.txt", "Mex-MessageType": "DATA"},
         "datafile": True,
     }
     p = tmpdir.mkdir("save")
@@ -34,7 +34,7 @@ def test_DownloadMessage_SimpleFileReturnsCorrect(
     assert mesh_connection.download_message(**base_params) == {
         "filename": "test.txt",
         "contents": b"test",
-        "headers": {"Mex-FileName": "test.txt", "Mex-MessageType": "DATA",},
+        "headers": {"Mex-FileName": "test.txt", "Mex-MessageType": "DATA"},
         "datafile": True,
     }
     assert p.join("test.txt").read() == "test"
@@ -197,13 +197,13 @@ def test_DownloadMessage_ChunkedZipFileReturnsCorrect(
         url=f"http://root/messageexchange/TestMailboxId/inbox/{base_params['message_id']}/2",
         status_code=206,
         headers={"Mex-Chunk-Range": "2:3"},
-        content=message[split : split * 2],
+        content=message[split:split * 2],
     )
     requests_mock.get(
         url=f"http://root/messageexchange/TestMailboxId/inbox/{base_params['message_id']}/3",
         status_code=200,
         headers={"Mex-Chunk-Range": "3:3"},
-        content=message[split * 2 :],
+        content=message[split * 2:],
     )
     assert mesh_connection.download_message(**base_params) == {
         "filename": "test.txt",
@@ -240,7 +240,7 @@ def test_DownloadMessage_403StatusCode_ReturnsAuthenticationError(
         request_headers={"Authorization": "xxxauthorizationxxx"},
         status_code=403,
     )
-    with pytest.raises(mesh.MESHAuthenticationError) as e:
+    with pytest.raises(mesh.MESHAuthenticationError):
         mesh_connection.download_message(message_id=8, save_folder="save_folder")
     assert requests_mock.call_count == 1
 
@@ -253,7 +253,7 @@ def test_DownloadMessage_404StatusCode_ReturnsMessageDoesNotExistError(
         request_headers={"Authorization": "xxxauthorizationxxx"},
         status_code=404,
     )
-    with pytest.raises(mesh.MESHMessageMissing) as e:
+    with pytest.raises(mesh.MESHMessageMissing):
         mesh_connection.download_message(message_id=9, save_folder="save_folder")
     assert requests_mock.call_count == 1
 
@@ -266,7 +266,7 @@ def test_DownloadMessage_410StatusCode_ReturnsMessageAlreadyDownloadedError(
         request_headers={"Authorization": "xxxauthorizationxxx"},
         status_code=410,
     )
-    with pytest.raises(mesh.MESHMessageAlreadyDownloaded) as e:
+    with pytest.raises(mesh.MESHMessageAlreadyDownloaded):
         mesh_connection.download_message(message_id=10, save_folder="save_folder")
     assert requests_mock.call_count == 1
 
@@ -279,6 +279,6 @@ def test_DownloadMessage_400StatusCode_RaisesUnknownError(
         request_headers={"Authorization": "xxxauthorizationxxx"},
         status_code=400,
     )
-    with pytest.raises(mesh.MESHUnknownError) as e:
+    with pytest.raises(mesh.MESHUnknownError):
         mesh_connection.download_message(message_id=10, save_folder="save_folder")
     assert requests_mock.call_count == 1

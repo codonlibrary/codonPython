@@ -46,6 +46,6 @@ def test_CheckAuthentication_400StatusCode_ReturnsUnknownError(
     requests_mock.post(
         url="http://root/messageexchange/TestMailboxId", status_code=400,
     )
-    with pytest.raises(mesh.MESHUnknownError) as e:
+    with pytest.raises(mesh.MESHUnknownError):
         mesh_connection.check_authentication()
     assert requests_mock.call_count == 1

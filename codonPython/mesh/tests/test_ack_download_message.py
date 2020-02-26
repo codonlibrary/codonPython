@@ -19,7 +19,7 @@ def test_Ack_403_RaisesAuthError(requests_mock, mesh_connection):
         request_headers={"Authorization": "xxxauthorizationxxx"},
         status_code=403,
     )
-    with pytest.raises(mesh.MESHAuthenticationError) as e:
+    with pytest.raises(mesh.MESHAuthenticationError):
         mesh_connection.ack_download_message("1")
 
 
@@ -29,5 +29,5 @@ def test_Ack_400_RaisesUnknownError(requests_mock, mesh_connection):
         request_headers={"Authorization": "xxxauthorizationxxx"},
         status_code=400,
     )
-    with pytest.raises(mesh.MESHUnknownError) as e:
+    with pytest.raises(mesh.MESHUnknownError):
         mesh_connection.ack_download_message("1")

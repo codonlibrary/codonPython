@@ -1,7 +1,5 @@
 import pytest
 
-import codonPython.mesh as mesh
-
 
 @pytest.fixture
 def make_params(tmpdir):
