@@ -544,7 +544,7 @@ class MESHConnection:
             * contents (bytes): Contents of the file (reconstructed and decompressed if necessary).
             * headers (dict): Dictionary of headers returned by MESH on the initial download request.
               For full details see the MESH API documentation.
-            * data (boolean): Indicates if this was a data file or a non-delivery report.
+            * datafile (boolean): Indicates if this was a data file or a non-delivery report.
         
         Raises
         ----------
@@ -564,9 +564,9 @@ class MESHConnection:
         >>> client.check_and_download("C:/Test Folder/") #doctest: +SKIP
         >>> for message in client.check_and_download(): #doctest: +SKIP
         >>>     print(message) #doctest: +SKIP
-        {'filename': 'test.txt', 'contents': b'test_message', 'headers': {'Mex-Filename': 'test.txt', ...}, data: True}
-        {'filename': 'test2.txt', 'contents': b'test_message_2', 'headers': {'Mex-Filename': 'test.txt', ...}, data: True}
-        {'filename': None, 'contents': b'', 'headers': {'LinkedMessageId': '1234567890', ...}, data: False}
+        {'filename': 'test.txt', 'contents': b'test_message', 'headers': {'Mex-Filename': 'test.txt', ...}, datafile: True}
+        {'filename': 'test2.txt', 'contents': b'test_message_2', 'headers': {'Mex-Filename': 'test.txt', ...}, datafile: True}
+        {'filename': None, 'contents': b'', 'headers': {'LinkedMessageId': '1234567890', ...}, datafile: False}
         """
         if save_folder is None:
             return self._check_download_generator(recursive)
