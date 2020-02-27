@@ -1,7 +1,9 @@
+from itertools import chain
+from os import path
+
 import pytest
 
 import codonPython.mesh as mesh
-from os import path
 
 
 def mock_download(message_id, save_folder=None):
@@ -81,7 +83,7 @@ def patch_valid(monkeypatch, mesh_connection):
     monkeypatch.setattr(mesh_connection, "download_message", mock_download)
     monkeypatch.setattr(mesh_connection, "check_inbox_count", mock_count_factory([3]))
     monkeypatch.setattr(
-        mesh_connection, "check_inbox", mock_count_factory([["1", "2", "3"]])
+        mesh_connection, "check_inbox", mock_inbox_factory([["1", "2", "3"]])
     )
     return mesh_connection
 
@@ -120,7 +122,7 @@ def patch_recurse(monkeypatch, mesh_connection):
     monkeypatch.setattr(
         mesh_connection,
         "check_inbox",
-        mock_count_factory([["1", "2", "3"], ["4"], ["5"]]),
+        mock_inbox_factory([["1", "2", "3"], ["4"], ["5"]]),
     )
     return mesh_connection
 
@@ -210,7 +212,7 @@ def patch_errors(monkeypatch, mesh_connection):
     monkeypatch.setattr(
         mesh_connection,
         "check_inbox",
-        mock_count_factory([["1", "2", "3", "4", "5"], ["6", "7"], ["8", "9"]]),
+        mock_inbox_factory([["1", "2", "3", "4", "5"], ["6", "7"], ["8", "9"]]),
     )
     return mesh_connection
 
@@ -315,9 +317,58 @@ def test_CheckDownload_ErrorsRecurseGen(patch_errors, track_ack):
     assert track_ack.data == [(("5",), {}), (("7",), {}), (("8",), {})]
 
 
+@pytest.fixture
+def patch_many_errors(monkeypatch, mesh_connection):
+    # This is for testing the early abort of the recursion if we hit 500 failed messages in one fetch
+    # Failed messages will not be acknowledged, and will thus stay in the MESH system
+    # If the issue is inherent to the message, and the inbox is full of messages with these issues
+    # then we could enter an infinite loop without this abort
+    monkeypatch.setattr(
+        mesh_connection,
+        "download_message",
+        mock_download_chooser_factory(
+            list(chain(range(300), range(500, 800))), list(range(1000, 1500))
+        ),
+    )
+    monkeypatch.setattr(
+        mesh_connection, "check_inbox_count", mock_count_factory([501, 501, 501, 1])
+    )
+    monkeypatch.setattr(
+        mesh_connection,
+        "check_inbox",
+        mock_inbox_factory(
+            [range(500), range(500, 1000), range(1000, 1500), range(1500, 1501)]
+        ),
+    )
+    return mesh_connection
+
+
+def test_CheckDownload_ErrorsEarlyTerminateSave(patch_many_errors, tmpdir, track_ack):
+    p = tmpdir.mkdir("dl")
+    with pytest.raises(mesh.MESHDownloadErrors) as exc:
+        patch_many_errors.check_and_download(save_folder=p, recursive=True)
+    assert len(exc.value.exceptions) == 1100
+    for e, index in zip(
+        exc.value.exceptions, chain(range(300), range(500, 800), range(1000, 1500))
+    ):
+        assert e[0] == index
+    assert len(p.listdir()) == 400
+
+
 def test_CheckDownload_ErrorsEarlyTerminateGen(patch_many_errors, track_ack):
-    pass
-
-
-def test_CheckDownload_ErrorsEarlyTerminateSave(patch_many_errors, track_ack):
-    pass
+    with pytest.raises(mesh.MESHDownloadErrors) as exc:
+        for msg, index in zip(
+            patch_many_errors.check_and_download(save_folder=None, recursive=True),
+            chain(range(300, 500), range(800, 1000)),
+        ):
+            assert msg == {
+                "filename": index,
+                "contents": index,
+                "headers": {},
+                "datafile": True,
+            }
+    assert len(exc.value.exceptions) == 1100
+    for e, index in zip(
+        exc.value.exceptions, chain(range(300), range(500, 800), range(1000, 1500))
+    ):
+        assert e[0] == index
