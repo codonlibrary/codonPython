@@ -238,3 +238,48 @@ def test_chunk_massive_file(
     assert chunks_sent.data[1]["message_id"] == "1"
     assert chunks_sent.data[0]["chunk_no"] == 2
     assert chunks_sent.data[1]["chunk_no"] == 3
+
+
+def test_SendMessage_403_RaisesAuthenticationError_MassiveFile(
+    mesh_connection, requests_mock, base_params, base_headers
+):
+    requests_mock.post(
+        url="http://root/messageexchange/TestMailboxId/outbox",
+        request_headers=base_headers,
+        status_code=403,
+    )
+    base_params["message"] = ("x" * 200000000).encode()
+    base_params["compress_message"] = False
+    with pytest.raises(mesh.MESHAuthenticationError):
+        mesh_connection.send_message(**base_params)
+    assert requests_mock.call_count == 1
+
+
+def test_SendMessage_417_RaisesRecipientError_MassiveFile(
+    mesh_connection, requests_mock, base_params, base_headers
+):
+    requests_mock.post(
+        url="http://root/messageexchange/TestMailboxId/outbox",
+        request_headers=base_headers,
+        status_code=417,
+    )
+    base_params["message"] = ("x" * 200000000).encode()
+    base_params["compress_message"] = False
+    with pytest.raises(mesh.MESHInvalidRecipient):
+        mesh_connection.send_message(**base_params)
+    assert requests_mock.call_count == 1
+
+
+def test_SendMessage_400_RaisesUnknownError_MassiveFile(
+    mesh_connection, requests_mock, base_params, base_headers
+):
+    requests_mock.post(
+        url="http://root/messageexchange/TestMailboxId/outbox",
+        request_headers=base_headers,
+        status_code=400,
+    )
+    base_params["message"] = ("x" * 200000000).encode()
+    base_params["compress_message"] = False
+    with pytest.raises(mesh.MESHUnknownError):
+        mesh_connection.send_message(**base_params)
+    assert requests_mock.call_count == 1
