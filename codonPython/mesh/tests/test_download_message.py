@@ -89,7 +89,7 @@ def test_DownloadMessage_NonDeliveryReturnsCorrect(
     requests_mock, mesh_connection, base_params, tmpdir
 ):
     headers = {
-        "LinkedMessageId": "1",
+        "Mex-Linkedmsgid": "1",
         "Mex-MessageType": "REPORT",
     }
     requests_mock.get(

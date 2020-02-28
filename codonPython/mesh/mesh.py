@@ -94,7 +94,7 @@ class MESHConnection:
             return False
         if resp.status_code == 200:
             return True
-        raise MESHUnknownError
+        raise MESHUnknownError(response=resp)
 
     def send_file(
         self,
@@ -259,10 +259,10 @@ class MESHConnection:
         if message_id is not None:
             headers["Mex-LocalID"] = message_id
         if compress_message:
-            headers["Mex-Content-Compressed"] = "1"
+            headers["Mex-Content-Compressed"] = "Y"
             headers["Content-Encoding"] = "gzip"
         if encrypted:
-            headers["Mex-Content-Encrypted"] = "1"
+            headers["Mex-Content-Encrypted"] = "Y"
         if message_subject is not None:
             headers["Mex-Subject"] = message_subject
         if len(message) > 80000000:
@@ -277,11 +277,11 @@ class MESHConnection:
                 verify=self.base_ca_loc,
             )
             if resp.status_code == 403:
-                raise MESHAuthenticationError
+                raise MESHAuthenticationError(response=resp)
             if resp.status_code == 417:
-                raise MESHInvalidRecipient
+                raise MESHInvalidRecipient(response=resp)
             if resp.status_code != 202:
-                raise MESHUnknownError
+                raise MESHUnknownError(response=resp)
             message_id = resp.json()["messageID"]
             for chunk in range(2, ceil(len(message) / 80000000) + 1):
                 self._send_message_chunk(
@@ -300,11 +300,11 @@ class MESHConnection:
                 verify=self.base_ca_loc,
             )
             if resp.status_code == 403:
-                raise MESHAuthenticationError
+                raise MESHAuthenticationError(response=resp)
             if resp.status_code == 417:
-                raise MESHInvalidRecipient
+                raise MESHInvalidRecipient(response=resp)
             if resp.status_code != 202:
-                raise MESHUnknownError
+                raise MESHUnknownError(response=resp)
 
         return resp.json()
 
@@ -363,9 +363,9 @@ class MESHConnection:
             verify=self.base_ca_loc,
         )
         if resp.status_code == 403:
-            raise MESHAuthenticationError
+            raise MESHAuthenticationError(response=resp)
         if resp.status_code != 202:
-            raise MESHUnknownError
+            raise MESHUnknownError(response=resp)
 
     def check_message_status(self, message_id: str) -> dict:
         """
@@ -408,18 +408,18 @@ class MESHConnection:
             verify=self.base_ca_loc,
         )
         if resp.status_code == 403:
-            raise MESHAuthenticationError
+            raise MESHAuthenticationError(response=resp)
         # There is an error in the API itself - in case of multiple match
         # will send an error page with status 200 instead of 300
         if (resp.status_code == 300) or (
             resp.text
             == "<html><title>300: Multiple Choices</title><body>300: Multiple Choices</body></html>"
         ):
-            raise MESHMultipleMatches
+            raise MESHMultipleMatches(response=resp)
         if resp.status_code == 404:
-            raise MESHMessageMissing
+            raise MESHMessageMissing(response=resp)
         if resp.status_code != 200:
-            raise MESHUnknownError
+            raise MESHUnknownError(response=resp)
         return resp.json()
 
     def check_inbox(self) -> list:
@@ -456,9 +456,9 @@ class MESHConnection:
             verify=self.base_ca_loc,
         )
         if resp.status_code == 403:
-            raise MESHAuthenticationError
+            raise MESHAuthenticationError(response=resp)
         if resp.status_code != 200:
-            raise MESHUnknownError
+            raise MESHUnknownError(response=resp)
         return resp.json()["messages"]
 
     def check_inbox_count(self) -> int:
@@ -494,9 +494,9 @@ class MESHConnection:
             verify=self.base_ca_loc,
         )
         if resp.status_code == 403:
-            raise MESHAuthenticationError
+            raise MESHAuthenticationError(response=resp)
         if resp.status_code != 200:
-            raise MESHUnknownError
+            raise MESHUnknownError(response=resp)
         return resp.json()["count"]
 
     def check_and_download(
@@ -567,7 +567,7 @@ class MESHConnection:
         >>>     print(message) #doctest: +SKIP
         {'filename': 'test.txt', 'contents': b'test_message', 'headers': {...}, datafile: True}
         {'filename': 'test2.txt', 'contents': b'test_message_2', 'headers': {...}, datafile: True}
-        {'filename': None, 'contents': b'', 'headers': {'LinkedMessageId': '1234567890', ...}, datafile: False}
+        {'filename': None, 'contents': b'', 'headers': {'Mex-Linkedmsgid': '1234567890', ...}, datafile: False}
         """
         if save_folder is None:
             return self._check_download_generator(recursive)
@@ -674,7 +674,7 @@ class MESHConnection:
         >>> client.download_message("20200211115754892283_BC7B68", "C:/Test Folder/") #doctest: +SKIP
         {'filename': 'test.txt', 'contents': b'test_message', 'headers': {'Mex-Filename': 'test.txt', ...}, data: True}
         >>> client.download_message("20200211115754892283_BC7B69") #doctest: +SKIP
-        {'filename': None, 'contents': b'', 'headers': {'LinkedMessageId': '1234567890', ...}, data: False}
+        {'filename': None, 'contents': b'', 'headers': {'Mex-Linkedmsgid': '1234567890', ...}, data: False}
         """
         resp = r.get(
             url=f"{self.root_url}/messageexchange/{self.mailbox}/inbox/{message_id}",
@@ -689,11 +689,11 @@ class MESHConnection:
             stream=True,
         )
         if resp.status_code == 403:
-            raise MESHAuthenticationError
+            raise MESHAuthenticationError(response=resp)
         elif resp.status_code == 404:
-            raise MESHMessageMissing
+            raise MESHMessageMissing(response=resp)
         elif resp.status_code == 410:
-            raise MESHMessageAlreadyDownloaded
+            raise MESHMessageAlreadyDownloaded(response=resp)
         elif resp.status_code == 206:
             core_data = resp.raw.data
             chunk_count = int(resp.headers["Mex-Chunk-Range"][2:])
@@ -702,20 +702,20 @@ class MESHConnection:
         elif resp.status_code == 200:
             core_data = resp.raw.data
         else:
-            raise MESHUnknownError
+            raise MESHUnknownError(response=resp)
 
         # If this header exists, the message is a non delivery report
-        if ("LinkedMessageId" in resp.headers) or (
+        if ("Mex-Linkedmsgid" in resp.headers) or (
             resp.headers["Mex-MessageType"] == "REPORT"
         ):
             logging.info(
-                f"Non delivery report for message {resp.headers['LinkedMessageId']}"
+                f"Non delivery report for message {resp.headers['Mex-Linkedmsgid']}"
             )
             if save_folder is not None:
                 with open(
                     path.join(
                         save_folder,
-                        f"Non delivery report: {resp.headers['LinkedMessageId']}.txt",
+                        f"Non delivery report: {resp.headers['Mex-Linkedmsgid']}.txt",
                     ),
                     "w",
                 ) as file:
@@ -794,15 +794,15 @@ class MESHConnection:
             stream=True,
         )
         if resp.status_code == 403:
-            raise MESHAuthenticationError
+            raise MESHAuthenticationError(response=resp)
         elif resp.status_code == 404:
-            raise MESHMessageMissing
+            raise MESHMessageMissing(response=resp)
         elif resp.status_code == 410:
-            raise MESHMessageAlreadyDownloaded
+            raise MESHMessageAlreadyDownloaded(response=resp)
         elif resp.status_code in (200, 206):
             return resp.raw.data
         else:
-            raise MESHUnknownError
+            raise MESHUnknownError(response=resp)
 
     def ack_download_message(self, message_id: str) -> None:
         """
@@ -839,9 +839,9 @@ class MESHConnection:
             verify=self.base_ca_loc,
         )
         if resp.status_code == 403:
-            raise MESHAuthenticationError
+            raise MESHAuthenticationError(response=resp)
         if resp.status_code != 200:
-            raise MESHUnknownError
+            raise MESHUnknownError(response=resp)
 
 
 def generate_authorization(mailbox: str, password: str, api_shared_key: str) -> str:
