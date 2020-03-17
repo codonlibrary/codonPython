@@ -91,11 +91,11 @@ def nhsNumberGenerator(to_generate: int, random_state: int = None) -> list:
     leading_candidate = rng.integers(1, 8, size=(to_generate, 1), dtype=np.int32)
 
     # The resulting check digit is x_10 - k, where k is the contribution of the other digits
-    # Then the check digit would be 10 (invalid) if the leading digit were k+10 mod 11, or equally, k-1
+    # Then the check digit would be 10 (invalid) if the leading digit were k+10 mod 11, or equivalently k-1
     leading_digit = leading_candidate + (leading_candidate >= check_digit_portion - 1)
     check_digit = (leading_digit - check_digit_portion) % 11
     result_digits = np.hstack([leading_digit, base_number, check_digit])
 
-    result = np.dot(result_digits, 10**np.arange(9, -1, -1, dtype=np.int64))
-    
-    return list(result)
+    result = np.dot(result_digits, 10 ** np.arange(9, -1, -1, dtype=np.int64))
+
+    return [int(val) for val in result]
