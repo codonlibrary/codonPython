@@ -67,7 +67,7 @@ def nhsNumberGenerator(to_generate: int, random_state: int = None) -> list:
     Examples
     ---------
     >>> nhsNumberGenerator(2, random_state=42)
-    [8429141456, 2625792787]
+    [5065337063, 1104866676]
     """
 
     if not isinstance(to_generate, int):
