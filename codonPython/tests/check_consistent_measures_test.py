@@ -1,4 +1,4 @@
-from codonPython.check_consistent_measures import check_consistent_measures
+from codonPython.validation.check_consistent_measures import check_consistent_measures
 import pandas as pd
 import numpy as np
 import pytest
