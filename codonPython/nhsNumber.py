@@ -1,5 +1,5 @@
-import random
 import numpy as np
+from numpy.random import default_rng
 
 
 def nhsNumberValidator(number: int) -> bool:
@@ -48,7 +48,7 @@ def nhsNumberValidator(number: int) -> bool:
 
 def nhsNumberGenerator(to_generate: int, random_state: int = None) -> list:
     """
-    Generates up to 1M random NHS numbers compliant with modulus 11 checks as recorded
+    Generates random NHS numbers compliant with modulus 11 checks as recorded
     in the data dictonary.
     https://www.datadictionary.nhs.uk/data_dictionary/attributes/n/nhs/nhs_number_de.asp?shownav=1
 
@@ -62,27 +62,40 @@ def nhsNumberGenerator(to_generate: int, random_state: int = None) -> list:
     Returns
     ----------
     generated : list
-        List of randomly generated NHS numbers
+        List of randomly generated valid NHS numbers
 
     Examples
     ---------
     >>> nhsNumberGenerator(2, random_state=42)
-    [8429141456, 2625792787]
+    [5065337063, 1104866676]
     """
 
-    if random_state:
-        random.seed(random_state)
     if not isinstance(to_generate, int):
         raise ValueError("Please input a positive integer to generate numbers.")
-    if to_generate > 1000000:
-        raise ValueError("More than one million values requested")
     if to_generate < 0:
         raise ValueError("Please input a postitive integer to generate numbers.")
+    rng = default_rng(random_state)
 
-    generated = []
-    while len(generated) < to_generate:
-        # Random 10 digit integer, starting with non-zero digit
-        number = random.randint(1000000000, 9999999999)
-        if nhsNumberValidator(number):
-            generated.append(number)
-    return generated
+    # The NHS numbers are generated in three stages.
+    #   First, generate 8 digits, using numpy.randint (the middle 8 digits)
+    #   Second, generate the check digit portions for each block of 8 digits
+    #   Third, generate 1 digit (the 1st digit) between 1 and 8
+    #       increase this value by 1 if it is at or above the value which would cause a check digit of 10
+    #       be aware that this will not produce a fully uniform distribution over NHS numbers
+    #       the distribution will not produce any NHS number with a leading digit (or check digit) of 1 where the
+    #       contribution of the middle 8 digits to the check digit is 0
+    #   Fourth, generate the check digit from the above values
+    #   Fifth, combine the digits into a number
+    base_number = rng.integers(0, 9, size=(to_generate, 8), dtype=np.int32)
+    check_digit_portion = np.vstack(np.dot(base_number, np.arange(9, 1, -1)) % 11)
+    leading_candidate = rng.integers(1, 8, size=(to_generate, 1), dtype=np.int32)
+
+    # The resulting check digit is x_10 - k, where k is the contribution of the other digits
+    # Then the check digit would be 10 (invalid) if the leading digit were k+10 mod 11, or equivalently k-1
+    leading_digit = leading_candidate + (leading_candidate >= check_digit_portion - 1)
+    check_digit = (leading_digit - check_digit_portion) % 11
+    result_digits = np.hstack([leading_digit, base_number, check_digit])
+
+    result = np.dot(result_digits, 10 ** np.arange(9, -1, -1, dtype=np.int64))
+
+    return [int(val) for val in result]
