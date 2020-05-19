@@ -7,7 +7,7 @@ setup(
     name='codonPython',
     version='0.2.3',
     license='BSD',
-    packages=['codonPython', ],
+    packages=find_packages(),
     install_requires=requirements,
     author='NHS Digital DIS Team',
     author_email='paul.ellingham@nhs.net',
