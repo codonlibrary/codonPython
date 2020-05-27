@@ -1,7 +1,7 @@
 import datetime
 from dateutil.relativedelta import relativedelta
 
-def add_time(date : str, days : int = 0, months : int = 0, years : int = 0) -> str: 
+def add_time(date : str, days : int=0, months : int=0, years : int=0) -> str: 
     
     """
     This function takes a date as a string input in the 'yyyy-mm-dd' format and returns 
@@ -31,15 +31,15 @@ def add_time(date : str, days : int = 0, months : int = 0, years : int = 0) -> s
     
     Examples
     -------
-    >>>add_time('2018-03-04', months = 4)
+    >>> add_time('2018-03-04', months=4)
     '2018-07-04'
      
-    >>>add_time('2018-03-04', days = -90)
+    >>> add_time('2018-03-04', days=-90)
     '2017-12-04'
 
-    >>>add_time('2018-03-04', years = 2)
+    >>> add_time('2018-03-04', years=2)
     '2020-03-04'
 
     """
     
-    return str((datetime.datetime.strptime(date,'%Y-%m-%d') + relativedelta(days = int(days), months = int(months), years = int(years))).strftime(('%Y-%m-%d')))
+    return str((datetime.datetime.strptime(date,'%Y-%m-%d') + relativedelta(days=int(days), months=int(months), years=int(years))).strftime(('%Y-%m-%d')))
