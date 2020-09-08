@@ -1,4 +1,4 @@
-from codonPython.suppression import central_suppresion_method
+from codonPython.suppression import central_suppression_method
 import pytest
 
 
