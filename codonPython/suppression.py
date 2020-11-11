@@ -1,10 +1,9 @@
-def suppress_value(valuein: int, rc: str = "*", upper: int = 100000000) -> str:
+def central_suppression_method(valuein: int, rc: str = "5", upper: int = 5000000000) -> str:
     """
-    Suppress values less than or equal to 7, round all non-national values.
+    Suppresses and rounds values using the central suppression method.
 
-    This function suppresses value if it is less than or equal to 7.
     If value is 0 then it will remain as 0.
-    If value is at national level it will remain unsuppressed.
+    If value is 1-7 it will be suppressed and appear as 5.
     All other values will be rounded to the nearest 5.
 
     Parameters
@@ -14,20 +13,20 @@ def suppress_value(valuein: int, rc: str = "*", upper: int = 100000000) -> str:
     rc : str
         Replacement character if value needs suppressing
     upper : int
-        Upper limit for suppression of numbers
+        Upper limit for suppression of numbers (5 billion)
 
     Returns
     -------
     out : str
-        Suppressed value (*), 0 or valuein if greater than 7 or national
+        Suppressed value (5), 0 or rounded valuein if greater than 7
 
     Examples
     --------
-    >>> suppress_value(3)
-    '*'
-    >>> suppress_value(24)
+    >>> central_suppression_method(3)
+    '5'
+    >>> central_suppression_method(24)
     '25'
-    >>> suppress_value(0)
+    >>> central_suppression_method(0)
     '0'
     """
     base = 5
