@@ -2,7 +2,10 @@
 
 First off, thank you for taking the time to contribute! If you have a functionality that you would like to see in codon, we have a few standards and guidelines so we can merge your pull request quicker.
 
-We are looking for functions and/or classes which are useful for workflows used in DIS specifically. Please note bare scripts can't be implemented in the package.
+We are looking for functions and/or classes which are useful for workflows used in DIS specifically. Please don't submit the following type of code...
+* Bare scripts can't be implemented in the package. These consist of full end-end processes. If you find something reusable within your end-end script, then please extract it and submit it to Codon.
+* A pull request must be atomic. For example, "This function takes an integer number and rounds it to the nearest whole number". Please do not include multiple functions unless they're methods of a class.
+* We are not looking for functionallity that already exists. For example, if your function is unrelated to health care data and/or is already done by another well known function, then this will be rejected.
 
 ## Basic idea
 
