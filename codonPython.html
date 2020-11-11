@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,27 +11,29 @@
   
 
   
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="codonPython" href="modules.html" /> 
@@ -49,7 +50,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> codon
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> codon
           
 
           
@@ -72,6 +73,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -85,18 +87,23 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">codonPython package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-codonPython.age_bands">codonPython.age_bands module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-codonPython.check_consistent_measures">codonPython.check_consistent_measures module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-codonPython.check_consistent_submissions">codonPython.check_consistent_submissions module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-codonPython.check_nat_val">codonPython.check_nat_val module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-codonPython.check_null">codonPython.check_null module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-codonPython.dateValidator">codonPython.dateValidator module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#codonpython-check-consistent-measures-module">codonPython.check_consistent_measures module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#codonpython-check-consistent-submissions-module">codonPython.check_consistent_submissions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#codonpython-check-nat-val-module">codonPython.check_nat_val module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#codonpython-check-null-module">codonPython.check_null module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#codonpython-datevalidator-module">codonPython.dateValidator module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-codonPython.file_utils">codonPython.file_utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-codonPython.mesh">codonPython.mesh module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-usage">Example usage</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#module-codonPython.nhsd_colours">codonPython.nhsd_colours module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-codonPython.nhsNumber">codonPython.nhsNumber module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#codonpython-ods-lookup-module">codonPython.ODS_lookup module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-codonPython.ODS_lookup">codonPython.ODS_lookup module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-codonPython.suppression">codonPython.suppression module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-codonPython.tableFromSql">codonPython.tableFromSql module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-codonPython.tolerance">codonPython.tolerance module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#codonpython-tolerance-module">codonPython.tolerance module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-codonPython">Module contents</a></li>
 </ul>
 </li>
@@ -107,6 +114,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -145,7 +153,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="modules.html">codonPython</a> &raquo;</li>
         
@@ -193,7 +201,7 @@ representing the relevant 10 year banding.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">age_band_10_years</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">age_band_10_years</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="go">&#39;0-9&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">age_band_10_years</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
 <span class="go">&#39;Age not known&#39;</span>
@@ -221,7 +229,7 @@ representing the relevant 5 year banding.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">age_band_5_years</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">age_band_5_years</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="go">&#39;0-4&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">age_band_5_years</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
 <span class="go">&#39;Age not known&#39;</span>
@@ -232,231 +240,20 @@ representing the relevant 5 year banding.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-codonPython.check_consistent_measures">
-<span id="codonpython-check-consistent-measures-module"></span><h2>codonPython.check_consistent_measures module<a class="headerlink" href="#module-codonPython.check_consistent_measures" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="codonPython.check_consistent_measures.check_consistent_measures">
-<code class="sig-prename descclassname">codonPython.check_consistent_measures.</code><code class="sig-name descname">check_consistent_measures</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">geography_col: str = 'Org_Level'</em>, <em class="sig-param">measure_col: str = 'Measure'</em>, <em class="sig-param">measures_set: set = {}</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#codonPython.check_consistent_measures.check_consistent_measures" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check every measure is in every geography level.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – DataFrame of data to check.</p></li>
-<li><p><strong>geography_col</strong> (<em>str</em><em>, </em><em>default = &quot;Org_Level&quot;</em>) – Column name for the geography level.</p></li>
-<li><p><strong>measure_col</strong> (<em>str</em><em>, </em><em>default = &quot;Measure&quot;</em>) – Column name for measure</p></li>
-<li><p><strong>measures_set</strong> (<em>set</em><em>, </em><em>default = set</em><em>(</em><em>)</em>) – Set of measures that should be in every geography level. If empty, the existing
-global set is presumed to be correct.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Whether the checks have been passed.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">check_consistent_measures</span><span class="p">(</span>
-<span class="gp">... </span>  <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-<span class="gp">... </span>    <span class="s2">&quot;Geog&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;National&quot;</span> <span class="p">,</span><span class="s2">&quot;National&quot;</span><span class="p">,</span> <span class="s2">&quot;Region&quot;</span><span class="p">,</span> <span class="s2">&quot;Region&quot;</span><span class="p">,</span> <span class="s2">&quot;Local&quot;</span><span class="p">,</span> <span class="s2">&quot;Local&quot;</span><span class="p">,],</span>
-<span class="gp">... </span>    <span class="s2">&quot;measure&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m2&quot;</span><span class="p">,</span> <span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m2&quot;</span><span class="p">,</span> <span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m2&quot;</span><span class="p">,],</span>
-<span class="gp">... </span>    <span class="s2">&quot;Value_Unsuppressed&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,],</span>
-<span class="gp">... </span>  <span class="p">}),</span>
-<span class="gp">... </span>  <span class="n">geography_col</span> <span class="o">=</span> <span class="s2">&quot;Geog&quot;</span><span class="p">,</span>
-<span class="gp">... </span>  <span class="n">measure_col</span> <span class="o">=</span> <span class="s2">&quot;measure&quot;</span><span class="p">,</span>
-<span class="gp">... </span>  <span class="n">measures_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">({</span><span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m2&quot;</span><span class="p">}),</span>
-<span class="gp">... </span><span class="p">)</span>
-<span class="go">True</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">check_consistent_measures</span><span class="p">(</span>
-<span class="gp">... </span>  <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-<span class="gp">... </span>    <span class="s2">&quot;Org_Level&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;National&quot;</span> <span class="p">,</span><span class="s2">&quot;National&quot;</span><span class="p">,</span> <span class="s2">&quot;Region&quot;</span><span class="p">,</span> <span class="s2">&quot;Region&quot;</span><span class="p">,</span> <span class="s2">&quot;Local&quot;</span><span class="p">,</span> <span class="s2">&quot;Local&quot;</span><span class="p">,],</span>
-<span class="gp">... </span>    <span class="s2">&quot;Measure&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m3&quot;</span><span class="p">,</span> <span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m2&quot;</span><span class="p">,</span> <span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m2&quot;</span><span class="p">,],</span>
-<span class="gp">... </span>    <span class="s2">&quot;Value_Unsuppressed&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,],</span>
-<span class="gp">... </span>  <span class="p">})</span>
-<span class="gp">... </span><span class="p">)</span>
-<span class="go">False</span>
-</pre></div>
+<div class="section" id="codonpython-check-consistent-measures-module">
+<h2>codonPython.check_consistent_measures module<a class="headerlink" href="#codonpython-check-consistent-measures-module" title="Permalink to this headline">¶</a></h2>
 </div>
-</dd></dl>
-
+<div class="section" id="codonpython-check-consistent-submissions-module">
+<h2>codonPython.check_consistent_submissions module<a class="headerlink" href="#codonpython-check-consistent-submissions-module" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-codonPython.check_consistent_submissions">
-<span id="codonpython-check-consistent-submissions-module"></span><h2>codonPython.check_consistent_submissions module<a class="headerlink" href="#module-codonPython.check_consistent_submissions" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="codonPython.check_consistent_submissions.check_consistent_submissions">
-<code class="sig-prename descclassname">codonPython.check_consistent_submissions.</code><code class="sig-name descname">check_consistent_submissions</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">national_geog_level: str = 'National'</em>, <em class="sig-param">geography_col: str = 'Org_Level'</em>, <em class="sig-param">submissions_col: str = 'Value_Unsuppressed'</em>, <em class="sig-param">measure_col: str = 'Measure'</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#codonPython.check_consistent_submissions.check_consistent_submissions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check total submissions for each measure are the same across all geography levels
-except national.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – DataFrame of data to check.</p></li>
-<li><p><strong>national_geog_level</strong> (<em>str</em><em>, </em><em>default = &quot;National&quot;</em>) – Geography level code for national values.</p></li>
-<li><p><strong>geography_col</strong> (<em>str</em><em>, </em><em>default = &quot;Org_Level&quot;</em>) – Column name for the geography level.</p></li>
-<li><p><strong>submissions_col</strong> (<em>str</em><em>, </em><em>default = &quot;Value_Unsuppressed&quot;</em>) – Column name for the submissions count.</p></li>
-<li><p><strong>measure_col</strong> (<em>str</em><em>, </em><em>default = &quot;Measure&quot;</em>) – Column name for measure.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Whether the checks have been passed.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">check_consistent_submissions</span><span class="p">(</span>
-<span class="gp">... </span>  <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-<span class="gp">... </span>    <span class="s2">&quot;Geog&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;N&quot;</span> <span class="p">,</span><span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="s2">&quot;Region&quot;</span><span class="p">,</span> <span class="s2">&quot;Region&quot;</span><span class="p">,</span> <span class="s2">&quot;Local&quot;</span><span class="p">,</span> <span class="s2">&quot;Local&quot;</span><span class="p">,],</span>
-<span class="gp">... </span>    <span class="s2">&quot;measure&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m2&quot;</span><span class="p">,</span> <span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m2&quot;</span><span class="p">,</span> <span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m2&quot;</span><span class="p">,],</span>
-<span class="gp">... </span>    <span class="s2">&quot;submissions&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,],</span>
-<span class="gp">... </span>  <span class="p">}),</span>
-<span class="gp">... </span>  <span class="n">national_geog_level</span> <span class="o">=</span> <span class="s2">&quot;N&quot;</span><span class="p">,</span>
-<span class="gp">... </span>  <span class="n">geography_col</span> <span class="o">=</span> <span class="s2">&quot;Geog&quot;</span><span class="p">,</span>
-<span class="gp">... </span>  <span class="n">submissions_col</span> <span class="o">=</span> <span class="s2">&quot;submissions&quot;</span><span class="p">,</span>
-<span class="gp">... </span>  <span class="n">measure_col</span> <span class="o">=</span> <span class="s2">&quot;measure&quot;</span><span class="p">,</span>
-<span class="gp">... </span><span class="p">)</span>
-<span class="go">True</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">check_consistent_submissions</span><span class="p">(</span>
-<span class="gp">... </span>  <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-<span class="gp">... </span>    <span class="s2">&quot;Org_Level&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;National&quot;</span> <span class="p">,</span><span class="s2">&quot;National&quot;</span><span class="p">,</span> <span class="s2">&quot;Region&quot;</span><span class="p">,</span> <span class="s2">&quot;Region&quot;</span><span class="p">,</span> <span class="s2">&quot;Local&quot;</span><span class="p">,</span> <span class="s2">&quot;Local&quot;</span><span class="p">,],</span>
-<span class="gp">... </span>    <span class="s2">&quot;Measure&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m2&quot;</span><span class="p">,</span> <span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m2&quot;</span><span class="p">,</span> <span class="s2">&quot;m1&quot;</span><span class="p">,</span> <span class="s2">&quot;m2&quot;</span><span class="p">,],</span>
-<span class="gp">... </span>    <span class="s2">&quot;Value_Unsuppressed&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,],</span>
-<span class="gp">... </span>  <span class="p">})</span>
-<span class="gp">... </span><span class="p">)</span>
-<span class="go">False</span>
-</pre></div>
+<div class="section" id="codonpython-check-nat-val-module">
+<h2>codonPython.check_nat_val module<a class="headerlink" href="#codonpython-check-nat-val-module" title="Permalink to this headline">¶</a></h2>
 </div>
-</dd></dl>
-
+<div class="section" id="codonpython-check-null-module">
+<h2>codonPython.check_null module<a class="headerlink" href="#codonpython-check-null-module" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-codonPython.check_nat_val">
-<span id="codonpython-check-nat-val-module"></span><h2>codonPython.check_nat_val module<a class="headerlink" href="#module-codonPython.check_nat_val" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="codonPython.check_nat_val.check_nat_val">
-<code class="sig-prename descclassname">codonPython.check_nat_val.</code><code class="sig-name descname">check_nat_val</code><span class="sig-paren">(</span><em class="sig-param">df: pandas.core.frame.DataFrame</em>, <em class="sig-param">breakdown_col: str = 'Breakdown'</em>, <em class="sig-param">measure_col: str = 'Measure'</em>, <em class="sig-param">value_col: str = 'Value_Unsuppressed'</em>, <em class="sig-param">nat_val: str = 'National'</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#codonPython.check_nat_val.check_nat_val" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check national value less than or equal to sum of breakdowns.</p>
-<p>This function checks that the national value is less than or equal to the
-sum of each organisation level breakdown.
-This function does not apply to values which are averages.
-This function does not apply to values which are percentages calculated
-from the numerator and denominator.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – DataFrame of data to check.</p></li>
-<li><p><strong>breakdown_col</strong> (<em>str</em><em>, </em><em>default = &quot;Breakdown&quot;</em>) – Column name for the breakdown level.</p></li>
-<li><p><strong>measure_col</strong> (<em>str</em><em>, </em><em>default = &quot;Measure&quot;</em>) – Column name for measures</p></li>
-<li><p><strong>value_col</strong> (<em>str</em><em>, </em><em>default = &quot;Value_Unsuppressed&quot;</em>) – Column name for values</p></li>
-<li><p><strong>nat_val</strong> (<em>str</em><em>, </em><em>default = &quot;National&quot;</em>) – Value in breakdown column denoting national values</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Whether the checks have been passed.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">check_nat_val</span><span class="p">(</span>
-<span class="gp">... </span>  <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-<span class="gp">... </span>    <span class="s2">&quot;Breakdown&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;National&#39;</span><span class="p">,</span> <span class="s1">&#39;CCG&#39;</span><span class="p">,</span> <span class="s1">&#39;CCG&#39;</span><span class="p">,</span> <span class="s1">&#39;Provider&#39;</span><span class="p">,</span> <span class="s1">&#39;Provider&#39;</span><span class="p">,</span>
-<span class="gp">... </span><span class="s1">&#39;National&#39;</span> <span class="p">,</span><span class="s1">&#39;CCG&#39;</span><span class="p">,</span> <span class="s1">&#39;CCG&#39;</span><span class="p">,</span> <span class="s1">&#39;Provider&#39;</span><span class="p">,</span> <span class="s1">&#39;Provider&#39;</span><span class="p">,</span><span class="s1">&#39;National&#39;</span> <span class="p">,</span><span class="s1">&#39;CCG&#39;</span><span class="p">,</span> <span class="s1">&#39;CCG&#39;</span><span class="p">,</span>
-<span class="gp">... </span><span class="s1">&#39;Provider&#39;</span><span class="p">,</span> <span class="s1">&#39;Provider&#39;</span><span class="p">,],</span>
-<span class="gp">... </span>    <span class="s2">&quot;Measure&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;m1&#39;</span><span class="p">,</span> <span class="s1">&#39;m1&#39;</span><span class="p">,</span> <span class="s1">&#39;m1&#39;</span><span class="p">,</span> <span class="s1">&#39;m1&#39;</span><span class="p">,</span> <span class="s1">&#39;m1&#39;</span><span class="p">,</span> <span class="s1">&#39;m2&#39;</span><span class="p">,</span> <span class="s1">&#39;m2&#39;</span><span class="p">,</span> <span class="s1">&#39;m2&#39;</span><span class="p">,</span> <span class="s1">&#39;m2&#39;</span><span class="p">,</span>
-<span class="gp">... </span><span class="s1">&#39;m2&#39;</span><span class="p">,</span> <span class="s1">&#39;m3&#39;</span><span class="p">,</span> <span class="s1">&#39;m3&#39;</span><span class="p">,</span> <span class="s1">&#39;m3&#39;</span><span class="p">,</span> <span class="s1">&#39;m3&#39;</span><span class="p">,</span> <span class="s1">&#39;m3&#39;</span><span class="p">,],</span>
-<span class="gp">... </span>    <span class="s2">&quot;Value_Unsuppressed&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span>
-<span class="gp">... </span><span class="mi">3</span><span class="p">],</span>
-<span class="gp">... </span>  <span class="p">}),</span>
-<span class="gp">... </span>  <span class="n">breakdown_col</span> <span class="o">=</span> <span class="s2">&quot;Breakdown&quot;</span><span class="p">,</span>
-<span class="gp">... </span>  <span class="n">measure_col</span> <span class="o">=</span> <span class="s2">&quot;Measure&quot;</span><span class="p">,</span>
-<span class="gp">... </span>  <span class="n">value_col</span> <span class="o">=</span> <span class="s2">&quot;Value_Unsuppressed&quot;</span><span class="p">,</span>
-<span class="gp">... </span>  <span class="n">nat_val</span> <span class="o">=</span> <span class="s2">&quot;National&quot;</span><span class="p">,</span>
-<span class="gp">... </span><span class="p">)</span>
-<span class="go">True</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">check_nat_val</span><span class="p">(</span>
-<span class="gp">... </span>  <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-<span class="gp">... </span>    <span class="s2">&quot;Breakdown&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;National&#39;</span><span class="p">,</span> <span class="s1">&#39;CCG&#39;</span><span class="p">,</span> <span class="s1">&#39;CCG&#39;</span><span class="p">,</span> <span class="s1">&#39;Provider&#39;</span><span class="p">,</span> <span class="s1">&#39;Provider&#39;</span><span class="p">,</span>
-<span class="gp">... </span><span class="s1">&#39;National&#39;</span> <span class="p">,</span><span class="s1">&#39;CCG&#39;</span><span class="p">,</span> <span class="s1">&#39;CCG&#39;</span><span class="p">,</span> <span class="s1">&#39;Provider&#39;</span><span class="p">,</span> <span class="s1">&#39;Provider&#39;</span><span class="p">,</span><span class="s1">&#39;National&#39;</span> <span class="p">,</span><span class="s1">&#39;CCG&#39;</span><span class="p">,</span> <span class="s1">&#39;CCG&#39;</span><span class="p">,</span>
-<span class="gp">... </span><span class="s1">&#39;Provider&#39;</span><span class="p">,</span> <span class="s1">&#39;Provider&#39;</span><span class="p">,],</span>
-<span class="gp">... </span>    <span class="s2">&quot;Measure&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;m1&#39;</span><span class="p">,</span> <span class="s1">&#39;m1&#39;</span><span class="p">,</span> <span class="s1">&#39;m1&#39;</span><span class="p">,</span> <span class="s1">&#39;m1&#39;</span><span class="p">,</span> <span class="s1">&#39;m1&#39;</span><span class="p">,</span> <span class="s1">&#39;m2&#39;</span><span class="p">,</span> <span class="s1">&#39;m2&#39;</span><span class="p">,</span> <span class="s1">&#39;m2&#39;</span><span class="p">,</span> <span class="s1">&#39;m2&#39;</span><span class="p">,</span>
-<span class="gp">... </span><span class="s1">&#39;m2&#39;</span><span class="p">,</span> <span class="s1">&#39;m3&#39;</span><span class="p">,</span> <span class="s1">&#39;m3&#39;</span><span class="p">,</span> <span class="s1">&#39;m3&#39;</span><span class="p">,</span> <span class="s1">&#39;m3&#39;</span><span class="p">,</span> <span class="s1">&#39;m3&#39;</span><span class="p">,],</span>
-<span class="gp">... </span>    <span class="s2">&quot;Value_Unsuppressed&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span>
-<span class="gp">... </span><span class="mi">3</span><span class="p">],</span>
-<span class="gp">... </span>  <span class="p">}),</span>
-<span class="gp">... </span>  <span class="n">breakdown_col</span> <span class="o">=</span> <span class="s2">&quot;Breakdown&quot;</span><span class="p">,</span>
-<span class="gp">... </span>  <span class="n">measure_col</span> <span class="o">=</span> <span class="s2">&quot;Measure&quot;</span><span class="p">,</span>
-<span class="gp">... </span>  <span class="n">value_col</span> <span class="o">=</span> <span class="s2">&quot;Value_Unsuppressed&quot;</span><span class="p">,</span>
-<span class="gp">... </span>  <span class="n">nat_val</span> <span class="o">=</span> <span class="s2">&quot;National&quot;</span><span class="p">,</span>
-<span class="gp">... </span><span class="p">)</span>
-<span class="go">False</span>
-</pre></div>
-</div>
-</dd></dl>
-
-</div>
-<div class="section" id="module-codonPython.check_null">
-<span id="codonpython-check-null-module"></span><h2>codonPython.check_null module<a class="headerlink" href="#module-codonPython.check_null" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="codonPython.check_null.check_null">
-<code class="sig-prename descclassname">codonPython.check_null.</code><code class="sig-name descname">check_null</code><span class="sig-paren">(</span><em class="sig-param">dataframe: pandas.core.frame.DataFrame</em>, <em class="sig-param">columns_to_be_checked: list</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#codonPython.check_null.check_null" title="Permalink to this definition">¶</a></dt>
-<dd><p>Checks a pandas dataframe for null values</p>
-<p>This function takes a pandas dataframe supplied as an argument and returns a integer value
-representing any null values found within the columns to check.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>pandas.DataFrame</em>) – Dataframe to read</p></li>
-<li><p><strong>columns_to_be_checked</strong> (<em>list</em>) – Given dataframe columns to be checked for null values</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>out</strong> – The number of null values found in the given columns</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">check_null</span><span class="p">(</span><span class="n">dataframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;col1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;col2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]}),</span><span class="n">columns_to_be_checked</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;col1&#39;</span><span class="p">,</span> <span class="s1">&#39;col2&#39;</span><span class="p">])</span>
-<span class="go">0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">check_null</span><span class="p">(</span><span class="n">dataframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;col1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="n">numpy</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span> <span class="s1">&#39;col2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]}),</span><span class="n">columns_to_be_checked</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;col1&#39;</span><span class="p">])</span>
-<span class="go">1</span>
-</pre></div>
-</div>
-</dd></dl>
-
-</div>
-<div class="section" id="module-codonPython.dateValidator">
-<span id="codonpython-datevalidator-module"></span><h2>codonPython.dateValidator module<a class="headerlink" href="#module-codonPython.dateValidator" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="codonPython.dateValidator.validDate">
-<code class="sig-prename descclassname">codonPython.dateValidator.</code><code class="sig-name descname">validDate</code><span class="sig-paren">(</span><em class="sig-param">date_string: str</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#codonPython.dateValidator.validDate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Validates stringtype dates of type <cite>dd/mm/yyyy</cite>, <cite>dd-mm-yyyy</cite> or <cite>dd.mm.yyyy</cite> from
-years 1900-9999. Leap year support included.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>date_string</strong> (<em>str</em>) – Date to be validated</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Whether the date is valid or not</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>boolean</p>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">validDate</span><span class="p">(</span><span class="s2">&quot;11/02/1996&quot;</span><span class="p">)</span>
-<span class="go">True</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">validDate</span><span class="p">(</span><span class="s2">&quot;29/02/2016&quot;</span><span class="p">)</span>
-<span class="go">True</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">validDate</span><span class="p">(</span><span class="s2">&quot;43/01/1996&quot;</span><span class="p">)</span>
-<span class="go">False</span>
-</pre></div>
-</div>
-</dd></dl>
-
+<div class="section" id="codonpython-datevalidator-module">
+<h2>codonPython.dateValidator module<a class="headerlink" href="#codonpython-datevalidator-module" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-codonPython.file_utils">
 <span id="codonpython-file-utils-module"></span><h2>codonPython.file_utils module<a class="headerlink" href="#module-codonPython.file_utils" title="Permalink to this headline">¶</a></h2>
@@ -544,11 +341,11 @@ default = False</p></li>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">file_search</span><span class="p">(</span><span class="n">doctype</span> <span class="o">=</span> <span class="s1">&#39;md&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">file_search</span><span class="p">(</span><span class="n">doctype</span> <span class="o">=</span> <span class="s1">&#39;md&#39;</span><span class="p">)</span>
 <span class="go">[&#39;README.md&#39;, &#39;CONTRIBUTING.md&#39;]</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">file_search</span><span class="p">(</span><span class="n">doctype</span> <span class="o">=</span> <span class="s1">&#39;md&#39;</span><span class="p">,</span> <span class="n">like</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;READ&#39;</span><span class="p">])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">file_search</span><span class="p">(</span><span class="n">doctype</span> <span class="o">=</span> <span class="s1">&#39;md&#39;</span><span class="p">,</span> <span class="n">like</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;READ&#39;</span><span class="p">])</span>
 <span class="go">[&#39;README.md&#39;]</span>
 </pre></div>
 </div>
@@ -597,6 +394,531 @@ default = False</p></li>
 <p>File Data_SepP_2019 is successfully imported</p>
 </dd></dl>
 
+</div>
+<div class="section" id="module-codonPython.mesh">
+<span id="codonpython-mesh-module"></span><h2>codonPython.mesh module<a class="headerlink" href="#module-codonPython.mesh" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="codonPython.mesh.MESHConnection">
+<em class="property">class </em><code class="sig-prename descclassname">codonPython.mesh.</code><code class="sig-name descname">MESHConnection</code><span class="sig-paren">(</span><em class="sig-param">mailbox: str</em>, <em class="sig-param">password: str</em>, <em class="sig-param">api_shared_key: str</em>, <em class="sig-param">cert_loc: str</em>, <em class="sig-param">key_loc: str</em>, <em class="sig-param">base_ca_loc: str</em>, <em class="sig-param">root_url: str = 'https://mesh-sync.national.ncrs.nhs.uk'</em>, <em class="sig-param">org: str = 'NHS Digital'</em><span class="sig-paren">)</span><a class="headerlink" href="#codonPython.mesh.MESHConnection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for handling MESH API interactions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mailbox</strong> (<em>string</em>) – The MESH ID of the mailbox this client is for</p></li>
+<li><p><strong>password</strong> (<em>string</em>) – The password to this mailbox</p></li>
+<li><p><strong>api_shared_key</strong> (<em>string</em>) – The shared API key for the MESH environment the mailbox is in</p></li>
+<li><p><strong>cert_loc</strong> (<em>string</em>) – Path to the MESH API certificate location</p></li>
+<li><p><strong>key_loc</strong> (<em>string</em>) – Path to the MESH API certificate private key location</p></li>
+<li><p><strong>base_ca_loc</strong> (<em>string</em>) – Path to the base MESH certificate authority certificate bundle.
+Set to False to disable inbound SSL checks if necessary</p></li>
+<li><p><strong>root_url</strong> (string, default = “<a class="reference external" href="https://mesh-sync.national.ncrs.nhs.uk">https://mesh-sync.national.ncrs.nhs.uk</a>”) – Root MESH URL. Default value is the live MESH service</p></li>
+<li><p><strong>org</strong> (<em>string</em><em>, </em><em>default = &quot;NHS Digital&quot;</em>) – Name of organisation owning the mailbox</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="codonPython.mesh.MESHConnection.check_authentication">
+<code class="sig-name descname">check_authentication</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#codonPython.mesh.MESHConnection.check_authentication" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check authentication with the MESH API.
+This should be done at the start of any session (per the API docs)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Indicates if authentication was successful or not</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#codonPython.mesh.MESHUnknownError" title="codonPython.mesh.MESHUnknownError"><strong>MESHUnknownError</strong></a> – There was an unexpected return status from the MESH API</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">client</span><span class="o">.</span><span class="n">check_authentication</span><span class="p">()</span> 
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="codonPython.mesh.MESHConnection.send_file">
+<code class="sig-name descname">send_file</code><span class="sig-paren">(</span><em class="sig-param">dest_mailbox: str</em>, <em class="sig-param">message_location: str</em>, <em class="sig-param">workflow_id: str</em>, <em class="sig-param">message_subject: str = None</em>, <em class="sig-param">message_id: str = None</em>, <em class="sig-param">process_id: str = None</em>, <em class="sig-param">compress_message: bool = True</em>, <em class="sig-param">encrypted: bool = False</em><span class="sig-paren">)</span><a class="headerlink" href="#codonPython.mesh.MESHConnection.send_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send a file to the MESH API.
+This will automatically chunk the message if required, splitting into chunks at 80MB (MESH API has a
+chunk size limit of 100MB). If required, this will also compress the message before transmission using
+gzip.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dest_mailbox</strong> (<em>string</em>) – MESH Mailbox ID of the recipient</p></li>
+<li><p><strong>message_location</strong> (<em>string</em>) – Path to the readable file to send as a message</p></li>
+<li><p><strong>workflow_id</strong> (<em>string</em>) – DTS Workflow ID</p></li>
+<li><p><strong>message_subject</strong> (<em>string</em><em>, </em><em>default = None</em>) – Optional subject line to use for the message, for SMTP (email) messages.</p></li>
+<li><p><strong>message_id</strong> (<em>string</em><em>, </em><em>default = None</em>) – Optional local identifier for the message. Required to track the message later.</p></li>
+<li><p><strong>process_id</strong> (<em>string</em><em>, </em><em>default = None</em>) – Optional process ID for the MESH message. Currently not used in MESH, but included to ensure
+future compatibility.</p></li>
+<li><p><strong>compress_message</strong> (<em>boolean</em><em>, </em><em>default = True</em>) – Indicates if the message should be compressed. If true, then the message will be compressed
+using gzip before sending to MESH.</p></li>
+<li><p><strong>encrypted</strong> (<em>boolean</em><em>, </em><em>default = False</em>) – Indicates if the file to send has been encrypted. This is solely used to pass a flag to MESH
+and does not encrypt the file or otherwise alter processing.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>Dictionary of returned values from the MESH API</p>
+<ul class="simple">
+<li><p>messageID (str): value of the MESH internal ID assigned to the sent message</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="#codonPython.mesh.MESHAuthenticationError" title="codonPython.mesh.MESHAuthenticationError"><strong>MESHAuthenticationError</strong></a> – There was an authentication error accessing this page. Either the SSL certificate used is invalid,
+    or the client provided the wrong Mailbox ID, Password, or Shared Key.</p></li>
+<li><p><a class="reference internal" href="#codonPython.mesh.MESHInvalidRecipient" title="codonPython.mesh.MESHInvalidRecipient"><strong>MESHInvalidRecipient</strong></a> – The mailbox ID provided is not a valid recipient for this message</p></li>
+<li><p><a class="reference internal" href="#codonPython.mesh.MESHUnknownError" title="codonPython.mesh.MESHUnknownError"><strong>MESHUnknownError</strong></a> – There was an unexpected return status from the MESH API</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">client</span><span class="o">.</span><span class="n">send_file</span><span class="p">(</span><span class="s2">&quot;TEST&quot;</span><span class="p">,</span> <span class="s1">&#39;c:/test/test.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;test_flow&#39;</span><span class="p">)</span> 
+<span class="go">{&#39;messageID&#39;: &#39;20200211115928515346_9359E2&#39;}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="codonPython.mesh.MESHConnection.send_message">
+<code class="sig-name descname">send_message</code><span class="sig-paren">(</span><em class="sig-param">dest_mailbox: str</em>, <em class="sig-param">message: bytes</em>, <em class="sig-param">filename: str</em>, <em class="sig-param">workflow_id: str</em>, <em class="sig-param">message_subject: str = None</em>, <em class="sig-param">message_id: str = None</em>, <em class="sig-param">process_id: str = None</em>, <em class="sig-param">compress_message: bool = True</em>, <em class="sig-param">encrypted: bool = False</em><span class="sig-paren">)</span><a class="headerlink" href="#codonPython.mesh.MESHConnection.send_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send a message to the MESH API.
+This will automatically chunk the message if required, splitting into chunks at 80MB (MESH API has a
+chunk size limit of 100MB). If required, this will also compress the message before transmission using
+gzip.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dest_mailbox</strong> (<em>string</em>) – MESH Mailbox ID of the recipient</p></li>
+<li><p><strong>message</strong> (<em>bytes</em>) – Bytes representation of the file to transmit</p></li>
+<li><p><strong>filename</strong> (<em>string</em>) – Original filename for the message being transmitted</p></li>
+<li><p><strong>workflow_id</strong> (<em>string</em>) – DTS Workflow ID</p></li>
+<li><p><strong>message_subject</strong> (<em>string</em><em>, </em><em>default = None</em>) – Optional subject line to use for the message, for SMTP (email) messages.</p></li>
+<li><p><strong>message_id</strong> (<em>string</em><em>, </em><em>default = None</em>) – Optional local identifier for the message. Required to track the message later.</p></li>
+<li><p><strong>process_id</strong> (<em>string</em><em>, </em><em>default = None</em>) – Optional process ID for the MESH message. Currently not used in MESH, but included to ensure
+future compatibility.</p></li>
+<li><p><strong>compress_message</strong> (<em>boolean</em><em>, </em><em>default = True</em>) – Indicates if the message should be compressed. If true, then the message will be compressed
+using gzip before sending to MESH.</p></li>
+<li><p><strong>encrypted</strong> (<em>boolean</em><em>, </em><em>default = False</em>) – Indicates if the file to send has been encrypted. This is solely used to pass a flag to MESH
+and does not encrypt the file or otherwise alter processing.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>Dictionary of returned values from the MESH API</p>
+<ul class="simple">
+<li><p>messageID (str): value of the MESH internal ID assigned to the sent message</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="#codonPython.mesh.MESHAuthenticationError" title="codonPython.mesh.MESHAuthenticationError"><strong>MESHAuthenticationError</strong></a> – There was an authentication error accessing this page. Either the SSL certificate used is invalid,
+    or the client provided the wrong Mailbox ID, Password, or Shared Key.</p></li>
+<li><p><a class="reference internal" href="#codonPython.mesh.MESHInvalidRecipient" title="codonPython.mesh.MESHInvalidRecipient"><strong>MESHInvalidRecipient</strong></a> – The mailbox ID provided is not a valid recipient for this message</p></li>
+<li><p><a class="reference internal" href="#codonPython.mesh.MESHUnknownError" title="codonPython.mesh.MESHUnknownError"><strong>MESHUnknownError</strong></a> – There was an unexpected return status from the MESH API</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">client</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span><span class="s2">&quot;TEST&quot;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="s1">&#39;test.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;test_flow&#39;</span><span class="p">)</span> 
+<span class="go">{&#39;messageID&#39;: &#39;20200211115928515346_9359E2&#39;}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="codonPython.mesh.MESHConnection.check_message_status">
+<code class="sig-name descname">check_message_status</code><span class="sig-paren">(</span><em class="sig-param">message_id: str</em><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#codonPython.mesh.MESHConnection.check_message_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check status of a sent message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message_id</strong> (<em>string</em>) – The local message ID, eg. as provided to send_message. Does NOT work with MESH Message IDs, only
+the local ID optionally provided on sending the message.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The full response from the MESH API for this local ID. For details, consult the MESH API documentation</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="#codonPython.mesh.MESHAuthenticationError" title="codonPython.mesh.MESHAuthenticationError"><strong>MESHAuthenticationError</strong></a> – There was an authentication error accessing this page. Either the SSL certificate used is invalid,
+    or the client provided the wrong Mailbox ID, Password, or Shared Key.</p></li>
+<li><p><a class="reference internal" href="#codonPython.mesh.MESHMultipleMatches" title="codonPython.mesh.MESHMultipleMatches"><strong>MESHMultipleMatches</strong></a> – There are multiple messages in the outbox with this local ID</p></li>
+<li><p><a class="reference internal" href="#codonPython.mesh.MESHUnknownError" title="codonPython.mesh.MESHUnknownError"><strong>MESHUnknownError</strong></a> – There was an unexpected return status from the MESH API</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">client</span><span class="o">.</span><span class="n">check_message_status</span><span class="p">(</span><span class="n">test</span><span class="p">)</span> 
+<span class="go">{&quot;statusSuccess&quot;: ...}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="codonPython.mesh.MESHConnection.check_inbox">
+<code class="sig-name descname">check_inbox</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#codonPython.mesh.MESHConnection.check_inbox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine the MESH IDs of the contents of the inbox.
+This will return at most 500 entries, owing to the limitations of the API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The MESH IDs of the messages in the inbox (str)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="#codonPython.mesh.MESHAuthenticationError" title="codonPython.mesh.MESHAuthenticationError"><strong>MESHAuthenticationError</strong></a> – There was an authentication error accessing this page. Either the SSL certificate used is invalid,
+    or the client provided the wrong Mailbox ID, Password, or Shared Key.</p></li>
+<li><p><a class="reference internal" href="#codonPython.mesh.MESHUnknownError" title="codonPython.mesh.MESHUnknownError"><strong>MESHUnknownError</strong></a> – There was an unexpected return status from the MESH API</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">client</span><span class="o">.</span><span class="n">check_inbox</span><span class="p">()</span> 
+<span class="go">[&quot;20200211115754892283_BC7B68&quot;, &quot;20200211115928515346_9359E2&quot;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="codonPython.mesh.MESHConnection.check_inbox_count">
+<code class="sig-name descname">check_inbox_count</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#codonPython.mesh.MESHConnection.check_inbox_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine how many messages are in the MESH mailbox to download.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The number of messages ready to download</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="#codonPython.mesh.MESHAuthenticationError" title="codonPython.mesh.MESHAuthenticationError"><strong>MESHAuthenticationError</strong></a> – There was an authentication error accessing this page. Either the SSL certificate used is invalid,
+    or the client provided the wrong Mailbox ID, Password, or Shared Key.</p></li>
+<li><p><a class="reference internal" href="#codonPython.mesh.MESHUnknownError" title="codonPython.mesh.MESHUnknownError"><strong>MESHUnknownError</strong></a> – There was an unexpected return status from the MESH API</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">client</span><span class="o">.</span><span class="n">check_inbox_count</span><span class="p">()</span> 
+<span class="go">2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="codonPython.mesh.MESHConnection.check_and_download">
+<code class="sig-name descname">check_and_download</code><span class="sig-paren">(</span><em class="sig-param">save_folder: str = None</em>, <em class="sig-param">recursive: bool = True</em><span class="sig-paren">)</span> &#x2192; Optional[Generator[[dict, None], None]]<a class="headerlink" href="#codonPython.mesh.MESHConnection.check_and_download" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download all messages in the inbox.
+This will automatically handle reconstructing chunked messages, and automatically decompress any messages
+which have Content-Encoding value of gzip.
+WARNING: each downloaded message will be fully reconstructed and decompressed if needed. This may cause
+issue for machines with very limited memory if there are very large files to download.</p>
+<p>If save_folder is provided, then downloaded files will be saved into that folder with their original filenames
+(and non-delivery receipts will be saved there). This may cause issue if there are multiple files with the
+same filename.</p>
+<p>If no save_folder is provided, then this function will return a generator which will yield each message in turn.
+When the generator yields a message, it will send an acknowledgement to the MESH API for the previous
+message; it is important that processing of the messages be complete and any required final outputs saved
+before this - once acknowledged a message cannot be downloaded from MESH again.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>save_folder</strong> (<em>string</em><em>, </em><em>default = None</em>) – <p>If provided, the folder to save all downloaded files to when this function is called. The function
+will not yield intermediate results.</p>
+<ul>
+<li><p>For data files, the file will be saved in this folder with its original filename.</p></li>
+<li><p>For non-delivery reports, there will be a file created in the folder with filename
+‘Non delivery report: (MESH message ID of failed delivery).txt’, and with
+content ‘Message not delivered. All known details below’ followed by the full
+dictionary of headers from the download response.</p></li>
+</ul>
+<p>If not provided, then this function will instead yield results as documented below.</p>
+</p></li>
+<li><p><strong>recursive</strong> (<em>boolean</em><em>, </em><em>default = True</em>) – If true, then this method will be called recursively so long as there are more than 500 messages
+in the inbox, the maximum number of messages the MESH API will provide IDs for at once. If false,
+then only one call will be made to retrieve inbox contents, and at most 500 messages will be downloaded.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p><em>dict</em> – Dictionary of details about the downloaded file.</p>
+<ul class="simple">
+<li><p>filename (str): Filename of the original file (if provided).</p></li>
+<li><p>contents (bytes): Contents of the file (reconstructed and decompressed if necessary).</p></li>
+<li><p>headers (dict): Dictionary of headers returned by MESH on the initial download request.
+For full details see the MESH API documentation.</p></li>
+<li><p>datafile (boolean): Indicates if this was a data file or a non-delivery report.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="#codonPython.mesh.MESHAuthenticationError" title="codonPython.mesh.MESHAuthenticationError"><strong>MESHAuthenticationError</strong></a> – There was an authentication error accessing the inbox. Either the SSL certificate used is invalid,
+    or the client provided the wrong Mailbox ID, Password, or Shared Key.</p></li>
+<li><p><a class="reference internal" href="#codonPython.mesh.MESHUnknownError" title="codonPython.mesh.MESHUnknownError"><strong>MESHUnknownError</strong></a> – There was an unexpected return status from the MESH API when accessing the inbox</p></li>
+<li><p><a class="reference internal" href="#codonPython.mesh.MESHDownloadErrors" title="codonPython.mesh.MESHDownloadErrors"><strong>MESHDownloadErrors</strong></a> – There were errors during the download process. This exception has the attribute ‘exceptions’,
+    which contains a full list of messages which generated exceptions, along with the exception.
+    This is only raised after completion of all non-error downloads, and downloads which raise
+    an exception are not acknowledged to the MESH API.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">client</span><span class="o">.</span><span class="n">check_and_download</span><span class="p">(</span><span class="s2">&quot;C:/Test Folder/&quot;</span><span class="p">)</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">client</span><span class="o">.</span><span class="n">check_and_download</span><span class="p">():</span> 
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span> 
+<span class="go">{&#39;filename&#39;: &#39;test.txt&#39;, &#39;contents&#39;: b&#39;test_message&#39;, &#39;headers&#39;: {...}, datafile: True}</span>
+<span class="go">{&#39;filename&#39;: &#39;test2.txt&#39;, &#39;contents&#39;: b&#39;test_message_2&#39;, &#39;headers&#39;: {...}, datafile: True}</span>
+<span class="go">{&#39;filename&#39;: None, &#39;contents&#39;: b&#39;&#39;, &#39;headers&#39;: {&#39;Mex-Linkedmsgid&#39;: &#39;1234567890&#39;, ...}, datafile: False}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="codonPython.mesh.MESHConnection.download_message">
+<code class="sig-name descname">download_message</code><span class="sig-paren">(</span><em class="sig-param">message_id: str</em>, <em class="sig-param">save_folder: str = None</em><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#codonPython.mesh.MESHConnection.download_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request a message from the MESH API.
+This will automatically handle reconstructing chunked messages, and automatically decompress any messages
+which have Content-Encoding value of gzip.
+WARNING: the full, reconstructed message will be held in memory, including after decompression. This may
+cause problems, if you are using the API to download very large files on a machine with very limited memory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message_id</strong> (<em>string</em>) – The internal MESH ID of the message to download</p></li>
+<li><p><strong>save_folder</strong> (<em>string</em><em>, </em><em>default = None</em>) – <p>Optional, the folder to save the downloaded message to. If not provided, then the files are not saved.</p>
+<ul>
+<li><p>For data files, the file will be saved in this folder with its original filename.</p></li>
+<li><p>For non-delivery reports, there will be a file created in the folder with filename
+‘Non delivery report: (MESH message ID of failed delivery).txt’, and with
+content ‘Message not delivered. All known details below’ followed by the full
+dictionary of headers from the download response.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>Dictionary of details about the downloaded file.</p>
+<ul class="simple">
+<li><p>filename (str): Filename of the original file (if provided).</p></li>
+<li><p>contents (bytes): Contents of the file (reconstructed and decompressed if necessary).</p></li>
+<li><p>headers (dict): Dictionary of headers returned by MESH on the initial download request.
+For full details see the MESH API documentation.</p></li>
+<li><p>datafile (boolean): Indicates if this was a data file or a non-delivery report.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="#codonPython.mesh.MESHAuthenticationError" title="codonPython.mesh.MESHAuthenticationError"><strong>MESHAuthenticationError</strong></a> – There was an authentication error accessing this page. Either the SSL certificate used is invalid,
+    or the client provided the wrong Mailbox ID, Password, or Shared Key.</p></li>
+<li><p><a class="reference internal" href="#codonPython.mesh.MESHMessageMissing" title="codonPython.mesh.MESHMessageMissing"><strong>MESHMessageMissing</strong></a> – There is no message with the provided message ID in the mailbox</p></li>
+<li><p><a class="reference internal" href="#codonPython.mesh.MESHMessageAlreadyDownloaded" title="codonPython.mesh.MESHMessageAlreadyDownloaded"><strong>MESHMessageAlreadyDownloaded</strong></a> – The message with the provided message ID has already been downloaded and acknowledged</p></li>
+<li><p><a class="reference internal" href="#codonPython.mesh.MESHUnknownError" title="codonPython.mesh.MESHUnknownError"><strong>MESHUnknownError</strong></a> – There was an unexpected return status from the MESH API</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">client</span><span class="o">.</span><span class="n">download_message</span><span class="p">(</span><span class="s2">&quot;20200211115754892283_BC7B68&quot;</span><span class="p">,</span> <span class="s2">&quot;C:/Test Folder/&quot;</span><span class="p">)</span> 
+<span class="go">{&#39;filename&#39;: &#39;test.txt&#39;, &#39;contents&#39;: b&#39;test_message&#39;, &#39;headers&#39;: {&#39;Mex-Filename&#39;: &#39;test.txt&#39;, ...}, data: True}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">client</span><span class="o">.</span><span class="n">download_message</span><span class="p">(</span><span class="s2">&quot;20200211115754892283_BC7B69&quot;</span><span class="p">)</span> 
+<span class="go">{&#39;filename&#39;: None, &#39;contents&#39;: b&#39;&#39;, &#39;headers&#39;: {&#39;Mex-Linkedmsgid&#39;: &#39;1234567890&#39;, ...}, data: False}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="codonPython.mesh.MESHConnection.ack_download_message">
+<code class="sig-name descname">ack_download_message</code><span class="sig-paren">(</span><em class="sig-param">message_id: str</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#codonPython.mesh.MESHConnection.ack_download_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send acknowledgement to the MESH API that a message has finished downloading.
+This should only be done after the message has successfully been saved -
+once sent, the message is remvoed from the MESH server.
+Per the API, this must be sent once a message has been successfully processed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message_id</strong> (<em>string</em>) – The internal MESH ID of the downloaded message</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="#codonPython.mesh.MESHAuthenticationError" title="codonPython.mesh.MESHAuthenticationError"><strong>MESHAuthenticationError</strong></a> – There was an authentication error accessing this page. Either the SSL certificate used is invalid,
+    or the client provided the wrong Mailbox ID, Password, or Shared Key.</p></li>
+<li><p><a class="reference internal" href="#codonPython.mesh.MESHUnknownError" title="codonPython.mesh.MESHUnknownError"><strong>MESHUnknownError</strong></a> – There was an unexpected return status from the MESH API</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">client</span><span class="o">.</span><span class="n">ack_download_message</span><span class="p">(</span><span class="s2">&quot;20200211115754892283_BC7B68&quot;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="codonPython.mesh.generate_authorization">
+<code class="sig-prename descclassname">codonPython.mesh.</code><code class="sig-name descname">generate_authorization</code><span class="sig-paren">(</span><em class="sig-param">mailbox: str</em>, <em class="sig-param">password: str</em>, <em class="sig-param">api_shared_key: str</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#codonPython.mesh.generate_authorization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate an authorization string as specified by the MESH API documentation v1.14</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mailbox</strong> (<em>string</em>) – The mailbox ID to generate authorization for</p></li>
+<li><p><strong>password</strong> (<em>string</em>) – The password for the mailbox</p></li>
+<li><p><strong>api_shared_key</strong> (<em>string</em>) – The shared API key for the MESH environment the request is being made to</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The generated authentication string</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>string</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">generate_authorization</span><span class="p">(</span><span class="s2">&quot;TEST_BOX&quot;</span><span class="p">,</span> <span class="s2">&quot;TEST_PW&quot;</span><span class="p">,</span> <span class="s2">&quot;TEST_KEY&quot;</span><span class="p">)</span> 
+<span class="go">&quot;NHSMESH TEST_BOX:ccd54b96-ee41-4d34-9700-7f9ec63d0720:1:202002120857:763 ... 872c&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">generate_authorization</span><span class="p">(</span><span class="s2">&quot;NEW_BOX&quot;</span><span class="p">,</span> <span class="s2">&quot;NEW_PW&quot;</span><span class="p">,</span> <span class="s2">&quot;TEST_KEY&quot;</span><span class="p">)</span> 
+<span class="go">&quot;NHSMESH NEW_BOX:662c4ffa-c85c-4858-bae8-7327e09aeeb5:1:202002120858:7f1 ... 0d95&quot;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="exception">
+<dt id="codonPython.mesh.MESHAuthenticationError">
+<em class="property">exception </em><code class="sig-prename descclassname">codonPython.mesh.</code><code class="sig-name descname">MESHAuthenticationError</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#codonPython.mesh.MESHAuthenticationError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">requests.exceptions.ConnectionError</span></code></p>
+<p>The MESH request authentication was invalid</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="codonPython.mesh.MESHDownloadErrors">
+<em class="property">exception </em><code class="sig-prename descclassname">codonPython.mesh.</code><code class="sig-name descname">MESHDownloadErrors</code><span class="sig-paren">(</span><em class="sig-param">exceptions</em><span class="sig-paren">)</span><a class="headerlink" href="#codonPython.mesh.MESHDownloadErrors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>There were errors downloading MESH messages</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="codonPython.mesh.MESHInvalidRecipient">
+<em class="property">exception </em><code class="sig-prename descclassname">codonPython.mesh.</code><code class="sig-name descname">MESHInvalidRecipient</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#codonPython.mesh.MESHInvalidRecipient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">requests.exceptions.ConnectionError</span></code></p>
+<p>The recipient is unknown or otherwise invalid</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="codonPython.mesh.MESHMessageAlreadyDownloaded">
+<em class="property">exception </em><code class="sig-prename descclassname">codonPython.mesh.</code><code class="sig-name descname">MESHMessageAlreadyDownloaded</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#codonPython.mesh.MESHMessageAlreadyDownloaded" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">requests.exceptions.ConnectionError</span></code></p>
+<p>The MESH request has already been downloaded</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="codonPython.mesh.MESHMessageMissing">
+<em class="property">exception </em><code class="sig-prename descclassname">codonPython.mesh.</code><code class="sig-name descname">MESHMessageMissing</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#codonPython.mesh.MESHMessageMissing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">requests.exceptions.ConnectionError</span></code></p>
+<p>The message requested does not exist</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="codonPython.mesh.MESHMultipleMatches">
+<em class="property">exception </em><code class="sig-prename descclassname">codonPython.mesh.</code><code class="sig-name descname">MESHMultipleMatches</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#codonPython.mesh.MESHMultipleMatches" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">requests.exceptions.ConnectionError</span></code></p>
+<p>There are multiple messages with the provided local ID</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="codonPython.mesh.MESHUnknownError">
+<em class="property">exception </em><code class="sig-prename descclassname">codonPython.mesh.</code><code class="sig-name descname">MESHUnknownError</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#codonPython.mesh.MESHUnknownError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">requests.exceptions.ConnectionError</span></code></p>
+<p>There was an unknown error with the connection</p>
+</dd></dl>
+
+<div class="section" id="requirements">
+<h3>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h3>
+<p>Using the MESH API requires a valid API certificate issued by DIR (for live environments) or Platforms (for development/test environments).
+Guidance on obtaining a certificate can be found <a class="reference external" href="https://digital.nhs.uk/services/message-exchange-for-social-care-and-health-mesh/mesh-guidance-hub/certificate-guidance">in the MESH guidance hub</a>.
+The module requires the certificate be in PEM format; the certificate enrolment tool produces a java keystore which the valid certificate can be extracted from if needs be.
+Due to limitations inherited from the Requests library, the private key <em>must</em> be unencrypted.</p>
+<p>The keystore will also contain root authority certificates; these should also be extracted and combined into a certificate bundle for use in confirming the identity of the endpoint being communicated with. This check <em>can</em> be disabled, but this is not recommended.</p>
+<p>Finally, use of the MESH API requires the API secret key, which can be requested from Platforms.</p>
+</div>
+<div class="section" id="example-usage">
+<h3>Example usage<a class="headerlink" href="#example-usage" title="Permalink to this headline">¶</a></h3>
+<p>Use of the MESH API will generally follow one of a few standard patterns.</p>
+<p>Upload file pattern:</p>
+<ul class="simple">
+<li><p>Check Authentication with the MESH API endpoint</p></li>
+<li><p>Send one or more files (chunked if needed)</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">codonPython.mesh</span> <span class="kn">import</span> <span class="n">MESHConnection</span>
+<span class="n">mesh_client</span> <span class="o">=</span> <span class="n">MESHConnection</span><span class="p">(</span>
+    <span class="n">mailbox</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span>
+    <span class="n">api_shared_key</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span>
+    <span class="n">cert_loc</span> <span class="o">=</span> <span class="s1">&#39;./certs/test.cert&#39;</span>
+    <span class="n">key_loc</span> <span class="o">=</span> <span class="s1">&#39;./certs/test.key&#39;</span>
+    <span class="n">base_ca_loc</span> <span class="o">=</span> <span class="s1">&#39;./certs/test.ca-bundle&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">mesh_client</span><span class="o">.</span><span class="n">check_authentication</span><span class="p">():</span>
+    <span class="n">mesh_client</span><span class="o">.</span><span class="n">send_file</span><span class="p">(</span><span class="s1">&#39;test_recipient&#39;</span><span class="p">,</span> <span class="s1">&#39;./test/test_20200224_1100.txt.dat&#39;</span><span class="p">,</span> <span class="s1">&#39;test_workflow&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Download file pattern:</p>
+<ul class="simple">
+<li><p>Check Authentication with the MESH API endpoint</p></li>
+<li><p>Request a list of files to download from the endpoint</p></li>
+<li><p>Download and process each in turn (downloading chunked files if needed)</p></li>
+<li><p>After each file has been <em>successfully</em> processed, send acknowledgement to the MESH API for that file</p></li>
+<li><p>Repeat as needed until there are no more files which can be processed. Note that the MESH API will return at most 500 message IDs at a time.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">codonPython.mesh</span> <span class="kn">import</span> <span class="n">MESHConnection</span>
+<span class="n">mesh_client</span> <span class="o">=</span> <span class="n">MESHConnection</span><span class="p">(</span>
+    <span class="n">mailbox</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span>
+    <span class="n">api_shared_key</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span>
+    <span class="n">cert_loc</span> <span class="o">=</span> <span class="s1">&#39;./certs/test.cert&#39;</span>
+    <span class="n">key_loc</span> <span class="o">=</span> <span class="s1">&#39;./certs/test.key&#39;</span>
+    <span class="n">base_ca_loc</span> <span class="o">=</span> <span class="s1">&#39;./certs/test.ca-bundle&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">mesh_client</span><span class="o">.</span><span class="n">check_authentication</span><span class="p">():</span>
+    <span class="c1"># To save all messages to a folder</span>
+    <span class="n">mesh_client</span><span class="o">.</span><span class="n">check_and_download</span><span class="p">(</span><span class="s1">&#39;./inbox&#39;</span><span class="p">)</span>
+    <span class="c1"># To perform more complex processing on each</span>
+    <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">mesh_client</span><span class="o">.</span><span class="n">check_and_download</span><span class="p">():</span>
+        <span class="n">process</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+    <span class="c1"># To perform the flow manually instead of using the check_and_download helper method</span>
+    <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">inbox_messages</span> <span class="o">=</span> <span class="n">mesh_client</span><span class="o">.</span><span class="n">check_inbox</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">message_id</span> <span class="ow">in</span> <span class="n">inbox_messages</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="n">mesh_client</span><span class="o">.</span><span class="n">download_message</span><span class="p">(</span><span class="n">message_id</span><span class="p">,</span> <span class="s1">&#39;./inbox&#39;</span><span class="p">)</span>
+            <span class="n">process</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+            <span class="n">mesh_client</span><span class="o">.</span><span class="n">ack_download_message</span><span class="p">(</span><span class="n">message_id</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>NB:
+The regular MESH client has strict restrictions on filename and type. The API does not have any such restrictions, however it is likely that the system files are being sent to expects files to be in this format.
+Unless you know otherwise files should be sent with .dat extension, with filename pattern Organisation_Date_Time.ext.dat where .ext is the original file extension.</p>
+</div>
 </div>
 <div class="section" id="module-codonPython.nhsd_colours">
 <span id="codonpython-nhsd-colours-module"></span><h2>codonPython.nhsd_colours module<a class="headerlink" href="#module-codonPython.nhsd_colours" title="Permalink to this headline">¶</a></h2>
@@ -663,7 +985,7 @@ in the data dictonary.
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nhsNumberGenerator</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nhsNumberGenerator</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="go">[8429141456, 2625792787]</span>
 </pre></div>
 </div>
@@ -686,7 +1008,7 @@ in the data dictonary.
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nhsNumberValidator</span><span class="p">(</span><span class="mi">8429141456</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nhsNumberValidator</span><span class="p">(</span><span class="mi">8429141456</span><span class="p">)</span>
 <span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nhsNumberValidator</span><span class="p">(</span><span class="mi">8429141457</span><span class="p">)</span>
 <span class="go">False</span>
@@ -695,9 +1017,9 @@ in the data dictonary.
 </dd></dl>
 
 </div>
-<div class="section" id="codonpython-ods-lookup-module">
-<h2>codonPython.ODS_lookup module<a class="headerlink" href="#codonpython-ods-lookup-module" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-codonPython.ODS_lookup"></span><dl class="function">
+<div class="section" id="module-codonPython.ODS_lookup">
+<span id="codonpython-ods-lookup-module"></span><h2>codonPython.ODS_lookup module<a class="headerlink" href="#module-codonPython.ODS_lookup" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
 <dt id="codonPython.ODS_lookup.get_addresses">
 <code class="sig-prename descclassname">codonPython.ODS_lookup.</code><code class="sig-name descname">get_addresses</code><span class="sig-paren">(</span><em class="sig-param">codes: Iterable[str]</em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="headerlink" href="#codonPython.ODS_lookup.get_addresses" title="Permalink to this definition">¶</a></dt>
 <dd><p>Query the ODS (organisation data service) API for a series of
@@ -717,7 +1039,7 @@ useful than no table at all.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">get_addresses</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;X26&quot;</span><span class="p">]))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">get_addresses</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;X26&quot;</span><span class="p">]))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span>
 <span class="go">          Org_AddrLn1 Org_Code Org_Country     Org_Name Org_PostCode Org_Town</span>
 <span class="go">0  1 TREVELYAN SQUARE      X26     ENGLAND  NHS Digital      LS1 6AE    LEEDS</span>
@@ -743,7 +1065,7 @@ and return the full JSON result. Full API docs can be found here:
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">query_api</span><span class="p">(</span><span class="s2">&quot;X26&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">query_api</span><span class="p">(</span><span class="s2">&quot;X26&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;Organisation&quot;</span><span class="p">][</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span>
 <span class="go">&#39;NHS DIGITAL&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;Organisation&quot;</span><span class="p">][</span><span class="s2">&quot;GeoLoc&quot;</span><span class="p">][</span><span class="s2">&quot;Location&quot;</span><span class="p">][</span><span class="s2">&quot;AddrLn1&quot;</span><span class="p">]</span>
@@ -756,34 +1078,33 @@ and return the full JSON result. Full API docs can be found here:
 <div class="section" id="module-codonPython.suppression">
 <span id="codonpython-suppression-module"></span><h2>codonPython.suppression module<a class="headerlink" href="#module-codonPython.suppression" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="codonPython.suppression.suppress_value">
-<code class="sig-prename descclassname">codonPython.suppression.</code><code class="sig-name descname">suppress_value</code><span class="sig-paren">(</span><em class="sig-param">valuein: int</em>, <em class="sig-param">rc: str = '*'</em>, <em class="sig-param">upper: int = 100000000</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#codonPython.suppression.suppress_value" title="Permalink to this definition">¶</a></dt>
-<dd><p>Suppress values less than or equal to 7, round all non-national values.</p>
-<p>This function suppresses value if it is less than or equal to 7.
-If value is 0 then it will remain as 0.
-If value is at national level it will remain unsuppressed.
+<dt id="codonPython.suppression.central_suppression_method">
+<code class="sig-prename descclassname">codonPython.suppression.</code><code class="sig-name descname">central_suppression_method</code><span class="sig-paren">(</span><em class="sig-param">valuein: int</em>, <em class="sig-param">rc: str = '5'</em>, <em class="sig-param">upper: int = 5000000000</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#codonPython.suppression.central_suppression_method" title="Permalink to this definition">¶</a></dt>
+<dd><p>Suppresses and rounds values using the central suppression method.</p>
+<p>If value is 0 then it will remain as 0.
+If value is 1-7 it will be suppressed and appear as 5.
 All other values will be rounded to the nearest 5.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>valuein</strong> (<em>int</em>) – Metric value</p></li>
 <li><p><strong>rc</strong> (<em>str</em>) – Replacement character if value needs suppressing</p></li>
-<li><p><strong>upper</strong> (<em>int</em>) – Upper limit for suppression of numbers</p></li>
+<li><p><strong>upper</strong> (<em>int</em>) – Upper limit for suppression of numbers (5 billion)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>out</strong> – Suppressed value (*), 0 or valuein if greater than 7 or national</p>
+<dd class="field-even"><p><strong>out</strong> – Suppressed value (5), 0 or rounded valuein if greater than 7</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>str</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">suppress_value</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="go">&#39;*&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">suppress_value</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">central_suppression_method</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">&#39;5&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">central_suppression_method</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span>
 <span class="go">&#39;25&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">suppress_value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">central_suppression_method</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="go">&#39;0&#39;</span>
 </pre></div>
 </div>
@@ -841,57 +1162,8 @@ in each chunk.</p></li>
 </dd></dl>
 
 </div>
-<div class="section" id="module-codonPython.tolerance">
-<span id="codonpython-tolerance-module"></span><h2>codonPython.tolerance module<a class="headerlink" href="#module-codonPython.tolerance" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="codonPython.tolerance.check_tolerance">
-<code class="sig-prename descclassname">codonPython.tolerance.</code><code class="sig-name descname">check_tolerance</code><span class="sig-paren">(</span><em class="sig-param">t, y, to_exclude: int = 1, poly_features: list = [1, 2], alpha: float = 0.05, parse_dates: bool = False, predict_all: bool = False</em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="headerlink" href="#codonPython.tolerance.check_tolerance" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check that some future values are within a weighted least squares confidence interval.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>t</strong> (<em>pd.Series</em>) – N explanatory time points of shape (N, 1).</p></li>
-<li><p><strong>y</strong> (<em>pd.Series</em>) – The corresponding response variable values to X, of shape (N, 1).</p></li>
-<li><p><strong>to_exclude</strong> (<em>int</em><em>, </em><em>default = 1</em>) – How many of the last y values will have their tolerances checked.</p></li>
-<li><p><strong>poly_features</strong> (<em>list</em><em>, </em><em>default =</em><em> [</em><em>1</em><em>, </em><em>2</em><em>]</em>) – List of degrees of polynomial basis to fit to the data. One model will be
-produced for each number in the list, eg. the default will fit a linear and
-a second degree polynomial to the data and return both sets of results.</p></li>
-<li><p><strong>alpha</strong> (<em>float</em><em>, </em><em>default = 0.05</em>) – Alpha parameter for the weighted least squares confidence interval.</p></li>
-<li><p><strong>parse_dates</strong> (<em>bool</em><em>, </em><em>default = True</em>) – Set to true to parse string dates in t</p></li>
-<li><p><strong>predict_all</strong> (<em>bool</em><em>, </em><em>default = False</em>) – Set to true to show predictions for all points of the dataset.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><dl class="simple">
-<dt>DataFrame containing:</dt><dd><p>”t”         : Value for t
-“yhat_u”    : Upper condfidence interval for y
-“yobs”      : Observed value for y
-“yhat”      : Predicted value for y
-“yhat_l”    : Lower confidence interval for y
-“polynomial”: Max polynomial of model fit to the data</p>
-</dd>
-</dl>
-</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>pd.DataFrame</p>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">check_tolerance</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">t</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1001</span><span class="p">,</span><span class="mi">1002</span><span class="p">,</span><span class="mi">1003</span><span class="p">,</span><span class="mi">1004</span><span class="p">,</span><span class="mi">1005</span><span class="p">,</span><span class="mi">1006</span><span class="p">]),</span>
-<span class="gp">... </span>    <span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mf">4.5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mf">5.1</span><span class="p">]),</span>
-<span class="gp">... </span>    <span class="n">to_exclude</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
-<span class="gp">... </span><span class="p">)</span>
-<span class="go">      t     yhat_u  yobs   yhat    yhat_l  polynomial</span>
-<span class="go">0  1005   6.817413   5.0  5.500  4.182587           1</span>
-<span class="go">1  1006   7.952702   5.1  6.350  4.747298           1</span>
-<span class="go">2  1005   9.077182   5.0  4.875  0.672818           2</span>
-<span class="go">3  1006  13.252339   5.1  4.975 -3.302339           2</span>
-</pre></div>
-</div>
-</dd></dl>
-
+<div class="section" id="codonpython-tolerance-module">
+<h2>codonPython.tolerance module<a class="headerlink" href="#codonpython-tolerance-module" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-codonPython">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-codonPython" title="Permalink to this headline">¶</a></h2>
@@ -916,11 +1188,19 @@ a second degree polynomial to the data and return both sets of results.</p></li>
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright under BSD-3 license
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -931,7 +1211,6 @@ a second degree polynomial to the data and return both sets of results.</p></li>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
