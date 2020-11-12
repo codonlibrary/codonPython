@@ -2,11 +2,18 @@
 
 First off, thank you for taking the time to contribute! If you have a function that you would like to see in codon, we have a few standards and guidelines that we would like you to follow before we consider your merge request. Failure to follow the contribution guide will result in your merge request being challenged or rejected.
 
+<<<<<<< HEAD
 We are looking for functions and/or classes which are useful for workflows in DIS specifically. Please do not submit the following...
 * End-to-end scripts cannot be implemented into the package. If you find something reusable within your end-to-end script, then please feel free to extract it and submit it to Codon with tests attached.
 * Multiple functions that are unrelated. For example, "This function takes an integer number and rounds it to the nearest whole number". Please do not include multiple functions unless they're methods of a class or are related to the same file (i.e. two methods of suppression)
 * Duplicated functionality. For example, if your function is already done by another well known package.
 * Irrelevant functionality. If the function you submit is unrelated to DIS, it will mostly likely be challenged or rejected.
+=======
+We are looking for functions and/or classes which are useful for workflows used in DIS specifically. Please don't submit the following type of code...
+* Bare scripts can't be implemented in the package. These consist of full end-end processes. If you find something reusable within your end-end script, then please extract it and submit it to Codon.
+* A pull request must be atomic. For example, "This function takes an integer number and rounds it to the nearest whole number". Please do not include multiple functions unless they're methods of a class.
+* We are not looking for functionallity that already exists. For example, if your function is unrelated to health care data and/or is already done by another well known function, then this will be rejected.
+>>>>>>> 81b53594dd99af13c4fcfb813c9324f7b4da0cb5
 
 ## Basic idea
 
